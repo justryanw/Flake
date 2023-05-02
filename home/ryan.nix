@@ -19,6 +19,7 @@
         s = "sudo nixos-rebuild switch --flake ~/Flake/.#ryan";
         sys = "sudo systemctl";
         logs = "sudo journalctl -fu";
+        la = "ls -A";
       };
       history.size = 1000;
       enableAutosuggestions = true;

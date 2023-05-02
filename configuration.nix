@@ -188,7 +188,7 @@ in
     # lm_sensors
     tldr
     # nix-software-center
-    helix
+    # helix
   ];
 
   # Enable the OpenSSH daemon.

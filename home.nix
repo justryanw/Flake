@@ -15,9 +15,8 @@
     zsh = {
       enable = true;
       shellAliases = {
-        e = "hx ~/config.nix";
-        s = "sudo hx /etc/nixos/configuration.nix";
-        switch = "sudo nixos-rebuild switch";
+        e = "hx ~/Flake/flake.nix";
+        switch = "sudo nixos-rebuild switch --flake .#ryan";
         sys = "sudo systemctl";
         logs = "sudo journalctl -fu";
       };

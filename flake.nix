@@ -9,13 +9,13 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit systen;
+        inherit system;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
     in
     {
-      nixosConfiguration = {
+      nixosConfigurations = {
         ryan = lib.nixosSystem {
           inherit system;
           modules = [ ./configuration.nix ];

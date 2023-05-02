@@ -18,9 +18,9 @@ in
       ./hardware-configuration.nix
       ./gnome.nix
       # ./kde.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
       # ./ryan.nix
-      /home/ryan/config.nix
+      # /home/ryan/config.nix
     ];
 
   # Bootloader.

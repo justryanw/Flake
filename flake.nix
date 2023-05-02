@@ -20,6 +20,7 @@
     in
     {
       nixosConfigurations = {
+
         vm = lib.nixosSystem {
           inherit system;
           modules = [
@@ -34,6 +35,22 @@
             }
           ];
         };
+
+        laptop = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/laptop
+            ./shared.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ryan = { imports = [ (./home/ryan.nix) ] ++ [ (./hosts/laptop/home.nix) ]; };
+              home-manager.users.root = { imports = [ ./home/root.nix ]; };
+            }
+          ];
+        };
+
       };
     };
 }

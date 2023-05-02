@@ -16,7 +16,6 @@
       enable = true;
       shellAliases = {
         e = "cd ~/Flake && hx flake.nix";
-        s = "sudo nixos-rebuild switch --flake ~/Flake/.#vm";
         sys = "sudo systemctl";
         logs = "sudo journalctl -fu";
         la = "ls -A";

@@ -25,10 +25,11 @@
           modules = [
             ./hosts/vm
             ./shared.nix
-            home-manager.nixosModules.home-manager {
+            home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.ryan = { imports = [ ./home/ryan.nix ]; };
+              home-manager.users.ryan = { imports = [ (./home/ryan.nix) ] ++ [ (./hosts/vm/home.nix) ]; };
               home-manager.users.root = { imports = [ ./home/root.nix ]; };
             }
           ];

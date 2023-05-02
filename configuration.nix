@@ -29,10 +29,10 @@ in
   services.xserver.desktopManager.gnome.enable = true;
   
   
-  environment.systemPackages = with pkgs; [
-  	gnome-extension-manager
-    gnome.gnome-tweaks
-  ];
+  # environment.systemPackages = with pkgs; [
+  # 	gnome-extension-manager
+  #   gnome.gnome-tweaks
+  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

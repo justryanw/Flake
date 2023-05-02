@@ -20,11 +20,11 @@
     in
     {
       nixosConfigurations = {
-        ryan = lib.nixosSystem {
+        vm = lib.nixosSystem {
           inherit system;
           modules = [
+            ./hosts/vm
             ./configuration.nix
-            ./containers/vpn.nix
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

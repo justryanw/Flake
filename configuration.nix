@@ -87,7 +87,7 @@ in
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager.useGlobalPkgs = true;
+  # home-manager.useGlobalPkgs = true;
 
   services.flatpak.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

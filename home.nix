@@ -15,8 +15,8 @@
     zsh = {
       enable = true;
       shellAliases = {
-        e = "hx ~/Flake/flake.nix";
-        switch = "sudo nixos-rebuild switch --flake .#ryan";
+        e = "cd ~/Flake && hx flake.nix";
+        s = "sudo nixos-rebuild switch --flake ~/Flake/.#ryan";
         sys = "sudo systemctl";
         logs = "sudo journalctl -fu";
       };
@@ -46,6 +46,9 @@
       enable = true;
       userName = "Ryan Walker";
       userEmail = "ryanjwalker2001@gmail.com";
+      aliases = {
+        acm = "!git add -A && git commit -m";
+      };
     };
 
   };

@@ -62,6 +62,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
 

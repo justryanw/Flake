@@ -25,8 +25,6 @@
       services.openvpn.servers = {
         main = {
           config = '' config /root/uk_london-aes256-udp.ovpn '';
-          authUserPass.username = "vpn97285351";
-          authUserPass.password = "Silencer-Glitch8-Yield";
         };
       };
 

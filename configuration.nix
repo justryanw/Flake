@@ -4,12 +4,12 @@
 
 { config, pkgs, lib, ... }:
 let
-  nix-software-center = (import (pkgs.fetchFromGitHub {
-    owner = "vlinkz";
-    repo = "nix-software-center";
-    rev = "0.1.0";
-    sha256 = "d4LAIaiCU91LAXfgPCWOUr2JBkHj6n0JQ25EqRIBtBM=";
-  })) { };
+  # nix-software-center = (import (pkgs.fetchFromGitHub {
+  #   owner = "vlinkz";
+  #   repo = "nix-software-center";
+  #   rev = "0.1.0";
+  #   sha256 = "d4LAIaiCU91LAXfgPCWOUr2JBkHj6n0JQ25EqRIBtBM=";
+  # })) { };
 in
 {
   imports =
@@ -103,20 +103,20 @@ in
   services.flatpak.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  services.monero = {
-    enable = false;
-    limits = {
-      threads = 1;
-    };
-  };
+  # services.monero = {
+  #   enable = false;
+  #   limits = {
+  #     threads = 1;
+  #   };
+  # };
 
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
-  };
+  # services.avahi = {
+  #   enable = true;
+  #   nssmdns = true;
+  #   openFirewall = true;
+  # };
 
-  programs.steam.enable = true;
+  # programs.steam.enable = true;
 
   # Enable networking
   networking = {
@@ -132,46 +132,46 @@ in
     };
   };
 
-  containers.vpn = {
-    autoStart = true;
-    privateNetwork = true;
-    hostAddress = "192.168.0.110";
-    localAddress = "192.168.0.111";
-    enableTun = true;
+  # containers.vpn = {
+  #   autoStart = true;
+  #   privateNetwork = true;
+  #   hostAddress = "192.168.0.110";
+  #   localAddress = "192.168.0.111";
+  #   enableTun = true;
 
-    config = { config, pkgs, ... }: {
+  #   config = { config, pkgs, ... }: {
 
-      services.openvpn.servers = {
-        main = {
-          config = '' config /root/uk_london-aes256-udp.ovpn '';
-          authUserPass.username = "vpn97285351";
-          authUserPass.password = "Silencer-Glitch8-Yield";
-        };
-      };
+  #     services.openvpn.servers = {
+  #       main = {
+  #         config = '' config /root/uk_london-aes256-udp.ovpn '';
+  #         authUserPass.username = "vpn97285351";
+  #         authUserPass.password = "Silencer-Glitch8-Yield";
+  #       };
+  #     };
 
-      systemd.tmpfiles.rules = [
-        "d /home/Torrents 775 transmission transmission"
-      ];
+  #     systemd.tmpfiles.rules = [
+  #       "d /home/Torrents 775 transmission transmission"
+  #     ];
 
-      services.transmission = {
-        enable = true;
-        settings = {
-          download-dir = "/home/Torrents";
-          incomplete-dir = "/home/Torrents";
-          rpc-bind-address = "192.168.0.111";
-          rpc-whitelist = "192.168.0.110";
-        };
-        openRPCPort = true;
-      };
+  #     services.transmission = {
+  #       enable = true;
+  #       settings = {
+  #         download-dir = "/home/Torrents";
+  #         incomplete-dir = "/home/Torrents";
+  #         rpc-bind-address = "192.168.0.111";
+  #         rpc-whitelist = "192.168.0.110";
+  #       };
+  #       openRPCPort = true;
+  #     };
 
-      networking.firewall.enable = false;
+  #     networking.firewall.enable = false;
 
-      system.stateVersion = "22.11";
+  #     system.stateVersion = "22.11";
 
-      environment.etc."resolv.conf".text = "nameserver 8.8.8.8";
+  #     environment.etc."resolv.conf".text = "nameserver 8.8.8.8";
 
-    };
-  };
+  #   };
+  # };
 
   programs.zsh.enable = true;
 
@@ -185,9 +185,9 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    lm_sensors
+    # lm_sensors
     tldr
-    nix-software-center
+    # nix-software-center
     helix
   ];
 

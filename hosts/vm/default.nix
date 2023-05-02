@@ -7,7 +7,7 @@
     enable = true;
     device = "/dev/sda";
     useOSProber = true;
-  }
+  };
 
   networking.hostName = "NixVM";
 }

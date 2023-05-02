@@ -41,6 +41,17 @@
           };
         };
       };
+      languages = [
+        {
+          name = "nix";
+          language-server = {
+            command = "nil";
+          };
+          formatter = {
+            command = "nixpkgs-fmt";
+          };
+        }
+      ];
     };
 
     git = {

@@ -3,18 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’)
 
 { config, pkgs, lib, ... }:
-let
-  # nix-software-center = (import (pkgs.fetchFromGitHub {
-  #   owner = "vlinkz";
-  #   repo = "nix-software-center";
-  #   rev = "0.1.0";
-  #   sha256 = "d4LAIaiCU91LAXfgPCWOUr2JBkHj6n0JQ25EqRIBtBM=";
-  # })) { };
-in
 {
-  imports = [
-      ./hardware-configuration.nix
-  ];
     
     
   # Enable the GNOME Desktop Environment.

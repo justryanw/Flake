@@ -12,6 +12,7 @@
       };
     };
     supportedFilesystems = [ "ntfs" ];
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking.hostName = "Desktop";

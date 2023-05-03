@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  home.stateVersion = "23.05";
+{ pkgs, state, ... }: {
+  home.stateVersion = state;
 
   home.packages = with pkgs; [ ];
 

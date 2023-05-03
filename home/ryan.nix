@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  home.stateVersion = "22.11";
+{ pkgs, state, ... }: {
+  home.stateVersion = state;
 
   home.packages = with pkgs; [
     firefox

@@ -42,5 +42,17 @@
       accel-profile = "flat";
       natural-scroll = false;
     };
+    "org/gnome/desktop/wm/keybindings" = {
+      toggle-fullscreen = [ "<Alt>f" ];
+      minimize = [ "<Alt>s" ];
+      maximize = [ "<Alt>w" ];
+      begin-move = [ "<Alt>e" ];
+      begin-resize = [ "<Alt>r" ];
+    };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ "<Alt>a" ];
+      toggle-tiled-right = [ "<Alt>d" ];
+    };
+    "org/gtk/settings/file-chooser".clock-format = "12h";
   };
 }

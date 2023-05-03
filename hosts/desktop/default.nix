@@ -14,7 +14,8 @@
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
-        fontSize = 32;
+        font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
+        fontSize = 24;
         gfxmodeEfi = "3440x1440";
         extraEntries = ''
           menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {

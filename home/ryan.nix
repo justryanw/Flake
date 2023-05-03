@@ -5,6 +5,7 @@
     monero-gui
     teams
     fragments
+    whatip
   ];
 
   programs = {

@@ -88,6 +88,12 @@
     ];
   };
 
+  networking = {
+    hosts = {
+      "192.168.0.5" = [ "work" ];
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" ];

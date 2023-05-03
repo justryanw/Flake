@@ -26,4 +26,21 @@
     };
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      enable-hot-corners = false;
+    };
+    "org/gnome/shell".favourite-apps = [ ];
+    "org/gnome/mutter" = {
+      workspaces-only-on-primary = true;
+      dynamic-workspaces = false;
+    };
+    "org/gnome/desktop/wm/preferences".num-workspaces = 3;
+    "org/gnome/desktop/peripherals/mouse" = {
+      speed = 0.5;
+      accel-profile = "flat";
+      natural-scroll = false;
+    };
+  };
 }

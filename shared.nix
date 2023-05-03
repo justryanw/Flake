@@ -74,8 +74,11 @@
     gnome.excludePackages = (with pkgs; [
       gnome-photos
       gnome-tour
-      gnome.totem
       epiphany
+    ]) ++ (with pkgs.gnome; [
+      totem
+      cheese
+      yelp
     ]);
 
     systemPackages = with pkgs; [

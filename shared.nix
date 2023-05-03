@@ -70,17 +70,22 @@
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
+
+    gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+      gnome.totem
+      epiphany
+    ]);
+
+    systemPackages = with pkgs; [
+      tldr
+      nil
+      nixpkgs-fmt
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    lm_sensors
-    tldr
-    rnix-lsp
-    nil
-    nixpkgs-fmt
-  ];
 
   nix.settings.experimental-features = [ "nix-command" ];
 }

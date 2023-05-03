@@ -1,5 +1,6 @@
-{ pkgs, state, ... }: {
+{ state, ... }: {
   home.stateVersion = state;
+
   programs = {
 
     zsh = {

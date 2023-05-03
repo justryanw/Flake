@@ -1,6 +1,4 @@
-{ pkgs, state, ... }: {
-  home.stateVersion = state;
-
+{ pkgs, ... }: {
   home.packages = with pkgs; [ ];
 
   programs.zsh.shellAliases = {

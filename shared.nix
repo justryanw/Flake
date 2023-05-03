@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, state, ... }: {
+  system.stateVersion = state;
 
   time.timeZone = "Europe/London";
   console.keyMap = "uk";
@@ -82,6 +83,4 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" ];
-
-  system.stateVersion = "22.11";
 }

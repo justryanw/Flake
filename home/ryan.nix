@@ -5,9 +5,7 @@
     firefox
     monero-gui
     teams
-    rnix-lsp
     fragments
-    ckan
   ];
 
   programs = {

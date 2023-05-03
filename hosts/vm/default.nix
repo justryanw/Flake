@@ -1,13 +1,5 @@
-{ config, pkgs, ... }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
-    useOSProber = true;
-  };
+{ ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   networking.hostName = "NixVM";
 }

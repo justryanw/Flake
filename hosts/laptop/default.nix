@@ -1,15 +1,7 @@
-{ config, pkgs, ... }: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+{ ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
-  };
+  boot.loader.grub.gfxmodeEfi = "1920x1080";
 
   networking.hostName = "Laptop";
 }

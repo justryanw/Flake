@@ -1,12 +1,15 @@
 { pkgs, ... }: {
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     firefox
     monero-gui
     teams
     fragments
     whatip
-  ];
+    gnome.gnome-tweaks
+  ]) ++ (with pkgs.gnomeExtensions; [
+    appindicator
+  ]);
 
   programs = {
 
@@ -31,13 +34,26 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
+      clock-show-weekday = true;
     };
-    "org/gnome/shell".favourite-apps = [ ];
+    "org/gnome/desktop/calendar".show-weekdate = true;
+    "org/gnome/shell" = {
+      favourite-apps = [ ];
+      disable-user-extensions = false;
+      enabled-extensions = [
+        "appindicatorsupport@rgcjonas.gmail.com"
+      ];
+      disabled-extensions = [  ];
+    };
     "org/gnome/mutter" = {
       workspaces-only-on-primary = true;
       dynamic-workspaces = false;
+      attach-modal-dialogs = true;
     };
-    "org/gnome/desktop/wm/preferences".num-workspaces = 3;
+    "org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 3;
+      button-layout = "appmenu:minimize,maximize,close";
+    };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = 0.5;
       accel-profile = "flat";

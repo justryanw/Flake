@@ -17,6 +17,38 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+
+  boot = {
+    loader = {
+      systemd-boot.enable = false;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
+        fontSize = 24;
+        extraEntries = ''
+          menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
+            fwsetup
+          }
+        '';
+      };
+
+    };
+
+
+    supportedFilesystems = [ "ntfs" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
+
   services = {
     xserver = {
       enable = true;
@@ -46,30 +78,41 @@
     };
 
     openssh.enable = true;
-  };
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  };
 
   security = {
     rtkit.enable = true;
     sudo.wheelNeedsPassword = false;
   };
 
-  users.users.ryan = {
-    isNormalUser = true;
-    description = "Ryan";
-    extraGroups = [ "networkmanager" "wheel" ];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.ryan = {
+      isNormalUser = true;
+      description = "Ryan";
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
   };
 
-  programs.zsh.enable = true;
-  programs.steam.enable = true;
-
-  users.defaultUserShell = pkgs.zsh;
+  programs = {
+    zsh.enable = true;
+    steam.enable = true;
+    dconf.enable = true;
+  };
 
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
+
+    systemPackages = (with pkgs; [
+      tldr
+      nil
+      nixpkgs-fmt
+    ]) ++ (with pkgs.gnomeExtensions; [
+      appindicator
+    ]);
 
     gnome.excludePackages = (with pkgs; [
       gnome-photos
@@ -80,12 +123,6 @@
       cheese
       yelp
     ]);
-
-    systemPackages = with pkgs; [
-      tldr
-      nil
-      nixpkgs-fmt
-    ];
   };
 
   networking = {

@@ -2,9 +2,9 @@
   description = "My system config";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/nixos-unstable;
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -41,12 +41,28 @@
           modules = [
             ./hosts/laptop
             ./shared.nix
-            ./containers/vpn.nix
+            # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.ryan = { imports = [ (./home/ryan.nix) ] ++ [ (./hosts/laptop/home.nix) ]; };
+              home-manager.users.root = { imports = [ ./home/root.nix ]; };
+            }
+          ];
+        };
+
+        desktop = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/desktop
+            ./shared.nix
+            # ./containers/vpn.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.ryan = { imports = [ (./home/ryan.nix) ] ++ [ (./hosts/desktop/home.nix) ]; };
               home-manager.users.root = { imports = [ ./home/root.nix ]; };
             }
           ];

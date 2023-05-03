@@ -1,5 +1,4 @@
-{ pkgs, state, ... }: {
-  home.stateVersion = state;
+{ pkgs, ... }: {
 
   home.packages = with pkgs; [
     firefox
@@ -11,16 +10,12 @@
   programs = {
 
     zsh = {
-      enable = true;
       shellAliases = {
         e = "cd ~/Flake && hx flake.nix";
         sys = "sudo systemctl";
         logs = "sudo journalctl -fu";
         la = "ls -A";
       };
-      history.size = 1000;
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
     };
 
     starship = {
@@ -49,15 +44,6 @@
           };
         }
       ];
-    };
-
-    git = {
-      enable = true;
-      userName = "Ryan Walker";
-      userEmail = "ryanjwalker2001@gmail.com";
-      aliases = {
-        acm = "!git add -A && git commit -m";
-      };
     };
 
   };

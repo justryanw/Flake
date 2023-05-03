@@ -1,36 +1,9 @@
-{ state, ... }: {
-  home.stateVersion = state;
+{ ... }: {
 
-  programs = {
-
-    zsh = {
-      enable = true;
-      shellAliases = {
-        sys = "systemctl";
-       logs = "journalctl -fu";
-        la = "ls -A";
-      };
-      history.size = 1000;
-      enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
-    };
-
-    starship = {
-      enable = true;
-    };
-
-    helix = {
-      enable = true;
-      settings = {
-        theme = "onedark";
-        editor = {
-          line-number = "relative";
-          cursor-shape = {
-            insert = "bar";
-          };
-        };
-      };
-    };
-
+  programs.zsh.shellAliases = {
+    sys = "systemctl";
+    logs = "journalctl -fu";
+    la = "ls -A";
   };
+
 }

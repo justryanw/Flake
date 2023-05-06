@@ -44,9 +44,7 @@
 
     };
 
-
     supportedFilesystems = [ "ntfs" ];
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   services = {

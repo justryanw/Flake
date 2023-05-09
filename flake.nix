@@ -29,6 +29,7 @@
           modules = [
             ./hosts/vm
             ./shared.nix
+            ./modules/bootloader/bios.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -50,6 +51,7 @@
           modules = [
             ./hosts/laptop
             ./shared.nix
+            ./modules/bootloader/efi.nix
             # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {
@@ -72,6 +74,7 @@
           modules = [
             ./hosts/desktop
             ./shared.nix
+            ./modules/bootloader/efi.nix
             # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {

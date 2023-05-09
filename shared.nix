@@ -20,33 +20,6 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
 
-  boot = {
-    loader = {
-      systemd-boot.enable = false;
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        font = "${pkgs.hack-font}/share/fonts/hack/Hack-Regular.ttf";
-        fontSize = 24;
-        extraEntries = ''
-          menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
-            fwsetup
-          }
-        '';
-      };
-
-    };
-
-    supportedFilesystems = [ "ntfs" ];
-  };
-
   services = {
     xserver = {
       enable = true;
@@ -147,6 +120,7 @@
     hosts = {
       "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd" = [ "work" ];
       "200:e69b:f58b:f5f1:c3d3:e5cc:8512:12c" = [ "desktop" ];
+      "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];
     };
 
     firewall = {
@@ -154,11 +128,13 @@
         iptables -A nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept
         ip6tables -A nixos-fw -s work -j nixos-fw-accept
         ip6tables -A nixos-fw -s desktop -j nixos-fw-accept
+        ip6tables -A nixos-fw -s vm -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s work -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s desktop -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s vm -j nixos-fw-accept || true
       '';
     };
   };

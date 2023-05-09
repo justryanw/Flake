@@ -77,7 +77,23 @@
       };
     };
 
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+      openFirewall = false;
+    };
+
+    yggdrasil = {
+      enable = true;
+      persistentKeys = true;
+      group = "wheel";
+      openMulticastPort = true;
+      settings = {
+        Peers = [
+          "tcp://longseason.1200bps.xyz:13121"
+        ];
+      };
+    };
 
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
@@ -93,6 +109,10 @@
       isNormalUser = true;
       description = "Ryan";
       extraGroups = [ "networkmanager" "wheel" ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDGUsv2xnB04Jh+M15As1jJs/MvtnAqeJ5FsSaXGv3S ryanjwalker2001@gmail.com"
+      ];
     };
   };
 
@@ -127,7 +147,21 @@
 
   networking = {
     hosts = {
-      "192.168.0.5" = [ "work" ];
+      "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd" = [ "work" ];
+      "200:e69b:f58b:f5f1:c3d3:e5cc:8512:12c" = [ "desktop" ];
+    };
+
+    firewall = {
+      extraCommands = ''
+        iptables -A nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept
+        ip6tables -A nixos-fw -s work -j nixos-fw-accept
+        ip6tables -A nixos-fw -s desktop -j nixos-fw-accept
+      '';
+      extraStopCommands = ''
+        iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s work -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s desktop -j nixos-fw-accept || true
+      '';
     };
   };
 

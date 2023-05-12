@@ -7,6 +7,11 @@
     fragments
     whatip
     gnome.gnome-tweaks
+    celluloid
+    libreoffice
+    hunspell
+    hunspellDicts.en_GB-large
+    evince
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);

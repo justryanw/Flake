@@ -70,6 +70,8 @@
       };
     };
 
+    flatpak.enable = true;
+
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
@@ -108,6 +110,8 @@
       nixpkgs-fmt
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
+    ]) ++ (with pkgs.gnome; [
+      gnome-software
     ]);
 
     gnome.excludePackages = (with pkgs; [

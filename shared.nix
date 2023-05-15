@@ -66,6 +66,7 @@
       settings = {
         Peers = [
           "tcp://longseason.1200bps.xyz:13121"
+          "tls://185.175.90.87:43006"
         ];
       };
     };
@@ -82,14 +83,15 @@
 
   users = {
     defaultUserShell = pkgs.zsh;
-    users.ryan = {
+    users.kevin = {
       isNormalUser = true;
-      description = "Ryan";
+      description = "Kevin";
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDGUsv2xnB04Jh+M15As1jJs/MvtnAqeJ5FsSaXGv3S ryanjwalker2001@gmail.com"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH/tpdZr5X8NgBldgtviMMgNOUWDRckjZNYIhIk/CX/h ryan@Laptop"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDbYyLHLWRdv9djFcSVIKmUFVtV35Ztj4t8iVLL+A/Z+ kevin@nixos"
       ];
     };
   };
@@ -131,6 +133,7 @@
       "202:8699:42dd:e354:50c5:5a7e:610b:1a18" = [ "laptop" ];
       "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd" = [ "work" ];
       "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];
+      "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
     };
 
     firewall = {
@@ -140,6 +143,7 @@
         ip6tables -A nixos-fw -s laptop -j nixos-fw-accept
         ip6tables -A nixos-fw -s work -j nixos-fw-accept
         ip6tables -A nixos-fw -s vm -j nixos-fw-accept
+        ip6tables -A nixos-fw -s kevin -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -147,6 +151,7 @@
         ip6tables -D nixos-fw -s laptop -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s work -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s vm -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s kevin -j nixos-fw-accept || true
       '';
     };
   };

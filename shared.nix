@@ -66,6 +66,7 @@
       settings = {
         Peers = [
           "tcp://longseason.1200bps.xyz:13121"
+          "tls://185.175.90.87:43006"
         ];
       };
     };

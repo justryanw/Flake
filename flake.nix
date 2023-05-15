@@ -88,6 +88,30 @@
             }
           ];
         };
+        
+        
+        kevin = lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            state = "23.05";
+          };
+          modules = [
+            ./hosts/kevin
+            ./shared.nix
+            ./modules/bootloader/bios.nix
+            # ./containers/vpn.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                state = "23.05";
+              };
+              home-manager.users.kevin = { imports = [ (./home/shared.nix) ] ++ [ (./home/kevin.nix) ] ++ [ (./hosts/kevin/home.nix) ]; };
+              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ (./home/root.nix) ]; };
+            }
+          ];
+        };
 
       };
     };

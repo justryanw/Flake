@@ -82,9 +82,9 @@
 
   users = {
     defaultUserShell = pkgs.zsh;
-    users.ryan = {
+    users.kevin = {
       isNormalUser = true;
-      description = "Ryan";
+      description = "Kevin";
       extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"

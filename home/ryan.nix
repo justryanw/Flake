@@ -12,6 +12,7 @@
     hunspell
     hunspellDicts.en_GB-large
     evince
+    discord
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);
@@ -23,6 +24,15 @@
       sys = "sudo systemctl";
       logs = "sudo journalctl -fu";
       la = "ls -A";
+    };
+
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+        rust-lang.rust-analyzer
+        ms-vscode-remote.remote-ssh
+      ];
     };
 
   };
@@ -48,7 +58,7 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
       ];
-      disabled-extensions = [  ];
+      disabled-extensions = [ ];
     };
     "org/gnome/mutter" = {
       workspaces-only-on-primary = true;

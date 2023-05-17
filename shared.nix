@@ -111,6 +111,7 @@
       tldr
       nil
       nixpkgs-fmt
+      waypipe
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
     ]) ++ (with pkgs.gnome; [

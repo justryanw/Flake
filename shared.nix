@@ -112,7 +112,6 @@
       nil
       nixpkgs-fmt
       waypipe
-      nix-direnv
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
     ]) ++ (with pkgs.gnome; [

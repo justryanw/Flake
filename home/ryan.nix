@@ -41,6 +41,8 @@
         zhuangtongfa.material-theme
       ];
       userSettings = {
+        "terminal.integrated.allowChords" = false;
+        "editor.fontFamily" = "'DroidSansM Nerd Font', 'monospace', monospace";
         "workbench.colorTheme" = "One Dark Pro Darker";
         "files.autoSave" = "afterDelay";
         "git.enableSmartCommit" = true;

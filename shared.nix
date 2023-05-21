@@ -103,6 +103,10 @@
     dconf.enable = true;
   };
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+  ];
+
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];

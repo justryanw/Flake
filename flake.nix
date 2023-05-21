@@ -3,13 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-software-center.url = "github:vlinkz/nix-software-center";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = inputs @ { self, nixpkgs, home-manager, nix-software-center }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -24,6 +27,7 @@
         vm = lib.nixosSystem {
           inherit system;
           specialArgs = {
+            inherit inputs system;
             state = "22.11";
           };
           modules = [
@@ -46,6 +50,7 @@
         laptop = lib.nixosSystem {
           inherit system;
           specialArgs = {
+            inherit inputs system;
             state = "22.11";
           };
           modules = [
@@ -69,6 +74,7 @@
         desktop = lib.nixosSystem {
           inherit system;
           specialArgs = {
+            inherit inputs system;
             state = "23.05";
           };
           modules = [
@@ -88,11 +94,12 @@
             }
           ];
         };
-        
-        
+
+
         kevin = lib.nixosSystem {
           inherit system;
           specialArgs = {
+            inherit inputs system;
             state = "23.05";
           };
           modules = [

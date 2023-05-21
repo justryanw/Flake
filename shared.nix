@@ -1,4 +1,4 @@
-{ pkgs, state, ... }: {
+{ pkgs, state, inputs, system, ... }: {
   system.stateVersion = state;
 
   time.timeZone = "Europe/London";
@@ -103,14 +103,22 @@
     dconf.enable = true;
   };
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "DroidSansMono" ]; })
+  ];
+
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
+
+    # Native Wayalnd for Chromium based apps
+    # sessionVariables.NIXOS_OZONE_WL = "1";
 
     systemPackages = (with pkgs; [
       tldr
       nil
       nixpkgs-fmt
+      inputs.nix-software-center.packages.${system}.nix-software-center
       waypipe
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator

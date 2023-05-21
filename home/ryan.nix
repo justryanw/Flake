@@ -19,21 +19,53 @@
 
   programs = {
 
-    zsh.shellAliases = {
-      e = "cd ~/Flake && hx flake.nix";
-      sys = "sudo systemctl";
-      logs = "sudo journalctl -fu";
-      la = "ls -A";
-      u = "cd ~/Flake && nix flake update && s";
+    zsh = {
+      shellAliases = {
+        e = "cd ~/Flake && hx flake.nix";
+        sys = "sudo systemctl";
+        logs = "sudo journalctl -fu";
+        la = "ls -A";
+        u = "cd ~/Flake && nix flake update && s";
+      };
+      envExtra = ''eval "$(direnv hook zsh)"'';
     };
 
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        mkhl.direnv
         vscodevim.vim
         rust-lang.rust-analyzer
         ms-vscode-remote.remote-ssh
+        zhuangtongfa.material-theme
       ];
+      userSettings = {
+        "terminal.integrated.allowChords" = false;
+        "editor.fontFamily" = "'DroidSansM Nerd Font', 'monospace', monospace";
+        "workbench.colorTheme" = "One Dark Pro Darker";
+        "files.autoSave" = "afterDelay";
+        "git.enableSmartCommit" = true;
+        "typescript.updateImportsOnFileMove.enabled" = "always";
+        "git.autofetch" = true;
+        "explorer.confirmDragAndDrop" = false;
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [
+                "nixpkgs-fmt"
+              ];
+            };
+          };
+        };
+      };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
 
   };

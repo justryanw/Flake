@@ -1,4 +1,4 @@
-{ pkgs, state, ... }: {
+{ pkgs, state, inputs, system, ... }: {
   system.stateVersion = state;
 
   time.timeZone = "Europe/London";
@@ -111,6 +111,7 @@
       tldr
       nil
       nixpkgs-fmt
+      inputs.nix-software-center.packages.${system}.nix-software-center
       waypipe
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator

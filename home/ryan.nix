@@ -33,10 +33,32 @@
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        mkhl.direnv
         vscodevim.vim
         rust-lang.rust-analyzer
         ms-vscode-remote.remote-ssh
+        zhuangtongfa.material-theme
       ];
+      userSettings = {
+        "workbench.colorTheme" = "One Dark Pro Darker";
+        "files.autoSave" = "afterDelay";
+        "git.enableSmartCommit" = true;
+        "typescript.updateImportsOnFileMove.enabled" = "always";
+        "git.autofetch" = true;
+        "explorer.confirmDragAndDrop" = false;
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [
+                "nixpkgs-fmt"
+              ];
+            };
+          };
+        };
+      };
     };
 
     direnv = {

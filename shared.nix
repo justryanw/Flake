@@ -107,6 +107,9 @@
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
 
+    # Native Wayalnd for Chromium based apps
+    # sessionVariables.NIXOS_OZONE_WL = "1";
+
     systemPackages = (with pkgs; [
       tldr
       nil

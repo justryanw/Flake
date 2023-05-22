@@ -99,7 +99,6 @@
 
   programs = {
     zsh.enable = true;
-    steam.enable = true;
     dconf.enable = true;
   };
 
@@ -118,7 +117,6 @@
       tldr
       nil
       nixpkgs-fmt
-      inputs.nix-software-center.packages.${system}.nix-software-center
       waypipe
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator

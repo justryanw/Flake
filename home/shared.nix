@@ -27,11 +27,13 @@
           cursor-shape.insert = "bar";
         };
       };
-      languages = [{
-        name = "nix";
-        language-server.command = "nil";
-        formatter.command = "nixpkgs-fmt";
-      }];
+      languages = {
+        language = [{
+          name = "nix";
+          language-server.command = "nil";
+          formatter.command = "nixpkgs-fmt";
+        }];
+      };
     };
 
     git = {

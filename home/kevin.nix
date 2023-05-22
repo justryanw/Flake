@@ -9,6 +9,7 @@
     hunspell
     hunspellDicts.en_GB-large
     evince
+    asunder
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);

@@ -42,7 +42,8 @@
       ];
       userSettings = {
         "terminal.integrated.allowChords" = false;
-        "editor.fontFamily" = "'DroidSansM Nerd Font', 'monospace', monospace";
+        "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace";
+        "terminal.integrated.fontFamily" = "DroidSansM Nerd Font";
         "workbench.colorTheme" = "One Dark Pro Darker";
         "files.autoSave" = "afterDelay";
         "git.enableSmartCommit" = true;
@@ -60,6 +61,7 @@
             };
           };
         };
+        "rust-analyzer.lens.enable" = false;
       };
     };
 

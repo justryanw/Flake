@@ -33,10 +33,36 @@
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        mkhl.direnv
         vscodevim.vim
         rust-lang.rust-analyzer
         ms-vscode-remote.remote-ssh
+        zhuangtongfa.material-theme
       ];
+      userSettings = {
+        "terminal.integrated.allowChords" = false;
+        "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace";
+        "terminal.integrated.fontFamily" = "DroidSansM Nerd Font";
+        "workbench.colorTheme" = "One Dark Pro Darker";
+        "files.autoSave" = "afterDelay";
+        "git.enableSmartCommit" = true;
+        "typescript.updateImportsOnFileMove.enabled" = "always";
+        "git.autofetch" = true;
+        "explorer.confirmDragAndDrop" = false;
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [
+                "nixpkgs-fmt"
+              ];
+            };
+          };
+        };
+        "rust-analyzer.lens.enable" = false;
+      };
     };
 
     direnv = {

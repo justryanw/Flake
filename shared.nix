@@ -1,8 +1,12 @@
 { pkgs, state, ... }: {
   system.stateVersion = state;
 
+  console = {
+    # keyMap = "uk";
+    useXkbConfig = true;
+  };
+
   time.timeZone = "Europe/London";
-  console.keyMap = "uk";
   i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -28,7 +32,6 @@
     xserver = {
       enable = true;
       layout = "gb";
-      xkbVariant = "";
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };

@@ -95,5 +95,6 @@
       toggle-tiled-right = [ "<Alt>d" ];
     };
     "org/gtk/settings/file-chooser".clock-format = "12h";
+    "org/gnome/desktop/input-sources".xkb-options = ["caps:escape"];
   };
 }

@@ -13,6 +13,7 @@
     hunspellDicts.en_GB-large
     evince
     discord
+    signal-desktop
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
   ]);

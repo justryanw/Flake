@@ -24,6 +24,7 @@
       shellAliases = {
         e = "cd ~/Flake && hx flake.nix";
         sys = "sudo systemctl";
+        usr = "systemctl --user";
         logs = "sudo journalctl -fu";
         la = "ls -A";
         u = "cd ~/Flake && nix flake update && s";

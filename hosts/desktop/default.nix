@@ -3,7 +3,8 @@
 
   boot = {
     loader.grub.gfxmodeEfi = "3440x1440";
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_1;
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking.hostName = "Desktop";

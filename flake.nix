@@ -82,6 +82,7 @@
             ./shared.nix
             ./modules/bootloader/efi.nix
             # ./containers/vpn.nix
+            ./modules/virt.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

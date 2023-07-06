@@ -65,6 +65,7 @@
           };
         };
         "rust-analyzer.lens.enable" = false;
+        "terminal.integrated.sendKeybindingsToShell" = true;
       };
     };
 

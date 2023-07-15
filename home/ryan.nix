@@ -90,7 +90,6 @@
       enable-hot-corners = false;
       clock-show-weekday = true;
     };
-    "org/gnome/desktop/calendar".show-weekdate = true;
     "org/gnome/shell" = {
       favourite-apps = [ ];
       disable-user-extensions = false;
@@ -126,7 +125,9 @@
       toggle-tiled-left = [ "<Alt>a" ];
       toggle-tiled-right = [ "<Alt>d" ];
     };
+    "org/gnome/desktop/calendar".show-weekdate = true;
     "org/gtk/settings/file-chooser".clock-format = "12h";
     "org/gnome/desktop/input-sources".xkb-options = ["caps:escape"];
+    "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
   };
 }

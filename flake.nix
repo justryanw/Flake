@@ -82,7 +82,7 @@
             ./shared.nix
             ./modules/bootloader/efi.nix
             # ./containers/vpn.nix
-            # ./modules/virt.nix
+            ./modules/virt.nix
             ./modules/wooting.nix
             home-manager.nixosModules.home-manager
             {

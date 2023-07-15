@@ -104,6 +104,7 @@
       workspaces-only-on-primary = true;
       dynamic-workspaces = false;
       attach-modal-dialogs = true;
+      edge-tiling = true;
     };
     "org/gnome/desktop/wm/preferences" = {
       num-workspaces = 3;

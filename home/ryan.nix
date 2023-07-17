@@ -15,6 +15,7 @@
     discord
     signal-desktop
     goverlay
+    mangohud
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     grand-theft-focus

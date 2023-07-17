@@ -14,6 +14,7 @@
     evince
     discord
     signal-desktop
+    goverlay
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     grand-theft-focus

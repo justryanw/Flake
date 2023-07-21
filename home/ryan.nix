@@ -16,6 +16,7 @@
     signal-desktop
     goverlay
     mangohud
+    gnome-frog
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     grand-theft-focus

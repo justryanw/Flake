@@ -69,6 +69,8 @@
         };
         "rust-analyzer.lens.enable" = false;
         "terminal.integrated.sendKeybindingsToShell" = true;
+        "direnv.restart.automatic" = true;
+        "direnv.status.showChangesCount" = false;
       };
     };
 

@@ -7,7 +7,7 @@
       enable = true;
       history.size = 1000;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       shellAliases = {
         la = "ls -A";
         bios = "systemctl reboot --firmware-setup";

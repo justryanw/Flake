@@ -30,7 +30,6 @@
         sys = "sudo systemctl";
         usr = "systemctl --user";
         logs = "sudo journalctl -fu";
-        la = "ls -A";
         u = "cd ~/Flake && nix flake update && s";
       };
       envExtra = ''eval "$(direnv hook zsh)"'';
@@ -43,6 +42,7 @@
         mkhl.direnv
         vscodevim.vim
         rust-lang.rust-analyzer
+        tamasfe.even-better-toml
         ms-vscode-remote.remote-ssh
         zhuangtongfa.material-theme
       ];

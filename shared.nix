@@ -145,7 +145,7 @@
 
   networking = {
     hosts = {
-      "200:e69b:f58b:f5f1:c3d3:e5cc:8512:12c" = [ "desktop" ];
+      "200:f788:a3a9:56ae:d341:e3f7:c7f:c771" = [ "desktop" ];
       "202:8699:42dd:e354:50c5:5a7e:610b:1a18" = [ "laptop" ];
       "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd" = [ "work" ];
       "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];

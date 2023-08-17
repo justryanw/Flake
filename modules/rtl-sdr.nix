@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    rtl-sdr
     gqrx
+    sdrpp
   ];
   hardware.rtl-sdr.enable = true;
   users.users.ryan.extraGroups = [ "plugdev" ];

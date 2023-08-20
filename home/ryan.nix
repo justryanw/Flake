@@ -15,7 +15,6 @@
     discord
     signal-desktop
     goverlay
-    mangohud
     gnome-frog
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
@@ -23,6 +22,11 @@
   ]);
 
   programs = {
+
+    mangohud = {
+      enable = true;
+      enableSessionWide = false;
+    };
 
     zsh = {
       shellAliases = {
@@ -37,6 +41,7 @@
 
     vscode = {
       enable = true;
+
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
         mkhl.direnv
@@ -46,6 +51,7 @@
         ms-vscode-remote.remote-ssh
         zhuangtongfa.material-theme
       ];
+
       userSettings = {
         "terminal.integrated.allowChords" = false;
         "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace";

@@ -57,7 +57,7 @@
             ./hosts/laptop
             ./shared.nix
             ./modules/bootloader/efi.nix
-            ./modules/rtl-sdr.nix
+            #./modules/rtl-sdr.nix
             # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {

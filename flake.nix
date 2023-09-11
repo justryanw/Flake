@@ -57,6 +57,8 @@
             ./hosts/laptop
             ./shared.nix
             ./modules/bootloader/efi.nix
+            ./modules/monero.nix
+            # ./modules/xmrig.nix
             #./modules/rtl-sdr.nix
             # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
@@ -85,6 +87,7 @@
             # ./containers/vpn.nix
             ./modules/virt.nix
             ./modules/wooting.nix
+            ./modules/monero.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

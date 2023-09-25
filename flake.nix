@@ -87,7 +87,7 @@
             # ./containers/vpn.nix
             ./modules/virt.nix
             ./modules/wooting.nix
-            ./modules/monero.nix
+            # ./modules/monero.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

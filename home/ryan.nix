@@ -18,7 +18,7 @@
     gnome-frog
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
-    grand-theft-focus
+    # grand-theft-focus
   ]);
 
   programs = {
@@ -106,7 +106,7 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
-        "grand-theft-focus@zalckos.github.com"
+        # "grand-theft-focus@zalckos.github.com"
       ];
       disabled-extensions = [ ];
     };

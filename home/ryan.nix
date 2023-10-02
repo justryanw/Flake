@@ -16,8 +16,10 @@
     signal-desktop
     goverlay
     gnome-frog
+    gnome-extension-manager
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
+    systemd-manager
     # grand-theft-focus
   ]);
 
@@ -106,6 +108,7 @@
       disable-user-extensions = false;
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
+        "systemd-manager@hardpixel.eu"
         # "grand-theft-focus@zalckos.github.com"
       ];
       disabled-extensions = [ ];

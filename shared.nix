@@ -1,4 +1,9 @@
-{ pkgs, state, inputs, system, ... }: {
+{ pkgs, state, inputs, system, ... }: 
+let
+  nix-software-center = inputs.nix-software-center.packages.${system}.nix-software-center;
+  xwaylandvideobridge = inputs.xwaylandvideobridge.packages.${system}.default;
+in
+{
   system.stateVersion = state;
 
   console = {
@@ -124,9 +129,10 @@
       tldr
       nil
       nixpkgs-fmt
-      inputs.nix-software-center.packages.${system}.nix-software-center
+      nix-software-center
       waypipe
       gamescope
+      xwaylandvideobridge
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
     ]) ++ (with pkgs.gnome; [

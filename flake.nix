@@ -10,15 +10,12 @@
     };
 
     nix-software-center.url = "github:vlinkz/nix-software-center";
+    xwaylandvideobridge.url = "github:justryanw/xwaylandvideobridge";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nix-software-center }:
+  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
       lib = nixpkgs.lib;
     in
     {
@@ -59,7 +56,7 @@
             ./modules/bootloader/efi.nix
             ./modules/monero.nix
             # ./modules/xmrig.nix
-            #./modules/rtl-sdr.nix
+            # ./modules/rtl-sdr.nix
             # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {

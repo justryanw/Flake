@@ -71,11 +71,26 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1696234590,
+        "narHash": "sha256-mgOzQYTvaTT4bFopVOadlndy2RPwLy60rDjIWOGujwo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f902cb49892d300ff15cb237e48aa1cad79d68c3",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-software-center": "nix-software-center",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "xwaylandvideobridge": "xwaylandvideobridge"
       }
     },
     "systems": {
@@ -108,6 +123,24 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "xwaylandvideobridge": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1696257096,
+        "narHash": "sha256-J+TLIN0Pm5pMhWYi2q5QBXbxHycCpS6gVuXXdMcf0o8=",
+        "owner": "justryanw",
+        "repo": "xwaylandvideobridge",
+        "rev": "0fd276220ef92704d900e79f57dd85fd3e33ebb5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "justryanw",
+        "repo": "xwaylandvideobridge",
         "type": "github"
       }
     }

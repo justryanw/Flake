@@ -53,11 +53,11 @@
           modules = [
             ./hosts/laptop
             ./shared.nix
+            ./containers/vpn.nix
             ./modules/bootloader/efi.nix
             ./modules/monero.nix
             # ./modules/xmrig.nix
             # ./modules/rtl-sdr.nix
-            # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -80,12 +80,12 @@
           modules = [
             ./hosts/desktop
             ./shared.nix
+            ./containers/vpn.nix
             ./modules/bootloader/efi.nix
-            # ./containers/vpn.nix
             ./modules/virt.nix
             ./modules/wooting.nix
             ./modules/monero.nix
-            ./modules/xmrig.nix
+            # ./modules/xmrig.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -109,8 +109,8 @@
           modules = [
             ./hosts/kevin
             ./shared.nix
+            ./containers/vpn.nix
             ./modules/bootloader/bios.nix
-            # ./containers/vpn.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

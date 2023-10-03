@@ -1,5 +1,4 @@
 { ... }: {
-
   networking = {
     networkmanager = {
       enable = true;
@@ -9,11 +8,10 @@
     nat = {
       enable = true;
       internalInterfaces = [ "ve-+" ];
-      externalInterface = "wlp2s0";
+      # DONT FORGET TO CHECK THIS
+      externalInterface = "eno2";
     };
   };
-
-  
 
   systemd.tmpfiles.rules = [
     "d /home/ryan/Torrents 777 ryan users"

@@ -70,6 +70,33 @@
             }
           ];
         };
+	
+	pavilion = lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system;
+            state = "22.11";
+          };
+          modules = [
+            ./hosts/pavilion
+            ./shared.nix
+            # ./containers/vpn.nix
+            ./modules/bootloader/efi.nix
+            # ./modules/monero.nix
+            # ./modules/xmrig.nix
+            # ./modules/rtl-sdr.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                state = "22.11";
+              };
+              home-manager.users.ryan = { imports = [ (./home/shared.nix) ] ++ [ (./home/ryan.nix) ] ++ [ (./hosts/pavilion/home.nix) ]; };
+              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ ./home/root.nix ]; };
+            }
+          ];
+        };
 
         desktop = lib.nixosSystem {
           inherit system;

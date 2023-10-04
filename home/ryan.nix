@@ -143,6 +143,10 @@
       picture-uri = ''file://${pkgs.nixos-artwork.wallpapers.nineish.gnomeFilePath}'';
       picture-uri-dark = ''file://${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath}'';
     };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+      natural-scroll = false;
+    };
     "org/gnome/desktop/calendar".show-weekdate = true;
     "org/gtk/settings/file-chooser".clock-format = "12h";
     "org/gnome/desktop/input-sources".xkb-options = [ "caps:escape" ];

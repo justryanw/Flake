@@ -1,4 +1,4 @@
-{ ... }: {
+{ interface, ... }: {
   networking = {
     networkmanager = {
       enable = true;
@@ -9,7 +9,7 @@
       enable = true;
       internalInterfaces = [ "ve-+" ];
       # DONT FORGET TO CHECK THIS
-      externalInterface = "eno2";
+      externalInterface = interface;
     };
   };
 

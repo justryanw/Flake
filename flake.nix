@@ -70,12 +70,13 @@
             }
           ];
         };
-	
-	pavilion = lib.nixosSystem {
+
+        pavilion = lib.nixosSystem {
           inherit system;
           specialArgs = {
             inherit inputs system;
             state = "22.11";
+            interface = "wlo1";
           };
           modules = [
             ./hosts/pavilion
@@ -103,6 +104,7 @@
           specialArgs = {
             inherit inputs system;
             state = "23.05";
+            interface = "eno2";
           };
           modules = [
             ./hosts/desktop

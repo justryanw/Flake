@@ -101,6 +101,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH/tpdZr5X8NgBldgtviMMgNOUWDRckjZNYIhIk/CX/h ryan@Laptop"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDbYyLHLWRdv9djFcSVIKmUFVtV35Ztj4t8iVLL+A/Z+ kevin@nixos"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICWIiPRXGHVkhx1O/YDNOJfFQADhld2CxQKRKCnW1Fhv ryan@NixVM"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBl7qYlcDcv/3dkMxX3MkKcTdfxCdEKuGUxbEzfuAZ9F ryan@Pavilion"
       ];
     };
   };
@@ -157,6 +158,7 @@ in
       "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd" = [ "work" ];
       "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];
       "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
+      "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1" = [ "pavilion" ];
     };
 
     firewall = {
@@ -167,6 +169,7 @@ in
         ip6tables -A nixos-fw -s work -j nixos-fw-accept
         ip6tables -A nixos-fw -s vm -j nixos-fw-accept
         ip6tables -A nixos-fw -s kevin -j nixos-fw-accept
+        ip6tables -A nixos-fw -s pavilion -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -175,6 +178,7 @@ in
         ip6tables -D nixos-fw -s work -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s vm -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s kevin -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s pavilion -j nixos-fw-accept || true
       '';
     };
   };

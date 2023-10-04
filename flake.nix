@@ -49,6 +49,7 @@
           specialArgs = {
             inherit inputs system;
             state = "22.11";
+            interface = "wlp2s0";
           };
           modules = [
             ./hosts/laptop

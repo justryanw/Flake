@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   boot = {
     loader = {
       systemd-boot.enable = false;
@@ -20,4 +20,7 @@
 
     supportedFilesystems = [ "ntfs" ];
   };
+
+  # OBS Virtual Camera
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 }

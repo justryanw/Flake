@@ -11,6 +11,7 @@
 
     nix-software-center.url = "github:vlinkz/nix-software-center";
     xwaylandvideobridge.url = "github:justryanw/xwaylandvideobridge";
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, ... }:
@@ -116,6 +117,7 @@
             ./modules/wooting.nix
             ./modules/monero.nix
             ./modules/xmrig.nix
+            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

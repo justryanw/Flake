@@ -2,13 +2,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   boot = {
-    loader.grub = {
-      gfxmodeEfi = "3440x1440";
-      minegrub-theme = {
-        enable = true;
-        splash = "100% Flakes!";
-      };
-    };
+    loader.grub.gfxmodeEfi = "3440x1440";
     kernelPackages = pkgs.linuxPackages_latest;
   };
 

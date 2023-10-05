@@ -58,8 +58,9 @@
             ./containers/vpn.nix
             ./modules/bootloader/efi.nix
             ./modules/monero.nix
-            # ./modules/xmrig.nix
+            ./modules/xmrig.nix
             # ./modules/rtl-sdr.nix
+            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -88,6 +89,7 @@
             # ./modules/monero.nix
             # ./modules/xmrig.nix
             # ./modules/rtl-sdr.nix
+            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -143,6 +145,7 @@
             ./shared.nix
             ./containers/vpn.nix
             ./modules/bootloader/bios.nix
+            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

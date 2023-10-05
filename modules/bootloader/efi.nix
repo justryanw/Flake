@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./shared.nix ];
+  imports = [ ./shared.nix ./minegrub.nix ];
 
   boot.loader = {
     efi = {

@@ -17,6 +17,7 @@
     goverlay
     gnome-frog
     gnome-extension-manager
+    cpu-x
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager

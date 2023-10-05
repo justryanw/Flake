@@ -115,7 +115,7 @@
             ./modules/virt.nix
             ./modules/wooting.nix
             ./modules/monero.nix
-            # ./modules/xmrig.nix
+            ./modules/xmrig.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

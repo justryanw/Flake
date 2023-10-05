@@ -53,6 +53,11 @@
         };
       };
 
+      systemd.services.transmission.serviceConfig = {
+        RootDirectoryStartOnly = pkgs.lib.mkForce false;
+        RootDirectory = pkgs.lib.mkForce "";
+      };
+
       services.transmission = {
         enable = true;
         settings = {

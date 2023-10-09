@@ -1,4 +1,6 @@
-{ ... }: {
+{ pkgs, ... }: {
+  systemd.services."xmrig".wantedBy = pkgs.lib.mkForce [ ];
+  
   services.xmrig = {
     enable = true;
     settings = {

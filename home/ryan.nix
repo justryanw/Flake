@@ -21,6 +21,8 @@
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager
+    vitals
+    caffeine
     # grand-theft-focus
   ]);
 
@@ -110,6 +112,8 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "systemd-manager@hardpixel.eu"
+        "Vitals@CoreCoding.com"
+        "caffeine@patapon.info"
         # "grand-theft-focus@zalckos.github.com"
       ];
       disabled-extensions = [ ];

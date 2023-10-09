@@ -11,6 +11,8 @@
       shellAliases = {
         la = "ls -A";
         bios = "systemctl reboot --firmware-setup";
+        self = "yggdrasilctl getself";
+        peers = "yggdrasilctl getpeers";
       };
     };
 

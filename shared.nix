@@ -147,6 +147,7 @@ in
       appindicator
     ]) ++ (with pkgs.gnome; [
       gnome-software
+      gnome-remote-desktop
     ]);
 
     gnome.excludePackages = (with pkgs; [

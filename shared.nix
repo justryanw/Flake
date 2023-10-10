@@ -1,4 +1,4 @@
-{ pkgs, state, inputs, system, ... }: 
+{ pkgs, state, inputs, system, ... }:
 let
   nix-software-center = inputs.nix-software-center.packages.${system}.nix-software-center;
   xwaylandvideobridge = inputs.xwaylandvideobridge.packages.${system}.default;
@@ -75,6 +75,15 @@ in
         Peers = [
           "tcp://longseason.1200bps.xyz:13121"
           "tls://185.175.90.87:43006"
+        ];
+        MulticastInterfaces = [
+          {
+            Regex = ".*";
+            Beacon = true;
+            Listen = true;
+            Port = 9001;
+            riority = 0;
+          }
         ];
       };
     };
@@ -162,6 +171,8 @@ in
     };
 
     firewall = {
+      allowedTCPPorts = [ 9001 ];
+
       extraCommands = ''
         iptables -A nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept
         ip6tables -A nixos-fw -s desktop -j nixos-fw-accept

@@ -168,6 +168,7 @@ in
       "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];
       "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
       "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1" = [ "pavilion" ];
+      "200:14b1:5f2a:2f3f:515d:65ba:9c46:c45b" = [ "phone" ];
     };
 
     firewall = {
@@ -181,6 +182,7 @@ in
         ip6tables -A nixos-fw -s vm -j nixos-fw-accept
         ip6tables -A nixos-fw -s kevin -j nixos-fw-accept
         ip6tables -A nixos-fw -s pavilion -j nixos-fw-accept
+        ip6tables -A nixos-fw -s phone -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -190,6 +192,7 @@ in
         ip6tables -D nixos-fw -s vm -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s kevin -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s pavilion -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s phone -j nixos-fw-accept || true
       '';
     };
   };

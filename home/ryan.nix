@@ -18,6 +18,7 @@
     gnome-frog
     gnome-extension-manager
     cpu-x
+    pdfarranger
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager

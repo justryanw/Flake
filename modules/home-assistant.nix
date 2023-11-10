@@ -11,6 +11,10 @@
       "radio_browser"
       "ipp"
       "kef"
+      "apple_tv"
+      "google_translate"
+      "webostv"
+      "homekit_controller"
     ];
     config = {
       # Includes dependencies for a basic setup

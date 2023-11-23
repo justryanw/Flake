@@ -120,6 +120,7 @@
             ./modules/monero.nix
             ./modules/xmrig.nix
             ./modules/home-assistant.nix
+            ./modules/jellyfin.nix
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {

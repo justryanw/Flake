@@ -15,11 +15,18 @@
       "google_translate"
       "webostv"
       "homekit_controller"
+      "hive"
+      "transmission"
+      "zha"
     ];
+
     config = {
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
       default_config = { };
+
+      automation = "!include automations.yaml";
+      scene = "!include scenes.yaml";
     };
   };
 }

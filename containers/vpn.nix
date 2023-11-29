@@ -14,7 +14,11 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /home/ryan/Torrents 777 ryan users"
+    "d /home/Media/Torrents 777 ryan users"
+    "d /home/Media/Torrents/Prowlarr 777 ryan users"
+    "d /home/Media/Torrents/Radarr 777 ryan users"
+    "d /home/Media/Torrents/Sonarr 777 ryan users"
+    "d /home/Media/Torrents/Lidarr 777 ryan users"
   ];
 
   containers.vpn = {
@@ -25,8 +29,8 @@
     enableTun = true;
 
     bindMounts = {
-      "/home/Torrents" = {
-        hostPath = "/home/ryan/Torrents";
+      "/home/Media" = {
+        hostPath = "/home/Media";
         isReadOnly = false;
       };
     };
@@ -58,16 +62,22 @@
         RootDirectory = pkgs.lib.mkForce "";
       };
 
-      services.transmission = {
-        enable = true;
-        settings = {
-          download-dir = "/home/Torrents";
-          incomplete-dir = "/home/Torrents";
-          rpc-bind-address = "192.168.0.111";
-          rpc-whitelist = "192.168.0.110";
-          umask = 0;
+      services = {
+        transmission = {
+          enable = true;
+          settings = {
+            download-dir = "/home/Media/Torrents";
+            incomplete-dir = "/home/Media/Torrents";
+            rpc-bind-address = "0.0.0.0";
+            rpc-whitelist-enabled = false;
+            umask = 0;
+          };
+          openRPCPort = true;
         };
-        openRPCPort = true;
+
+        prowlarr.enable = true;
+        radarr.enable = true;
+        sonarr.enable = true;
       };
 
       networking.firewall.enable = false;
@@ -78,4 +88,6 @@
 
     };
   };
+
+  services.jellyseerr.enable = true;
 }

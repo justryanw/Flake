@@ -6,5 +6,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
   networking.hostName = "Desktop";
 }

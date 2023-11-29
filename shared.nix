@@ -100,7 +100,7 @@ in
   users.groups.media = {};
 
   systemd.tmpfiles.rules = [
-    "d /home/Media 0770 - media - -"
+    "d /home/Media 0777 - media - -"
   ];
 
 

@@ -1,13 +1,16 @@
 { pkgs, ... }: {
-
-  environment.systemPackages = with pkgs; [ libva libva-utils radeontop ];
+  environment.systemPackages = with pkgs; [ libva libva-utils radeontop clinfo opencl-info jellyfin-ffmpeg ];
 
   hardware.opengl = {
+    enable = true;
     extraPackages = with pkgs; [
-      # casus ffmpeg to hang instead of error
       rocm-opencl-icd
       rocm-opencl-runtime
+      vaapiVdpau
+      libvdpau-va-gl
+      amdvlk
     ];
+    driSupport = true;
   };
 
 

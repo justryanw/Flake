@@ -13,12 +13,20 @@
     };
   };
 
+  users.groups.media = {};
+  users.users.ryan.extraGroups = [ "media" ];
+
   systemd.tmpfiles.rules = [
+    "d /home/Media 0777 - media - -"
     "d /home/Media/Torrents 777 ryan users"
     "d /home/Media/Torrents/Prowlarr 777 ryan users"
     "d /home/Media/Torrents/Radarr 777 ryan users"
     "d /home/Media/Torrents/Sonarr 777 ryan users"
     "d /home/Media/Torrents/Lidarr 777 ryan users"
+    "d /home/Media/Movies 777 ryan media"
+    "d /home/Media/Series 777 ryan media"
+    "d /home/Media/Anime 777 ryan media"
+    "d /home/Media/Music 777 ryan media"
   ];
 
   containers.vpn = {
@@ -78,6 +86,7 @@
         prowlarr.enable = true;
         radarr.enable = true;
         sonarr.enable = true;
+        lidarr.enable = true;
       };
 
       networking.firewall.enable = false;

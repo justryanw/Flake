@@ -97,19 +97,12 @@ in
     sudo.wheelNeedsPassword = false;
   };
 
-  users.groups.media = {};
-
-  systemd.tmpfiles.rules = [
-    "d /home/Media 0777 - media - -"
-  ];
-
-
   users = {
     defaultUserShell = pkgs.zsh;
     users.ryan = {
       isNormalUser = true;
       description = "Ryan";
-      extraGroups = [ "networkmanager" "wheel" "media" ];
+      extraGroups = [ "networkmanager" "wheel" ];
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINDGUsv2xnB04Jh+M15As1jJs/MvtnAqeJ5FsSaXGv3S ryanjwalker2001@gmail.com"

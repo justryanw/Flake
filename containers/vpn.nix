@@ -1,4 +1,4 @@
-{ interface, pkgs, ... }: {
+{ interface, ... }: {
   networking = {
     networkmanager = {
       enable = true;

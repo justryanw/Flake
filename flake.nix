@@ -55,7 +55,7 @@
           modules = [
             ./hosts/laptop
             ./shared.nix
-            ./containers/vpn.nix
+            # ./containers/vpn.nix
             ./modules/bootloader/efi.nix
             ./modules/monero.nix
             ./modules/xmrig.nix

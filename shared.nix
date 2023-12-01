@@ -81,7 +81,7 @@ in
             Beacon = true;
             Listen = true;
             Port = 9001;
-            riority = 0;
+            Priority = 0;
           }
         ];
       };
@@ -142,6 +142,7 @@ in
       waypipe
       gamescope
       xwaylandvideobridge
+      iperf
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
     ]) ++ (with pkgs.gnome; [

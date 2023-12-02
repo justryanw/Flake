@@ -18,6 +18,10 @@
       "hive"
       "transmission"
       "zha"
+      "sonarr"
+      "radarr"
+      "lidarr"
+      "jellyfin"
     ];
 
     config = {

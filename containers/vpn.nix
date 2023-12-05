@@ -118,7 +118,7 @@
           "200:5ec2:56e1:400a:a0e6:3266:d737:d89d" = [ "vm" ];
           "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
           "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1" = [ "pavilion" ];
-          "200:14b1:5f2a:2f3f:515d:65ba:9c46:c45b" = [ "phone" ];
+          "201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0" = [ "phone" ];
         };
 
         firewall = {

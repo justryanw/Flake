@@ -5,27 +5,33 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e22325bb-cde9-42ff-b385-037522bd1946";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/e22325bb-cde9-42ff-b385-037522bd1946";
+    fsType = "ext4";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/390b9cb7-7a33-4d70-bce3-0859dd0267fa";
-      fsType = "ext4";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/390b9cb7-7a33-4d70-bce3-0859dd0267fa";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/7151-715A";
-      fsType = "vfat";
-    };
+  fileSystems."/boot/efi" = {
+    device = "/dev/disk/by-uuid/7151-715A";
+    fsType = "vfat";
+  };
+
+  fileSystems."/home/Media" = {
+    device = "/dev/disk/by-uuid/d08f20ab-597c-4f63-87e5-6afb6a05b787";
+    fsType = "btrfs";
+  };
 
   swapDevices = [ ];
 

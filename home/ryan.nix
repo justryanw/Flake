@@ -19,12 +19,14 @@
     gnome-extension-manager
     cpu-x
     pdfarranger
+    gtop
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager
-    vitals
     caffeine
-    # grand-theft-focus
+    coverflow-alt-tab
+    # tophat
+    grand-theft-focus
   ]);
 
   programs = {
@@ -113,9 +115,10 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "systemd-manager@hardpixel.eu"
-        "Vitals@CoreCoding.com"
         "caffeine@patapon.info"
-        # "grand-theft-focus@zalckos.github.com"
+        "CoverflowAltTab@palatis.blogspot.com"
+        # "tophat@fflewddur.github.io"
+        "grand-theft-focus@zalckos.github.com"
       ];
       disabled-extensions = [ ];
     };

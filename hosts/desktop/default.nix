@@ -9,4 +9,7 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   networking.hostName = "Desktop";
+
+  # somehow messes with yggdrasil?
+  # virtualisation.waydroid.enable = true;
 }

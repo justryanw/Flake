@@ -1,7 +1,6 @@
 { pkgs, state, inputs, system, ... }:
 let
   nix-software-center = inputs.nix-software-center.packages.${system}.nix-software-center;
-  xwaylandvideobridge = inputs.xwaylandvideobridge.packages.${system}.default;
 in
 {
   system.stateVersion = state;

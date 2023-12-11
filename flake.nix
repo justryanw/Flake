@@ -10,7 +10,6 @@
     };
 
     nix-software-center.url = "github:vlinkz/nix-software-center";
-    xwaylandvideobridge.url = "github:justryanw/xwaylandvideobridge";
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 

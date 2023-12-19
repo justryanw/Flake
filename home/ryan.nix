@@ -85,6 +85,9 @@
         "terminal.integrated.sendKeybindingsToShell" = true;
         "direnv.restart.automatic" = true;
         "direnv.status.showChangesCount" = false;
+          "remote.SSH.remotePlatform" = {
+    "inspired" = "windows";
+  };
       };
     };
 

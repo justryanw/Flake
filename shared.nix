@@ -173,6 +173,7 @@ in
       "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
       "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1" = [ "pavilion" ];
       "201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0" = [ "phone" ];
+      "192.168.0.198" = [ "inspired" ];
     };
 
     firewall = {

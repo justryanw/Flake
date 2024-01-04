@@ -1,4 +1,4 @@
-{ pkgs, state, inputs, system, ... }:
+{ pkgs, lib, state, inputs, system, ... }:
 let
   nix-software-center = inputs.nix-software-center.packages.${system}.nix-software-center;
 in
@@ -162,6 +162,14 @@ in
       cheese
       yelp
     ]);
+
+    sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
+      gst-plugins-good
+      gst-plugins-bad
+      gst-plugins-ugly
+      gst-libav
+    ]);
+
   };
 
   networking = {

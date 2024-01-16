@@ -61,6 +61,8 @@
       ];
 
       userSettings = {
+        "direnv.restart.automatic" = false;
+        "direnv.status.showChangesCount" = false;
         "terminal.integrated.allowChords" = false;
         "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace";
         "terminal.integrated.fontFamily" = "DroidSansM Nerd Font";
@@ -83,11 +85,9 @@
         };
         "rust-analyzer.lens.enable" = false;
         "terminal.integrated.sendKeybindingsToShell" = true;
-        "direnv.restart.automatic" = true;
-        "direnv.status.showChangesCount" = false;
-          "remote.SSH.remotePlatform" = {
-    "inspired" = "windows";
-  };
+        "remote.SSH.remotePlatform" = {
+          "inspired" = "windows";
+        };
       };
     };
 

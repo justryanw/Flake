@@ -181,6 +181,7 @@ in
       "200:79ec:fa57:9588:9683:775e:d0ad:c6b9" = [ "kevin" ];
       "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1" = [ "pavilion" ];
       "201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0" = [ "phone" ];
+      "201:e145:88cf:f359:a185:19a7:9772:94a" = [ "kev-tv" ];
       "192.168.0.198" = [ "inspired" ];
     };
 
@@ -196,6 +197,7 @@ in
         ip6tables -A nixos-fw -s kevin -j nixos-fw-accept
         ip6tables -A nixos-fw -s pavilion -j nixos-fw-accept
         ip6tables -A nixos-fw -s phone -j nixos-fw-accept
+        ip6tables -A nixos-fw -s kev-tv -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -206,6 +208,7 @@ in
         ip6tables -D nixos-fw -s kevin -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s pavilion -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s phone -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s kev-tv -j nixos-fw-accept || true
       '';
     };
   };

@@ -1,4 +1,4 @@
-{ state, ... }: {
+{ state, pkgs, ... }: {
   home.stateVersion = state;
 
   programs = {
@@ -30,9 +30,13 @@
         };
       };
       languages = {
+        language-server.nixd = {
+          command = "${pkgs.nixd}/bin/nixd";
+        };
         language = [{
           name = "nix";
-          language-server.command = "nil";
+          auto-format = true;
+          language-servers = [ "nixd" ];
           formatter.command = "nixpkgs-fmt";
         }];
       };

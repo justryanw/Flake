@@ -73,9 +73,9 @@
         "git.autofetch" = true;
         "explorer.confirmDragAndDrop" = false;
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
+        "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
         "nix.serverSettings" = {
-          "nil" = {
+          "nixd" = {
             "formatting" = {
               "command" = [
                 "nixpkgs-fmt"
@@ -88,6 +88,7 @@
         "remote.SSH.remotePlatform" = {
           "inspired" = "windows";
         };
+        "git.repositoryScanMaxDepth" = -1;
       };
     };
 

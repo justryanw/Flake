@@ -6,7 +6,11 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services = {
+    xserver.videoDrivers = [ "amdgpu" ];
+
+    monero.dataDir = "/home/Media/Monero";
+  };
 
   networking.hostName = "Desktop";
 

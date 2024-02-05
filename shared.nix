@@ -216,6 +216,10 @@ in
   nixpkgs.config = {
     allowUnfree = true;
 
+    permittedInsecurePackages = [
+      "openssl-1.1.1w"
+    ];
+
     packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         extraPkgs = pkgs: with pkgs; [

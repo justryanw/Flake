@@ -158,7 +158,6 @@ in
       gnome-tour
       epiphany
     ]) ++ (with pkgs.gnome; [
-      totem
       cheese
       yelp
     ]);

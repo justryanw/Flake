@@ -35,7 +35,7 @@ in
   services = {
     xserver = {
       enable = true;
-      layout = "gb";
+      xkb.layout = "gb";
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
@@ -53,7 +53,7 @@ in
 
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish = {
         enable = true;
         addresses = true;

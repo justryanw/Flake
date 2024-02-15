@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  systemd.services."monero".wantedBy = pkgs.lib.mkForce [ ];
+  # systemd.services."monero".wantedBy = pkgs.lib.mkForce [ ];
 
   services.monero = {
     enable = true;

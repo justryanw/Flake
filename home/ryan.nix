@@ -20,6 +20,7 @@
     cpu-x
     pdfarranger
     gtop
+    piper
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager

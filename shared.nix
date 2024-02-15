@@ -96,6 +96,9 @@ in
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
+  # fix for https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+
   security = {
     rtkit.enable = true;
     sudo.wheelNeedsPassword = false;

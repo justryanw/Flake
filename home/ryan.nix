@@ -17,7 +17,6 @@
     goverlay
     gnome-frog
     gnome-extension-manager
-    cpu-x
     pdfarranger
     gtop
     piper

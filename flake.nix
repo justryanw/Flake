@@ -56,8 +56,8 @@
             ./shared.nix
             # ./containers/vpn.nix
             ./modules/bootloader/efi.nix
-            ./modules/monero.nix
-            ./modules/xmrig.nix
+            # ./modules/monero.nix
+            # ./modules/xmrig.nix
             # ./modules/rtl-sdr.nix
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager

@@ -19,8 +19,20 @@ let
   #   "1002:7444"
   # ];
 
+  looking-glass-client-overlay = (final: prev: {
+    looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
+      src = prev.fetchFromGitHub {
+        owner = "gnif";
+        repo = "LookingGlass";
+        rev = "193977895b7c654fdc26f68c8d5c45613692a036";
+        sha256 = "sha256-qmIvVAM6eLGu+/1JZSrDnF2Et6AA34C8ZWSMCXFlvOs=";
+        fetchSubmodules = true;
+      };
+    });
+  });
 in
 { pkgs, ... }: {
+  nixpkgs.overlays = [ looking-glass-client-overlay ];
 
   users.users.ryan.extraGroups = [ "libvirtd" ];
 

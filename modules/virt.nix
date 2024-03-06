@@ -37,7 +37,6 @@ in
   users.users.ryan.extraGroups = [ "libvirtd" ];
 
   environment.systemPackages = with pkgs; [
-    virt-manager
     virt-viewer
     spice
     spice-gtk
@@ -47,12 +46,16 @@ in
     looking-glass-client
   ];
 
+  programs = {
+    virt-manager.enable = true;
+  };
+
   boot = {
     initrd.kernelModules = [
-      "vfio_pci"
       "vfio"
+      "vfio_pci"
+      "vfio_pci_core"
       "vfio_iommu_type1"
-      # "vfio_virqfd"
     ];
 
     kernelParams = [

@@ -22,9 +22,15 @@ let
 
   looking-glass-client-overlay = (final: prev: {
     looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [ pkgs.libdecor ];
+      version = "B7-rc1";
 
-      cmakeFlags = old.cmakeFlags ++ [ "-DENABLE_LIBDECOR=ON" ];
+      src = prev.fetchFromGitHub {
+        owner = "gnif";
+        repo = "LookingGlass";
+        rev = "4d45b3807f1717d8eca0718253de545c0288a918";
+        sha256 = "sha256-ne1Q+67+P8RHcTsqdiSSwkFf0g3pSNT91WN/lsSzssU=";
+        fetchSubmodules = true;
+      };
     });
   });
 in

@@ -151,6 +151,7 @@ in
       xwaylandvideobridge
       iperf
       btrfs-progs
+      fzf
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
     ]) ++ (with pkgs.gnome; [
@@ -222,6 +223,7 @@ in
 
     permittedInsecurePackages = [
       "openssl-1.1.1w"
+      "nix-2.16.2"
     ];
 
     packageOverrides = pkgs: {

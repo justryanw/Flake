@@ -9,7 +9,7 @@
   services = {
     xserver.videoDrivers = [ "amdgpu" ];
 
-    monero.dataDir = "/home/Media/Monero";
+    monero.dataDir = "/home/Monero";
   };
 
   networking.hostName = "Desktop";

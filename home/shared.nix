@@ -13,6 +13,8 @@
         bios = "systemctl reboot --firmware-setup";
         self = "yggdrasilctl getself";
         peers = "yggdrasilctl getpeers";
+        list = "nix-store -q --references /var/run/current-system/sw | cut -d'-' -f2-";
+        listAll = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       };
     };
 

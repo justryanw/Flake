@@ -31,6 +31,11 @@ let
         sha256 = "sha256-ne1Q+67+P8RHcTsqdiSSwkFf0g3pSNT91WN/lsSzssU=";
         fetchSubmodules = true;
       };
+
+      # decorations seem to be broken in b7-rc1
+      # buildInputs = old.buildInputs ++ [ pkgs.libdecor ];
+
+      # cmakeFlags = old.cmakeFlags ++ [ "-DENABLE_LIBDECOR=ON" ];
     });
   });
 in

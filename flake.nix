@@ -13,7 +13,7 @@
     minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -33,13 +33,15 @@
             ./modules/bootloader/bios.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                state = "22.11";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs.state = "22.11";
+                users = {
+                  ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/vm/home.nix ];
+                  root.imports = [ ./home/shared.nix ./home/root.nix ];
+                };
               };
-              home-manager.users.ryan = { imports = [ (./home/shared.nix) ] ++ [ (./home/ryan.nix) ] ++ [ (./hosts/vm/home.nix) ]; };
-              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ ./home/root.nix ]; };
             }
           ];
         };
@@ -54,21 +56,19 @@
           modules = [
             ./hosts/laptop
             ./shared.nix
-            # ./containers/vpn.nix
             ./modules/bootloader/efi.nix
-            # ./modules/monero.nix
-            # ./modules/xmrig.nix
-            # ./modules/rtl-sdr.nix
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                state = "22.11";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs.state = "22.11";
+                users = {
+                  root.imports = [ ./home/shared.nix ./home/root.nix ];
+                  ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/laptop/home.nix ];
+                };
               };
-              home-manager.users.ryan = { imports = [ (./home/shared.nix) ] ++ [ (./home/ryan.nix) ] ++ [ (./hosts/laptop/home.nix) ]; };
-              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ ./home/root.nix ]; };
             }
           ];
         };
@@ -83,27 +83,24 @@
           modules = [
             ./hosts/pavilion
             ./shared.nix
-            # ./containers/vpn.nix
             ./modules/bootloader/efi.nix
-            # ./modules/monero.nix
-            # ./modules/xmrig.nix
-            # ./modules/rtl-sdr.nix
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                state = "22.11";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs.state = "22.11";
+                users = {
+                  root.imports = [ ./home/shared.nix ./home/root.nix ];
+                  ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/pavilion/home.nix ];
+                };
               };
-              home-manager.users.ryan = { imports = [ (./home/shared.nix) ] ++ [ (./home/ryan.nix) ] ++ [ (./hosts/pavilion/home.nix) ]; };
-              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ ./home/root.nix ]; };
             }
           ];
         };
 
         desktop = lib.nixosSystem {
-          inherit system;
           specialArgs = {
             inherit inputs system;
             state = "23.05";
@@ -114,7 +111,6 @@
             ./shared.nix
             ./containers/vpn.nix
             ./modules/bootloader/efi.nix
-            ./modules/virt.nix
             ./modules/wooting.nix
             ./modules/monero.nix
             ./modules/xmrig.nix
@@ -123,13 +119,15 @@
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                state = "23.05";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs.state = "23.05";
+                users = {
+                  root.imports = [ ./home/shared.nix ./home/root.nix ];
+                  ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/desktop/home.nix ];
+                };
               };
-              home-manager.users.ryan = { imports = [ (./home/shared.nix) ] ++ [ (./home/ryan.nix) ] ++ [ (./hosts/desktop/home.nix) ]; };
-              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ (./home/root.nix) ]; };
             }
           ];
         };
@@ -149,13 +147,15 @@
             inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                state = "23.05";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs.state = "23.05";
+                users = {
+                  root.imports = [ ./home/shared.nix ./home/root.nix ];
+                  ryan.imports = [ ./home/shared.nix ./home/kevin.nix ./hosts/kevin/home.nix ];
+                };
               };
-              home-manager.users.kevin = { imports = [ (./home/shared.nix) ] ++ [ (./home/kevin.nix) ] ++ [ (./hosts/kevin/home.nix) ]; };
-              home-manager.users.root = { imports = [ (./home/shared.nix) ] ++ [ (./home/root.nix) ]; };
             }
           ];
         };

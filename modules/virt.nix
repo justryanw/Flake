@@ -1,25 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, gpuIDs, ... }:
 let
-  # GTX 1070
-  gpuIDs = [
-    "10de:1b81" # Graphics
-    "10de:10f0" # Auido
-  ];
-
-  # RX 6800 XT
-  # gpuIDs = [
-  #   "1002:73bf"
-  #   "1002:ab28"
-  # ];
-
-  # RX 7900 XTX
-  # gpuIDs = [
-  #   "1002:744c"
-  #   "1002:ab30"
-  #   "1002:7446"
-  #   "1002:7444"
-  # ];
-
   looking-glass-client-overlay = (final: prev: {
     looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
       version = "B7-rc1";
@@ -38,59 +18,72 @@ let
       # cmakeFlags = old.cmakeFlags ++ [ "-DENABLE_LIBDECOR=ON" ];
     });
   });
+
+  cfg = config.gamingVM;
 in
 {
-  nixpkgs.overlays = [ looking-glass-client-overlay ];
+  options.gamingVM = {
+    enable = lib.mkEnableOption "Enable gaming vm";
 
-  users.users.ryan.extraGroups = [ "libvirtd" ];
-
-  environment.systemPackages = with pkgs; [
-    virt-viewer
-    spice
-    spice-gtk
-    spice-protocol
-    win-virtio
-    win-spice
-    looking-glass-client
-  ];
-
-  programs = {
-    virt-manager.enable = true;
-  };
-
-  boot = {
-    initrd.kernelModules = [
-      "vfio"
-      "vfio_pci"
-      "vfio_pci_core"
-      "vfio_iommu_type1"
-    ];
-
-    kernelParams = [
-      "amd_iommu=on"
-      ("vfio-pci.ids=" + pkgs.lib.concatStringsSep "," gpuIDs)
-    ];
-  };
-
-
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        ovmf.enable = true;
-        runAsRoot = false;
-      };
+    gpuIDs = lib.mkOption {
+      default = "";
+      description = "ids of gpu to passthrough";
     };
-    spiceUSBRedirection.enable = true;
   };
 
-  systemd.tmpfiles.rules = [
-    "f /dev/shm/looking-glass 0660 ryan qemu-libvirtd -"
-  ];
+  config = lib.mkIf cfg.enable {
+    nixpkgs.overlays = [ looking-glass-client-overlay ];
 
-  hardware.opengl.enable = true;
+    users.users.ryan.extraGroups = [ "libvirtd" ];
 
-  services = {
-    spice-vdagentd.enable = true;
+    environment.systemPackages = with pkgs; [
+      virt-viewer
+      spice
+      spice-gtk
+      spice-protocol
+      win-virtio
+      win-spice
+      looking-glass-client
+    ];
+
+    programs = {
+      virt-manager.enable = true;
+    };
+
+    boot = {
+      initrd.kernelModules = [
+        "vfio"
+        "vfio_pci"
+        "vfio_pci_core"
+        "vfio_iommu_type1"
+      ];
+
+      kernelParams = [
+        "amd_iommu=on"
+        ("vfio-pci.ids=" + pkgs.lib.concatStringsSep "," cfg.gpuIDs)
+      ];
+    };
+
+
+    virtualisation = {
+      libvirtd = {
+        enable = true;
+        qemu = {
+          ovmf.enable = true;
+          runAsRoot = false;
+        };
+      };
+      spiceUSBRedirection.enable = true;
+    };
+
+    systemd.tmpfiles.rules = [
+      "f /dev/shm/looking-glass 0660 ryan qemu-libvirtd -"
+    ];
+
+    hardware.opengl.enable = true;
+
+    services = {
+      spice-vdagentd.enable = true;
+    };
   };
 }

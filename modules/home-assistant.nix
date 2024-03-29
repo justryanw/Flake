@@ -22,6 +22,7 @@
       "radarr"
       "lidarr"
       "jellyfin"
+      "ifttt"
     ];
 
     config = {

@@ -93,7 +93,7 @@
                 extraSpecialArgs.state = "22.11";
                 users = {
                   root.imports = [ ./home/shared.nix ./home/root.nix ];
-                  ryan.imports = [ ./home/nix-software-center.url = "github:snowfallorg/nix-software-center";shared.nix ./home/ryan.nix ./hosts/pavilion/home.nix ];
+                  ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/pavilion/home.nix ];
                 };
               };
             }

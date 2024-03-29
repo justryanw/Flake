@@ -39,5 +39,5 @@
   };
 
   # somehow messes with yggdrasil?
-  # virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
 }

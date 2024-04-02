@@ -61,34 +61,43 @@
       ];
 
       userSettings = {
-        "direnv.restart.automatic" = false;
-        "direnv.status.showChangesCount" = false;
-        "terminal.integrated.allowChords" = false;
-        "editor.fontFamily" = "'Droid Sans Mono', 'monospace', monospace";
-        "terminal.integrated.fontFamily" = "DroidSansM Nerd Font";
-        "workbench.colorTheme" = "One Dark Pro Darker";
-        "files.autoSave" = "afterDelay";
-        "git.enableSmartCommit" = true;
-        "typescript.updateImportsOnFileMove.enabled" = "always";
-        "git.autofetch" = true;
-        "explorer.confirmDragAndDrop" = false;
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
-        "nix.serverSettings" = {
-          "nixd" = {
-            "formatting" = {
-              "command" = [
-                "nixpkgs-fmt"
-              ];
-            };
-          };
+        editor = {
+          fontFamily = "'Droid Sans Mono', 'monospace', monospace";
+          lineNumbers = "relative";
+          wordWrap = "on";
         };
-        "rust-analyzer.lens.enable" = false;
-        "terminal.integrated.sendKeybindingsToShell" = true;
-        "remote.SSH.remotePlatform" = {
-          "inspired" = "windows";
+
+        direnv = {
+          restart.automatic = false;
+          status.showChangesCount = false;
         };
-        "git.repositoryScanMaxDepth" = -1;
+
+        terminal.integrated = {
+          allowChords = false;
+          fontFamily = "DroidSansM Nerd Font";
+          sendKeybindingsToShell = true;
+        };
+
+        git = {
+          autofetch = true;
+          repositoryScanMaxDepth = -1;
+          enableSmartCommit = true;
+        };
+
+        nix = {
+          enableLanguageServer = true;
+          serverPath = "${pkgs.nixd}/bin/nixd";
+          serverSettings.nixd.formatting.command = "nixpkgs-fmt";
+        };
+
+        workbench.colorTheme = "One Dark Pro Darker";
+        files.autoSave = "afterDelay";
+        typescript.updateImportsOnFileMove.enabled = "always";
+        explorer.confirmDragAndDrop = false;
+        rust-analyzer.lens.enable = false;
+        remote.SSH.remotePlatform = {
+          inspired = "windows";
+        };
       };
     };
 
@@ -153,7 +162,7 @@
       toggle-tiled-right = [ "<Super>d" ];
     };
     "org/gnome/shell/keybindings" = {
-      toggle-application-view = [];
+      toggle-application-view = [ ];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       mic-mute = [ "<Super>AudioMute" ];
@@ -172,3 +181,4 @@
     "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
   };
 }
+

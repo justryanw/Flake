@@ -65,6 +65,7 @@
           fontFamily = "'Droid Sans Mono', 'monospace', monospace";
           lineNumbers = "relative";
           wordWrap = "on";
+          minimap.enabled = false;
         };
 
         direnv = {

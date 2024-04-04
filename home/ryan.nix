@@ -90,14 +90,16 @@
           serverSettings.nixd.formatting.command = "nixpkgs-fmt";
         };
 
+        remote.SSH.remotePlatform = {
+          inspired = "windows";
+        };
+
+        html.format.wrapLineLength = 0;
         workbench.colorTheme = "One Dark Pro Darker";
         files.autoSave = "afterDelay";
         typescript.updateImportsOnFileMove.enabled = "always";
         explorer.confirmDragAndDrop = false;
         rust-analyzer.lens.enable = false;
-        remote.SSH.remotePlatform = {
-          inspired = "windows";
-        };
       };
     };
 

@@ -24,9 +24,10 @@
     appindicator
     systemd-manager
     caffeine
-    coverflow-alt-tab
+    # coverflow-alt-tab
     # tophat
     grand-theft-focus
+    docker
   ]);
 
   programs = {
@@ -132,9 +133,10 @@
         "appindicatorsupport@rgcjonas.gmail.com"
         "systemd-manager@hardpixel.eu"
         "caffeine@patapon.info"
-        "CoverflowAltTab@palatis.blogspot.com"
+        # "CoverflowAltTab@palatis.blogspot.com"
         # "tophat@fflewddur.github.io"
         "grand-theft-focus@zalckos.github.com"
+        "docker@stickman_0x00.com"
       ];
       disabled-extensions = [ ];
     };

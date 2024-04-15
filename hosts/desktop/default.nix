@@ -1,6 +1,10 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ../../modules/virt.nix ];
 
+  environment.systemPackages = (with pkgs; [
+    docker-compose
+  ]);
+
   boot = {
     loader.grub.gfxmodeEfi = "3440x1440";
     kernelPackages = pkgs.linuxPackages_latest;
@@ -39,5 +43,11 @@
   };
 
   # somehow messes with yggdrasil?
-  virtualisation.waydroid.enable = true;
+  virtualisation = {
+    waydroid.enable = true;
+
+    docker.enable = true;
+  };
+
+  users.users.ryan.extraGroups = [ "docker" ];
 }

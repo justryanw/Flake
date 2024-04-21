@@ -49,5 +49,10 @@
     docker.enable = true;
   };
 
-  users.users.ryan.extraGroups = [ "docker" ];
+  users.users.ryan.extraGroups = [ "docker" "adbusers" ];
+
+  programs.adb.enable = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
 }

@@ -188,6 +188,7 @@ in
       "201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0" = [ "phone" ];
       "201:e145:88cf:f359:a185:19a7:9772:94a" = [ "kev-tv" ];
       "201:f5ff:565:4fef:6597:9c51:654e:f08a" = [ "helen-phone" ];
+      "201:1116:41e5:2a9d:23fe:c842:5a84:5f7c" = [ "tvbox" ];
       "192.168.0.198" = [ "inspired" ];
     };
 
@@ -205,6 +206,7 @@ in
         ip6tables -A nixos-fw -s phone -j nixos-fw-accept
         ip6tables -A nixos-fw -s kev-tv -j nixos-fw-accept
         ip6tables -A nixos-fw -s helen-phone -j nixos-fw-accept
+        ip6tables -A nixos-fw -s tvbox -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -217,6 +219,7 @@ in
         ip6tables -D nixos-fw -s phone -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s kev-tv -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s helen-phone -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s tvbox -j nixos-fw-accept || true
       '';
     };
   };

@@ -67,6 +67,7 @@
           lineNumbers = "relative";
           wordWrap = "on";
           minimap.enabled = false;
+          tabSize = 2;
         };
 
         direnv = {

@@ -20,6 +20,7 @@
     pdfarranger
     gtop
     piper
+    zed-editor
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager

@@ -10,7 +10,6 @@
     };
 
     nix-software-center.url = "github:snowfallorg/nix-software-center";
-    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -57,7 +56,6 @@
             ./hosts/laptop
             ./shared.nix
             ./modules/bootloader/efi.nix
-            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -84,7 +82,6 @@
             ./hosts/pavilion
             ./shared.nix
             ./modules/bootloader/efi.nix
-            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -116,7 +113,6 @@
             ./modules/xmrig.nix
             ./modules/home-assistant.nix
             ./modules/jellyfin.nix
-            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {
@@ -144,7 +140,6 @@
             ./shared.nix
             ./containers/vpn.nix
             ./modules/bootloader/bios.nix
-            inputs.minegrub-theme.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager = {

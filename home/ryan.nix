@@ -29,6 +29,7 @@
     # tophat
     grand-theft-focus
     docker
+    vitals
   ]);
 
   programs = {
@@ -131,6 +132,7 @@
     "org/gnome/shell" = {
       favourite-apps = [ ];
       disable-user-extensions = false;
+      # nix eval nixpkgs#gnomeExtensions.<name>.extensionUuid
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "systemd-manager@hardpixel.eu"
@@ -139,6 +141,7 @@
         # "tophat@fflewddur.github.io"
         "grand-theft-focus@zalckos.github.com"
         "docker@stickman_0x00.com"
+        "Vitals@CoreCoding.com"
       ];
       disabled-extensions = [ ];
     };

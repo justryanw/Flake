@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ./hardware-configuration.nix ../../modules/virt.nix ];
 
   environment.systemPackages = (with pkgs; [
@@ -55,4 +55,17 @@
   services.udev.packages = [
     pkgs.android-udev-rules
   ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "valheim-server"
+    "steamworks-sdk-redist"
+  ];
+
+  services.valheim = {
+    enable = true;
+    serverName = "Tombolheim";
+    worldName = "Tombolheim";
+    openFirewall = true;
+    password = "Levitt";
+  };
 }

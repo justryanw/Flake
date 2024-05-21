@@ -10,9 +10,14 @@
     };
 
     nix-software-center.url = "github:snowfallorg/nix-software-center";
+
+    valheim-server = {
+      url = "github:aidalgol/valheim-server-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, valheim-server, ... } @ inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -114,6 +119,7 @@
             ./modules/home-assistant.nix
             ./modules/jellyfin.nix
             home-manager.nixosModules.home-manager
+            valheim-server.nixosModules.default
             {
               home-manager = {
                 useGlobalPkgs = true;

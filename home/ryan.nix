@@ -3,7 +3,7 @@
   home.packages = (with pkgs; [
     firefox
     monero-gui
-    # teams
+    teams-for-linux
     fragments
     whatip
     gnome.gnome-tweaks

@@ -174,6 +174,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICWIiPRXGHVkhx1O/YDNOJfFQADhld2CxQKRKCnW1Fhv ryan@NixVM"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBl7qYlcDcv/3dkMxX3MkKcTdfxCdEKuGUxbEzfuAZ9F ryan@Pavilion"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHgbbmP2JBfzd8t7RRQ39a5unAJ9/zlE1JB+QkVEX2am nix-on-droid@localhost"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
       ];
     };
   };

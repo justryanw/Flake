@@ -44,7 +44,7 @@
 
   # somehow messes with yggdrasil?
   virtualisation = {
-    waydroid.enable = true;
+    waydroid.enable = false;
 
     docker.enable = true;
   };

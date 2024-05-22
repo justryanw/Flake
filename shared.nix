@@ -1,4 +1,4 @@
-{ pkgs, lib, state, inputs, system, ... }:
+{ pkgs, lib, state, inputs, system, config, ... }:
 let
   nix-software-center = inputs.nix-software-center.packages.${system}.nix-software-center;
 in
@@ -251,6 +251,13 @@ in
       };
     };
   };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    # OBS Virtual Camera
+    v4l2loopback
+    # Archer T3U WiFi Adapter (build fucked :( )
+    # rtl88x2bu
+  ];
 
   nix = {
     gc = {

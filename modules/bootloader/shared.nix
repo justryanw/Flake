@@ -20,7 +20,4 @@
 
     supportedFilesystems = [ "ntfs" ];
   };
-
-  # OBS Virtual Camera
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 }

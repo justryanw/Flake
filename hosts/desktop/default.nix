@@ -6,7 +6,11 @@
   ]);
 
   boot = {
-    loader.grub.gfxmodeEfi = "3440x1440";
+    loader.grub = {
+      gfxmodeEfi = "3440x1440";
+      fontSize = 32;
+    };
+
     kernelPackages = pkgs.linuxPackages_latest;
   };
 

@@ -255,7 +255,7 @@ in
   boot.extraModulePackages = with config.boot.kernelPackages; [
     # OBS Virtual Camera
     v4l2loopback
-    # Archer T3U WiFi Adapter (build fucked :( )
+    # Archer T3U WiFi Adapter (doesnt seem to fix the adapter :( )
     # rtl88x2bu
   ];
 

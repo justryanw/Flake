@@ -2,7 +2,6 @@
   imports = [ ./hardware-configuration.nix ../../modules/virt.nix ];
 
   environment.systemPackages = (with pkgs; [
-    docker-compose
   ]);
 
   boot = {
@@ -46,11 +45,13 @@
     # ];
   };
 
-  # somehow messes with yggdrasil?
   virtualisation = {
     waydroid.enable = false;
 
-    docker.enable = true;
+    docker = {
+      enable = true;
+      package =  pkgs.docker_25;
+    };
   };
 
   users.users.ryan.extraGroups = [ "docker" "adbusers" ];

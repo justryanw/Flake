@@ -28,7 +28,6 @@
     # coverflow-alt-tab
     # tophat
     grand-theft-focus
-    docker
     vitals
   ]);
 

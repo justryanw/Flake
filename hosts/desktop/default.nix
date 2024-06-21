@@ -1,9 +1,6 @@
 { pkgs, lib, ... }: {
   imports = [ ./hardware-configuration.nix ../../modules/virt.nix ];
 
-  environment.systemPackages = (with pkgs; [
-  ]);
-
   boot = {
     loader.grub = {
       gfxmodeEfi = "3440x1440";

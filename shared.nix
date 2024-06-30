@@ -175,6 +175,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBl7qYlcDcv/3dkMxX3MkKcTdfxCdEKuGUxbEzfuAZ9F ryan@Pavilion"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGg4nR3v4p0/0/8hKsIqRy2YGFAvMlGuDXCDGuA++FR nix-on-droid@localhost"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
       ];
     };
   };
@@ -209,6 +210,7 @@ in
         ip6tables -A nixos-fw -s kev-tv -j nixos-fw-accept
         ip6tables -A nixos-fw -s helen-phone -j nixos-fw-accept
         ip6tables -A nixos-fw -s tvbox -j nixos-fw-accept
+        ip6tables -A nixos-fw -s fe80::eafb:1cff:fe43:54cb -j nixos-fw-accept
       '';
       extraStopCommands = ''
         iptables -D nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept || true
@@ -222,6 +224,7 @@ in
         ip6tables -D nixos-fw -s kev-tv -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s helen-phone -j nixos-fw-accept || true
         ip6tables -D nixos-fw -s tvbox -j nixos-fw-accept || true
+        ip6tables -D nixos-fw -s fe80::eafb:1cff:fe43:54cb -j nixos-fw-accept || true
       '';
     };
   };

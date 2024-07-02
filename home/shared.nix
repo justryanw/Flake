@@ -9,6 +9,7 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       shellAliases = {
+        shell = "nix develop -c $SHELL";
         la = "ls -A";
         bios = "systemctl reboot --firmware-setup";
         self = "yggdrasilctl getself";

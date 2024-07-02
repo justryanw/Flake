@@ -269,6 +269,15 @@ in
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
+
+      substituters = [
+        "https://cache.nixos.org/"
+        "https://justryanw.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "justryanw.cachix.org-1:oan1YuatPBqGNFEflzCmB+iwLPtzq1S1LivN3hUzu60="
+      ];
     };
   };
 }

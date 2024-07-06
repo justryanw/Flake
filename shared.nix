@@ -196,7 +196,8 @@ in
     };
 
     firewall = {
-      allowedTCPPorts = [ 9001 ];
+      allowedTCPPorts = [ 9001 8766 27011 38000 ];
+      allowedUDPPorts = [ 9001 8766 27011 38000 ];
 
       extraCommands = ''
         iptables -A nixos-fw -s 192.168.0.0/24 -j nixos-fw-accept
@@ -280,6 +281,7 @@ in
 
       trusted-public-keys = [
         "justryanw.cachix.org-1:oan1YuatPBqGNFEflzCmB+iwLPtzq1S1LivN3hUzu60="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };

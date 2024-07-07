@@ -8,7 +8,6 @@
       rocm-opencl-runtime
       vaapiVdpau
       libvdpau-va-gl
-      amdvlk
     ];
     driSupport = true;
   };

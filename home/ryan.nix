@@ -12,9 +12,8 @@
     hunspell
     hunspellDicts.en_GB-large
     evince
-    discord
+    vesktop
     signal-desktop
-    goverlay
     gnome-frog
     gnome-extension-manager
     pdfarranger
@@ -35,7 +34,11 @@
 
     mangohud = {
       enable = true;
-      enableSessionWide = false;
+      enableSessionWide = true;
+      settings = {
+        fps_limit = 120;
+        preset = 2;
+      };
     };
 
     zsh = {

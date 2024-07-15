@@ -131,7 +131,6 @@ in
       nix-software-center
       waypipe
       gamescope
-      xwaylandvideobridge
       iperf
       btrfs-progs
       fzf
@@ -269,6 +268,19 @@ in
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
+
+    distributedBuilds = true;
+
+    # buildMachines = [{
+    #   hostName = "laptop";
+    #   sshUser = "ryan";
+    #   sshKey = "/home/ryan/.ssh/id_ed25519";
+    #   system = "x86_64-linux";
+    #   maxJobs = 16;
+    #   speedFactor = 1;
+    #   supportedFeatures = ["big-parallel" "kvm" ];
+    #   mandatoryFeatures = [ ];
+    # }];
 
     settings = {
       trusted-users = [

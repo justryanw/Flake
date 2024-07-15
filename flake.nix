@@ -40,6 +40,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "bak";
                 extraSpecialArgs.state = "22.11";
                 users = {
                   ryan.imports = [ ./home/shared.nix ./home/ryan.nix ./hosts/vm/home.nix ];
@@ -66,6 +67,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "bak";
                 extraSpecialArgs.state = "22.11";
                 users = {
                   root.imports = [ ./home/shared.nix ./home/root.nix ];
@@ -92,6 +94,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "bak";
                 extraSpecialArgs.state = "22.11";
                 users = {
                   root.imports = [ ./home/shared.nix ./home/root.nix ];
@@ -124,6 +127,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "bak";
                 extraSpecialArgs.state = "23.05";
                 users = {
                   root.imports = [ ./home/shared.nix ./home/root.nix ];
@@ -151,6 +155,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                backupFileExtension = "bak";
                 extraSpecialArgs.state = "23.05";
                 users = {
                   root.imports = [ ./home/shared.nix ./home/root.nix ];

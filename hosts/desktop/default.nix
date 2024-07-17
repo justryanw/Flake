@@ -16,7 +16,7 @@
     monero.dataDir = "/home/Monero";
   };
 
-  networking.hostName = "Desktop";
+  networking.hostName = "desktop";
 
   gamingVM = {
     enable = true;

@@ -5,7 +5,7 @@
     loader.grub.gfxmodeEfi = "1920x1080";
   };
 
-  networking.hostName = "Pavilion";
+  networking.hostName = "pavilion";
 
   services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
 

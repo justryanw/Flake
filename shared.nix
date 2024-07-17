@@ -108,6 +108,10 @@ in
     zsh.enable = true;
     steam.enable = true;
     dconf.enable = true;
+    nh = {
+      enable = true;
+      flake = "/home/ryan/Flake";
+    };
   };
 
   fonts = {

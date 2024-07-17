@@ -4,7 +4,7 @@
   boot.loader.grub.gfxmodeEfi = "1920x1080";
 
   networking = {
-    hostName = "Laptop";
+    hostName = "laptop";
     
     networkmanager.unmanaged = [ "wlp3s0f3u1" ];
   };

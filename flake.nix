@@ -25,7 +25,7 @@
     {
       nixosConfigurations = {
 
-        vm = lib.nixosSystem {
+        nixvm = lib.nixosSystem {
           inherit system;
           specialArgs = {
             inherit inputs system;

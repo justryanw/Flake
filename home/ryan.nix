@@ -6,7 +6,7 @@
     teams-for-linux
     fragments
     whatip
-    gnome.gnome-tweaks
+    gnome-tweaks
     celluloid
     libreoffice
     hunspell

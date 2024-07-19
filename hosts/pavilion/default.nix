@@ -10,10 +10,8 @@
   services.xserver.videoDrivers = lib.mkForce [ "nvidia" ];
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
 
     nvidia = {

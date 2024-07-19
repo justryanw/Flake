@@ -25,8 +25,6 @@ in
     LC_TIME = "en_GB.UTF-8";
   };
 
-  sound.enable = true;
-
   hardware = {
     pulseaudio.enable = false;
     bluetooth.enable = true;
@@ -145,14 +143,13 @@ in
       gnome-remote-desktop
     ]);
 
-    gnome.excludePackages = (with pkgs; [
+    gnome.excludePackages = with pkgs; [
       gnome-photos
       gnome-tour
       epiphany
-    ]) ++ (with pkgs.gnome; [
       cheese
       yelp
-    ]);
+    ];
 
     sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
       gst-plugins-good

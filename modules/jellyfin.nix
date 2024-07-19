@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ libva libva-utils radeontop clinfo opencl-info jellyfin-ffmpeg ];
+  environment.systemPackages = with pkgs; [ libva libva-utils radeontop clinfo jellyfin-ffmpeg ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       rocm-opencl-icd
@@ -9,7 +9,6 @@
       vaapiVdpau
       libvdpau-va-gl
     ];
-    driSupport = true;
   };
 
 

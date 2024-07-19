@@ -57,5 +57,36 @@
       };
     };
 
+    ssh = {
+      enable = true;
+      
+      matchBlocks = {
+        inspired = {
+          user = "ryan.walker";
+        };
+
+        wsl = {
+          hostname = "localhost";
+          proxyJump = "inspired";
+          port = 2224;
+        };
+
+        github = {
+          user = "git";
+          hostname = "github.com";
+        };
+
+        marketing = {
+          user = "dev";
+          hostname = "gamepreview.inseinc.com";
+          identityFile = [ "/home/ryan/.ssh/marketing/id_rsa" ];
+        };
+
+        gli = {
+          user = "gds";
+          hostname = "ftp.ingg.com";
+        };
+      };
+    };
   };
 }

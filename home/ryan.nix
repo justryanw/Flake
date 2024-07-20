@@ -20,6 +20,8 @@
     gtop
     piper
     zed-editor
+    nixd
+    nixpkgs-fmt
   ]) ++ (with pkgs.gnomeExtensions; [
     appindicator
     systemd-manager
@@ -93,7 +95,7 @@
 
         nix = {
           enableLanguageServer = true;
-          serverPath = "${pkgs.nixd}/bin/nixd";
+          serverPath = "nixd";
           serverSettings.nixd.formatting.command = "nixpkgs-fmt";
         };
 

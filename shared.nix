@@ -104,8 +104,17 @@ in
 
   programs = {
     zsh.enable = true;
-    steam.enable = true;
     dconf.enable = true;
+
+    steam = {
+      enable = true;
+      package = pkgs.steam.override {
+        extraEnv = {
+          MANGOHUD = true;
+        };
+      };
+    };
+
     nh = {
       enable = true;
       flake = "/home/ryan/Flake";
@@ -237,23 +246,6 @@ in
       "openssl-1.1.1w"
       "nix-2.16.2"
     ];
-
-    packageOverrides = pkgs: {
-      steam = pkgs.steam.override {
-        extraPkgs = pkgs: with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
-      };
-    };
   };
 
   boot.extraModulePackages = with config.boot.kernelPackages; [

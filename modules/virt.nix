@@ -80,8 +80,6 @@ in
       "f /dev/shm/looking-glass 0660 ryan qemu-libvirtd -"
     ];
 
-    hardware.opengl.enable = true;
-
     services = {
       spice-vdagentd.enable = true;
     };

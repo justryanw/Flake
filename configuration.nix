@@ -63,6 +63,13 @@ in
       enable = true;
       package = pkgs.nix-ld-rs;
     };
+
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+
+    gamemode.enable = true;
   };
 
   hardware.pulseaudio.enable = true;

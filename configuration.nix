@@ -48,11 +48,11 @@ in
 
   programs = {
     zsh.enable = true;
-    nh.enable = true;
+    # nh.enable = true;
 
     nix-ld = {
       enable = true;
-      package = pkgs.nix-ld-rs;
+      # package = pkgs.nix-ld-rs;
     };
   };
 
@@ -72,7 +72,7 @@ in
     pathsToLink = [ "/share/zsh" ];
     
     systemPackages = with pkgs; [
-      nixd
+      # nixd
       nixpkgs-fmt
       git
     ];

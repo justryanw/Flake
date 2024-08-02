@@ -7,24 +7,28 @@ in
       ./hardware-configuration.nix
   ];
 
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
-    };
+  boot = {
+    initrd.kernelModules = [ "amdgpu" ];
 
-    systemd-boot.enable = false;
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
 
-    grub = {
-      enable = true;
-      useOSProber = true;
-      efiSupport = true;
-      device = "nodev";
-      extraEntries = ''
-        menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
-          fwsetup
-        }
-      '';
+      systemd-boot.enable = false;
+
+      grub = {
+        enable = true;
+        useOSProber = true;
+        efiSupport = true;
+        device = "nodev";
+        extraEntries = ''
+          menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
+            fwsetup
+          }
+        '';
+      };
     };
   };
 
@@ -41,18 +45,22 @@ in
   services = {
     xserver = {
       enable = true;
-        displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
-      };
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      videoDrivers = [ "amdgpu" ];
+    };
   };
 
   programs = {
     zsh.enable = true;
-    # nh.enable = true;
+    nh = {
+      enable = true;
+      flake = "/home/${user}/new-flake";
+    };
 
     nix-ld = {
       enable = true;
-      # package = pkgs.nix-ld-rs;
+      package = pkgs.nix-ld-rs;
     };
   };
 
@@ -72,11 +80,13 @@ in
     pathsToLink = [ "/share/zsh" ];
     
     systemPackages = with pkgs; [
-      # nixd
+      nixd
       nixpkgs-fmt
       git
     ];
   };
+
+  networking.hostName = "desktop";
 
   system.stateVersion = "23.05";
 }

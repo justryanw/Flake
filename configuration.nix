@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   user = "ryan";
 in
 {
   imports = [
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   boot = {
@@ -53,6 +53,7 @@ in
 
   programs = {
     zsh.enable = true;
+
     nh = {
       enable = true;
       flake = "/home/${user}/new-flake";
@@ -73,12 +74,14 @@ in
     packages = with pkgs; [
       firefox
       vscode
+      bitwarden-desktop
+      vesktop
     ];
   };
 
   environment = {
     pathsToLink = [ "/share/zsh" ];
-    
+
     systemPackages = with pkgs; [
       nixd
       nixpkgs-fmt

@@ -40,12 +40,11 @@ in
     };
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "dialout" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
@@ -62,4 +61,6 @@ in
       git
     ];
   };
+
+  system.stateVersion = "23.05";
 }

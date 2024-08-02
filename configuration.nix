@@ -8,8 +8,24 @@ in
   ];
 
   boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+
+    systemd-boot.enable = false;
+
+    grub = {
+      enable = true;
+      useOSProber = true;
+      efiSupport = true;
+      device = "nodev";
+      extraEntries = ''
+        menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
+          fwsetup
+        }
+      '';
+    };
   };
 
   nix.settings = {

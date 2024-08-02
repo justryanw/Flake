@@ -9,7 +9,7 @@
                 system = "x86_64-linux";
                 specialArgs = { inherit inputs; };
                 modules = [
-                    ./config.nix
+                    ./configuration.nix
                 ];
             }
         };

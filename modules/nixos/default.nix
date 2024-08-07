@@ -5,5 +5,6 @@
     ./gnome.nix
     ./graphics.nix
     ./yggdrasil.nix
+    ./network.nix
   ];
 }

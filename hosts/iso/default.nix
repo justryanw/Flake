@@ -39,7 +39,25 @@ in
         sleep-inactive-battery-type='nothing'
       '';
     };
+
+    spice-vdagentd.enable = true;
+    qemuGuest.enable = true;
+    xe-guest-utilities.enable = pkgs.stdenv.hostPlatform.isx86;
   };
+
+  virtualisation = {
+    vmware.guest.enable = pkgs.stdenv.hostPlatform.isx86;
+    hypervGuest.enable = true;
+    virtualbox.guest.enable = false;
+  };
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   environment = {
     systemPackages = with pkgs; [

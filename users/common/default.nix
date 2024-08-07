@@ -1,4 +1,4 @@
-name: { pkgs, lib, config, ... }: {
+name: { pkgs, lib, config, ... } @ inputs: {
   options = {
     enabledUsers.${name}.enable = lib.mkEnableOption "Toggles user";
   };

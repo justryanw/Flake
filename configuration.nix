@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./hosts/desktop/hardware-configuration.nix
+    (import ./users/ryan/home.nix "ryan")
   ] ++ userImpots;
 
   config = {

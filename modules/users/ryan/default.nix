@@ -6,7 +6,6 @@ name: { pkgs, lib, config, ... } @ inputs: {
       extraGroups = [ "wheel" ];
 
       packages = with pkgs; [
-        vscode
         bitwarden-desktop
         vesktop
       ];

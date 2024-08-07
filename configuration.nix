@@ -1,9 +1,7 @@
-{ pkgs, lib, ... } @ inputs: {
-  imports = [
-    ./hosts/desktop/hardware-configuration.nix
-  ];
-
+{ pkgs, ... } @ inputs: {
   config = {
+    imports = [ ./modules ];
+
     boot = {
       initrd.kernelModules = [ "amdgpu" ];
 

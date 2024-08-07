@@ -5,7 +5,7 @@ name: { pkgs, lib, config, ... }: {
       useGlobalPkgs = true;
 
       users.${name} = { ... }: {
-        home.stateVersion = "23.05";
+        home.stateVersion = config.system.stateVersion;
 
         programs = {
           starship.enable = true;

@@ -22,6 +22,7 @@
     {
       nixosConfigurations = {
         desktop = createSystem ./hosts/desktop;
+        laptop = createSystem ./hosts/laptop;
       };
     };
 }

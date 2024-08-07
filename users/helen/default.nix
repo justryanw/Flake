@@ -1,5 +1,7 @@
-name: { pkgs, ... } @ inputs: {
+name: { pkgs, lib, config, ... } @ inputs: {
   imports = [ (import ../common name) ];
 
-  users.users.${name} = { };
+  config = lib.mkIf config.enabledUsers.${name}.enable {
+    users.users.${name} = { };
+  };
 }

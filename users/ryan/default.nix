@@ -1,13 +1,15 @@
-name: { pkgs, ... } @ inputs: {
+name: { pkgs, lib, config, ... } @ inputs: {
   imports = [ (import ../common name) ];
 
-  users.users.${name} = {
-    extraGroups = [ "wheel" ];
+  config = lib.mkIf config.enabledUsers.${name}.enable {
+    users.users.${name} = {
+      extraGroups = [ "wheel" ];
 
-    packages = with pkgs; [
-      vscode
-      bitwarden-desktop
-      vesktop
-    ];
+      packages = with pkgs; [
+        vscode
+        bitwarden-desktop
+        vesktop
+      ];
+    };
   };
 }

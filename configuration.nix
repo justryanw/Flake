@@ -1,4 +1,4 @@
-{ pkgs, ... } @ inputs:
+{ pkgs, lib, ... } @ inputs:
 let
   users = [ "ryan" "helen" ];
   userImpots = builtins.map (name: (import ./users/${name} name)) users;
@@ -8,84 +8,89 @@ in
     ./hosts/desktop/hardware-configuration.nix
   ] ++ userImpots;
 
-  boot = {
-    initrd.kernelModules = [ "amdgpu" ];
+  config = {
+    enabledUsers.helen.enable = true;
+    enabledUsers.ryan.enable = true;
 
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+    boot = {
+      initrd.kernelModules = [ "amdgpu" ];
+
+      loader = {
+        efi = {
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot/efi";
+        };
+
+        systemd-boot.enable = false;
+
+        grub = {
+          enable = true;
+          useOSProber = true;
+          efiSupport = true;
+          device = "nodev";
+          extraEntries = ''
+            menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
+              fwsetup
+            }
+          '';
+        };
       };
+    };
 
-      systemd-boot.enable = false;
+    nix.settings = {
+      trusted-users = [ "root" "@wheel" ];
+      experimental-features = [ "nix-command" "flakes" ];
+    };
 
-      grub = {
+    nixpkgs.config.allowUnfree = true;
+
+    time.timeZone = "Europe/London";
+    i18n.defaultLocale = "en_GB.UTF-8";
+
+    services = {
+      xserver = {
         enable = true;
-        useOSProber = true;
-        efiSupport = true;
-        device = "nodev";
-        extraEntries = ''
-          menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
-            fwsetup
-          }
-        '';
+        displayManager.gdm.enable = true;
+        desktopManager.gnome.enable = true;
+        videoDrivers = [ "amdgpu" ];
       };
     };
-  };
 
-  nix.settings = {
-    trusted-users = [ "root" "@wheel" ];
-    experimental-features = [ "nix-command" "flakes" ];
-  };
+    programs = {
+      zsh.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+      nh = {
+        enable = true;
+        flake = "/home/ryan/new-flake";
+      };
 
-  time.timeZone = "Europe/London";
-  i18n.defaultLocale = "en_GB.UTF-8";
+      nix-ld = {
+        enable = true;
+        package = pkgs.nix-ld-rs;
+      };
 
-  services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      videoDrivers = [ "amdgpu" ];
-    };
-  };
+      steam = {
+        enable = true;
+        gamescopeSession.enable = true;
+      };
 
-  programs = {
-    zsh.enable = true;
-
-    nh = {
-      enable = true;
-      flake = "/home/ryan/new-flake";
+      gamemode.enable = true;
     };
 
-    nix-ld = {
-      enable = true;
-      package = pkgs.nix-ld-rs;
+    hardware.pulseaudio.enable = true;
+
+    environment = {
+      pathsToLink = [ "/share/zsh" ];
+
+      systemPackages = with pkgs; [
+        nixd
+        nixpkgs-fmt
+        git
+      ];
     };
 
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
+    networking.hostName = "desktop";
 
-    gamemode.enable = true;
+    system.stateVersion = "23.05";
   };
-
-  hardware.pulseaudio.enable = true;
-
-  environment = {
-    pathsToLink = [ "/share/zsh" ];
-
-    systemPackages = with pkgs; [
-      nixd
-      nixpkgs-fmt
-      git
-    ];
-  };
-
-  networking.hostName = "desktop";
-
-  system.stateVersion = "23.05";
 }

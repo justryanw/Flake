@@ -1,5 +1,5 @@
 { ... }: {
-  options = {
+  config = {
     services.yggdrasil = {
       enable = true;
       persistentKeys = true;

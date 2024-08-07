@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ./nixos
-    ./users
+    ./yggdrasil.nix
   ];
 }

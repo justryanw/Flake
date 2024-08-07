@@ -10,6 +10,8 @@
 
   outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
+      hosts = [ "desktop" "laptop" "iso" ];
+
       createSystem = host: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
@@ -20,10 +22,12 @@
       };
     in
     {
-      nixosConfigurations = {
-        desktop = createSystem ./hosts/desktop;
-        laptop = createSystem ./hosts/laptop;
-        iso = createSystem ./hosts/iso;
-      };
+      nixosConfigurations = builtins.listToAttrs
+        (map
+          (name: {
+            inherit name;
+            value = createSystem ./hosts/${name};
+          })
+          hosts);
     };
 }

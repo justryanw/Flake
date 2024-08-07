@@ -2,7 +2,10 @@
   imports = [ ./modules ];
 
   config = {
-    boot.initrd.kernelModules = [ "amdgpu" ];
+    boot = {
+      initrd.kernelModules = [ "amdgpu" ];
+      plymouth.enable = true;
+    };
     
     bootloader.grub.enable = true;
 
@@ -19,8 +22,11 @@
     services = {
       xserver = {
         enable = true;
-        displayManager.gdm.enable = true;
         desktopManager.gnome.enable = true;
+        displayManager.gdm = {
+          enable = true;
+          autoSuspend = false;
+        };
         videoDrivers = [ "amdgpu" ];
       };
     };

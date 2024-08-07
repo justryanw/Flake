@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, ... } @ inputs:
 let
-  user = "ryan";
+  users = [ "ryan" "helen" ];
 in
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hosts/desktop/hardware-configuration.nix
   ];
 
   boot = {
@@ -56,7 +56,7 @@ in
 
     nh = {
       enable = true;
-      flake = "/home/${user}/new-flake";
+      flake = "/home/ryan/new-flake";
     };
 
     nix-ld = {
@@ -74,17 +74,20 @@ in
 
   hardware.pulseaudio.enable = true;
 
-  users.users.${user} = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "dialout" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      firefox
-      vscode
-      bitwarden-desktop
-      vesktop
-    ];
-  };
+  # users.users.${user} = import ./users/ryan inputs;
+  #   packages = with pkgs; [
+  #     vscode
+  #     bitwarden-desktop
+  #     vesktop
+  #   ];
+  # };
+
+  users.users = builtins.listToAttrs (builtins.map
+    (user: {
+      name = user;
+      value = import ./users/${user} inputs;
+    })
+    users);
 
   environment = {
     pathsToLink = [ "/share/zsh" ];

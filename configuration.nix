@@ -2,30 +2,9 @@
   imports = [ ./modules ];
 
   config = {
-    boot = {
-      initrd.kernelModules = [ "amdgpu" ];
-
-      loader = {
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot/efi";
-        };
-
-        systemd-boot.enable = false;
-
-        grub = {
-          enable = true;
-          useOSProber = true;
-          efiSupport = true;
-          device = "nodev";
-          extraEntries = ''
-            menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
-              fwsetup
-            }
-          '';
-        };
-      };
-    };
+    boot.initrd.kernelModules = [ "amdgpu" ];
+    
+    bootloader.grub.enable = true;
 
     nix.settings = {
       trusted-users = [ "root" "@wheel" ];

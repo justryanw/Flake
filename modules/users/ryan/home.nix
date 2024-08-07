@@ -19,6 +19,11 @@ name: { pkgs, lib, config, ... } @ inputs: {
           };
         };
 
+        git = {
+          userName = "Ryan Walker";
+          userEmail = "ryanjwalker2001@gmail.com";
+        };
+
         vscode = {
           enable = true;
 

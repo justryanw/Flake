@@ -11,9 +11,13 @@ in
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 
+  modules = {
+    grub.enable = false;
+    gaming.enable = false;
+  };
+
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  bootloader.grub.enable = lib.mkForce false;
   networking.networkmanager.enable = true;
   networking.wireless.enable = lib.mkImageMediaOverride false;
 
@@ -74,5 +78,5 @@ in
     };
   };
 
-  enabledUsers.helen.enable = lib.mkForce false;
+  enabledUsers.helen.enable = false;
 }

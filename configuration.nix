@@ -1,13 +1,12 @@
-{ pkgs, ... } @ inputs: {
+{ pkgs, lib, ... } @ inputs: {
   imports = [ ./modules ];
 
   config = {
-    boot = {
-      initrd.kernelModules = [ "amdgpu" ];
-      plymouth.enable = true;
+    modules = {
+      grub.enable = lib.mkDefault true;
+      gaming.enable = lib.mkDefault true;
+      gnome.enable = lib.mkDefault true;
     };
-    
-    bootloader.grub.enable = true;
 
     nix.settings = {
       trusted-users = [ "root" "@wheel" ];
@@ -19,18 +18,6 @@
     time.timeZone = "Europe/London";
     i18n.defaultLocale = "en_GB.UTF-8";
 
-    services = {
-      xserver = {
-        enable = true;
-        desktopManager.gnome.enable = true;
-        displayManager.gdm = {
-          enable = true;
-          autoSuspend = false;
-        };
-        videoDrivers = [ "amdgpu" ];
-      };
-    };
-
     programs = {
       zsh.enable = true;
 
@@ -40,21 +27,7 @@
         enable = true;
         package = pkgs.nix-ld-rs;
       };
-
-      steam = {
-        enable = true;
-        gamescopeSession.enable = true;
-        package = pkgs.steam.override {
-          extraEnv = {
-            MANGOHUD = true;
-          };
-        };
-      };
-
-      gamemode.enable = true;
     };
-
-    hardware.pulseaudio.enable = true;
 
     environment = {
       pathsToLink = [ "/share/zsh" ];

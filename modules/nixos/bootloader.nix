@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }: {
   options = {
-    bootloader.grub.enable = lib.mkEnableOption "Enable grub";
+    modules.grub.enable = lib.mkEnableOption "Enable grub";
   };
 
-  config = lib.mkIf config.bootloader.grub.enable {
+  config = lib.mkIf config.modules.grub.enable {
     boot.loader = {
       efi = {
         canTouchEfiVariables = true;

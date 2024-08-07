@@ -1,13 +1,12 @@
 { pkgs, ... } @ inputs:
 let
   users = [ "ryan" "helen" ];
+  userImpots = builtins.map (name: (import ./users/${name} name)) users;
 in
 {
   imports = [
     ./hosts/desktop/hardware-configuration.nix
-    ./users/ryan
-    ./users/helen
-  ];
+  ] ++ userImpots;
 
   boot = {
     initrd.kernelModules = [ "amdgpu" ];
@@ -75,14 +74,6 @@ in
   };
 
   hardware.pulseaudio.enable = true;
-
-  # users.users.${user} = import ./users/ryan inputs;
-  #   packages = with pkgs; [
-  #     vscode
-  #     bitwarden-desktop
-  #     vesktop
-  #   ];
-  # };
 
   environment = {
     pathsToLink = [ "/share/zsh" ];

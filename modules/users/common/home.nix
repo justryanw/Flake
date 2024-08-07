@@ -29,6 +29,7 @@ name: { pkgs, lib, config, ... }: {
           };
 
           ssh = {
+            enable = true;
             matchBlocks = {
               github = {
                 user = "git";

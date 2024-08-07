@@ -3,6 +3,7 @@ name: { pkgs, lib, config, ... }: {
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
+      backupFileExtension = "bak";
 
       users.${name} = { ... }: {
         home.stateVersion = config.system.stateVersion;

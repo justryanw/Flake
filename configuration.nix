@@ -49,10 +49,7 @@
     programs = {
       zsh.enable = true;
 
-      nh = {
-        enable = true;
-        flake = "/home/ryan/new-flake";
-      };
+      nh.enable = true;
 
       nix-ld = {
         enable = true;

@@ -1,7 +1,11 @@
 # Generate ISO
 # nix run nixpkgs#nixos-generators -- --format iso --flake .#iso -o result
 
-{ lib, modulesPath, ... }: {
+{ pkgs, lib, modulesPath, ... }:
+let
+  calamares-nixos-autostart = pkgs.makeAutostartItem { name = "io.calamares.calamares"; package = pkgs.calamares-nixos; };
+in
+{
   imports = [
     ../../configuration.nix
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
@@ -13,9 +17,43 @@
   networking.networkmanager.enable = true;
   networking.wireless.enable = lib.mkImageMediaOverride false;
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "ryan";
+  services = {
+    displayManager.autoLogin = {
+      enable = true;
+      user = "ryan";
+    };
+
+    xserver.desktopManager.gnome = {
+      favoriteAppsOverride = ''
+        [org.gnome.shell]
+        favorite-apps=[ 'firefox.desktop', 'nixos-manual.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'io.calamares.calamares.desktop' ]
+      '';
+
+      extraGSettingsOverrides = ''
+        [org.gnome.shell]
+        welcome-dialog-last-shown-version='9999999999'
+        [org.gnome.desktop.session]
+        idle-delay=0
+        [org.gnome.settings-daemon.plugins.power]
+        sleep-inactive-ac-type='nothing'
+        sleep-inactive-battery-type='nothing'
+      '';
+    };
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      libsForQt5.kpmcore
+      calamares-nixos
+      calamares-nixos-autostart
+      calamares-nixos-extensions
+      glibcLoca
+    ];
+
+    variables = {
+      # Fix scaling for calamares on wayland
+      QT_QPA_PLATFORM = "$([[ $XDG_SESSION_TYPE = \"wayland\" ]] && echo \"wayland\")";
+    };
   };
 
   enabledUsers.helen.enable = lib.mkForce false;

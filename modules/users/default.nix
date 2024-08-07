@@ -8,7 +8,7 @@ in
   imports = common ++ custom;
 
   config = {
-    enabledUsers = builtins.listToAttrs
+    modules.users = builtins.listToAttrs
       (map
         (name: {
           inherit name;

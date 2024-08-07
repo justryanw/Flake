@@ -14,6 +14,7 @@ in
   modules = {
     grub.enable = false;
     gaming.enable = false;
+    users.helen.enable = false;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -77,6 +78,4 @@ in
       QT_QPA_PLATFORM = "$([[ $XDG_SESSION_TYPE = \"wayland\" ]] && echo \"wayland\")";
     };
   };
-
-  enabledUsers.helen.enable = false;
 }

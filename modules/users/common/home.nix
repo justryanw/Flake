@@ -1,5 +1,5 @@
 name: { pkgs, lib, config, ... }: {
-  config = lib.mkIf config.enabledUsers.${name}.enable {
+  config = lib.mkIf config.modules.users.${name}.enable {
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;

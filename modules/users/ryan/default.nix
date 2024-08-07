@@ -1,7 +1,7 @@
 name: { pkgs, lib, config, ... } @ inputs: {
   imports = [ (import ./home.nix name)];
 
-  config = lib.mkIf config.enabledUsers.${name}.enable {
+  config = lib.mkIf config.modules.users.${name}.enable {
     users.users.${name} = {
       extraGroups = [ "wheel" ];
 

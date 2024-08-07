@@ -1,12 +1,12 @@
 name: { pkgs, lib, config, ... } @ inputs:
 let
-  cfg = config.enabledUsers.${name};
+  cfg = config.modules.users.${name};
 in
 {
   imports = [ (import ./home.nix name) ];
 
   options = {
-    enabledUsers.${name} = {
+    modules.users.${name} = {
       enable = lib.mkEnableOption "Enables user";
       defaultConfig.enable = lib.mkEnableOption "Enables default config for user";
     };

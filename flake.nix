@@ -8,16 +8,20 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs: {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
+    let
+      createSystem = host: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.default
-          ./hosts/desktop
+          host
         ];
       };
+    in
+    {
+      nixosConfigurations = {
+        desktop = createSystem ./hosts/desktop;
+      };
     };
-  };
 }

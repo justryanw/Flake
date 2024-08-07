@@ -12,15 +12,6 @@ name: { pkgs, lib, config, ... } @ inputs: {
       ];
 
       programs = {
-        mangohud = {
-          enable = true;
-          enableSessionWide = true;
-          settings = {
-            fps_limit = 120;
-            preset = 2;
-          };
-        };
-
         git = {
           userName = "Ryan Walker";
           userEmail = "ryanjwalker2001@gmail.com";

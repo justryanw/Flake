@@ -7,7 +7,7 @@
       openMulticastPort = true;
       settings = {
         Peers = [
-          "tls://185.175.90.87:43006"
+          "tcp://[2001:470:1f13:e56::64]:39565"
         ];
         Listen = [
           "tls://[::]:0"

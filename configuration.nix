@@ -1,7 +1,7 @@
 { pkgs, ... } @ inputs: {
-  config = {
-    imports = [ ./modules ];
+  imports = [ ./modules ];
 
+  config = {
     boot = {
       initrd.kernelModules = [ "amdgpu" ];
 

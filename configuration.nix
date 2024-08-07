@@ -5,6 +5,8 @@ in
 {
   imports = [
     ./hosts/desktop/hardware-configuration.nix
+    ./users/ryan
+    ./users/helen
   ];
 
   boot = {
@@ -81,13 +83,6 @@ in
   #     vesktop
   #   ];
   # };
-
-  users.users = builtins.listToAttrs (builtins.map
-    (user: {
-      name = user;
-      value = import ./users/${user} inputs;
-    })
-    users);
 
   environment = {
     pathsToLink = [ "/share/zsh" ];

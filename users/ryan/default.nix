@@ -1,11 +1,15 @@
 { pkgs, ... } @ inputs:
 let
-  common = import ../common inputs;
+  name = "ryan";
 in
-common // {
-  packages = common.packages ++ (with pkgs; [
-    vscode
-    bitwarden-desktop
-    vesktop
-  ]);
+{
+  imports = [ (import ../common name) ];
+
+  users.users.${name} = {
+    packages = with pkgs; [
+      vscode
+      bitwarden-desktop
+      vesktop
+    ];
+  };
 }

@@ -1,7 +1,9 @@
 { pkgs, ... } @ inputs:
 let
-  common = import ../common inputs;
+  name = "helen";
 in
-common // {
+{
+  imports = [ (import ../common name) ];
 
+  users.users.${name} = { };
 }

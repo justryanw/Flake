@@ -47,7 +47,7 @@ in
       calamares-nixos
       calamares-nixos-autostart
       calamares-nixos-extensions
-      glibcLoca
+      glibcLocales
     ];
 
     variables = {

@@ -6,6 +6,8 @@ name: { pkgs, lib, config, ... }: {
       backupFileExtension = "bak";
 
       users.${name} = { ... }: {
+        imports = [ ../../home ];
+
         home.stateVersion = config.system.stateVersion;
 
         programs = {

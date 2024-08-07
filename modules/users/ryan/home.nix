@@ -1,6 +1,8 @@
 name: { pkgs, lib, config, ... } @ inputs: {
   config = lib.mkIf config.enabledUsers.${name}.enable {
     home-manager.users.${name} = { ... }: {
+      work.enable = true;
+
       home.packages = with pkgs.gnomeExtensions; [
         appindicator
         systemd-manager

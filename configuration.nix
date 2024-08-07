@@ -1,18 +1,9 @@
-{ pkgs, lib, ... } @ inputs:
-let
-  users = [ "ryan" "helen" ];
-  userImpots = builtins.map (name: (import ./users/${name} name)) users;
-in
-{
+{ pkgs, lib, ... } @ inputs: {
   imports = [
     ./hosts/desktop/hardware-configuration.nix
-    (import ./users/ryan/home.nix "ryan")
-  ] ++ userImpots;
+  ];
 
   config = {
-    enabledUsers.helen.enable = true;
-    enabledUsers.ryan.enable = true;
-
     boot = {
       initrd.kernelModules = [ "amdgpu" ];
 
@@ -73,6 +64,11 @@ in
       steam = {
         enable = true;
         gamescopeSession.enable = true;
+        package = pkgs.steam.override {
+          extraEnv = {
+            MANGOHUD = true;
+          };
+        };
       };
 
       gamemode.enable = true;

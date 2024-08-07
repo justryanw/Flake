@@ -1,5 +1,9 @@
-name: { pkgs, lib, config, ... } @ inputs: {
-  imports = [ (import ./home.nix name)];
+name: { pkgs, lib, config, ... } @ inputs:
+let
+  cfg = config.enabledUsers.${name};
+in
+{
+  imports = [ (import ./home.nix name) ];
 
   options = {
     enabledUsers.${name} = {
@@ -8,7 +12,7 @@ name: { pkgs, lib, config, ... } @ inputs: {
     };
   };
 
-  config = lib.mkIf config.enabledUsers.${name}.enable (lib.mkIf config.enabledUsers.${name}.defaultConfig.enable {
+  config = lib.mkIf (cfg.enable && cfg.defaultConfig.enable) {
     users.users.${name} = {
       description = (lib.strings.toUpper (builtins.substring 0 1 name)) + (builtins.substring 1 (-1) name);
       isNormalUser = true;
@@ -18,5 +22,5 @@ name: { pkgs, lib, config, ... } @ inputs: {
         firefox
       ];
     };
-  });
+  };
 }

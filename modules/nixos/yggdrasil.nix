@@ -5,12 +5,10 @@
       persistentKeys = true;
       group = "wheel";
       openMulticastPort = true;
+      # yggdrasil -genconf
       settings = {
         Peers = [
           "tcp://62.210.85.80:39565"
-        ];
-        Listen = [
-          "tls://[::]:0"
         ];
         MulticastInterfaces = [
           {
@@ -23,5 +21,7 @@
         ];
       };
     };
+
+    networking.firewall.allowedTCPPorts = [ 9001 ];
   };
 }

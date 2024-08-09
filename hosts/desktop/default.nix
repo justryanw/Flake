@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
   ];
 
-  programs.nh.flake = "/home/ryan/new-flake";
+  programs.nh.flake = "/home/ryan/flake";
 
   boot.loader.grub.gfxmodeEfi = "3440x1440";
 

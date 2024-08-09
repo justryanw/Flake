@@ -11,9 +11,11 @@
   outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       hosts = [ "desktop" "laptop" "iso" ];
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
 
       createSystem = host: nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.default
@@ -29,5 +31,11 @@
             value = createSystem ./hosts/${name};
           })
           hosts);
+
+      packages.${system} = {
+        gen-iso = pkgs.writeShellScriptBin "gen-iso" ''
+          ${pkgs.nixos-generators}/bin/nixos-generate --format iso --flake .#iso -o result
+        '';
+      };
     };
 }

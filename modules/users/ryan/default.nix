@@ -5,10 +5,10 @@ name: { pkgs, lib, config, ... } @ inputs: {
     users.users.${name} = {
       extraGroups = [ "wheel" ];
 
-      packages = with pkgs; [
+      packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         bitwarden-desktop
         vesktop
-      ];
+      ]);
     };
   };
 }

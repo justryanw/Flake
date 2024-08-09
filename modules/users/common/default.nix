@@ -18,9 +18,10 @@ in
       isNormalUser = true;
       extraGroups = [ "networkmanager" "dialout" ];
       shell = pkgs.zsh;
-      packages = with pkgs; [
+      packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         firefox
-      ];
+        libreoffice
+      ]);
 
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"

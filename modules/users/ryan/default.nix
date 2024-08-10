@@ -4,7 +4,7 @@ name: { pkgs, lib, config, ... } @ inputs: {
   config = lib.mkIf config.modules.users.${name}.enable {
     users.users.${name} = {
       extraGroups = [ "wheel" ];
-      initialHashedPassword = "$y$j9T$/0D7TzdJ47wVaY77j8gnJ.$RKHvm/DQTTD8xCdx1ZRhhj9fMuiP5kocHXRmwBBPPR1";
+      initialHashedPassword = lib.mkDefault "$y$j9T$/0D7TzdJ47wVaY77j8gnJ.$RKHvm/DQTTD8xCdx1ZRhhj9fMuiP5kocHXRmwBBPPR1";
 
       packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         bitwarden-desktop

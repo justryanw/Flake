@@ -4,6 +4,7 @@
   config = {
     modules = {
       grub.enable = lib.mkDefault true;
+      amd.enable = lib.mkDefault true;
       gaming.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
     };

@@ -6,5 +6,6 @@
     ./graphics.nix
     ./yggdrasil.nix
     ./network.nix
+    ./amd.nix
   ];
 }

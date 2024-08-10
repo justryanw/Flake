@@ -15,6 +15,7 @@ in
     grub.enable = false;
     gaming.enable = false;
     users.helen.enable = false;
+    amd.enable = false;
   };
 
   nixpkgs.hostPlatform = "x86_64-linux";

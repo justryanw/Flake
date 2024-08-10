@@ -14,10 +14,10 @@ in
         (name: {
           inherit name;
           value = {
-            enable = lib.mkDefault true;
+            enable = lib.mkDefault (builtins.elem name defaultUsers);
             defaultConfig.enable = lib.mkDefault true;
           };
         })
-        defaultUsers);
+        users);
   };
 }

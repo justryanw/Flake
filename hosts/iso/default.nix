@@ -8,7 +8,7 @@ in
 {
   imports = [
     ../../configuration.nix
-    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
+    "${modulesPath}/installer/cd-dvd/installation-cd-base.nix"
   ];
 
   modules = {
@@ -26,8 +26,10 @@ in
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  networking.networkmanager.enable = true;
-  networking.wireless.enable = lib.mkImageMediaOverride false;
+  networking = {
+    networkmanager.enable = true;
+    wireless.enable = lib.mkImageMediaOverride false;
+  };
 
   services = {
     displayManager.autoLogin = {

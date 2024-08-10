@@ -14,9 +14,15 @@ in
   modules = {
     grub.enable = false;
     gaming.enable = false;
-    users.helen.enable = false;
+    users = {
+      helen.enable = false;
+      ryan.enable = false;
+      nixos.enable = true;
+    };
     amd.enable = false;
   };
+
+  programs.nh.flake = "/home/nixos/flake";
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
@@ -26,7 +32,7 @@ in
   services = {
     displayManager.autoLogin = {
       enable = true;
-      user = "ryan";
+      user = "nixos";
     };
 
     xserver.desktopManager.gnome = {

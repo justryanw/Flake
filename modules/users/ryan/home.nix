@@ -2,8 +2,8 @@ name: { pkgs, lib, config, ... } @ inputs: {
   config = lib.mkIf config.modules.users.${name}.enable {
     home-manager.users.${name} = { ... }: {
       modules = {
-        work.enable = true;
-        vscode.enable = true;
+        work.enable = lib.mkDefault true;
+        vscode.enable = lib.mkDefault true;
       };
 
       programs = {

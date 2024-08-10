@@ -26,7 +26,10 @@
     programs = {
       zsh.enable = true;
 
-      nh.enable = true;
+      nh = {
+        enable = true;
+        flake = lib.mkDefault "/home/ryan/flake";
+      };
 
       nix-ld = {
         enable = true;

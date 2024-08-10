@@ -1,6 +1,6 @@
 { lib, ... }:
 let
-  users = [ "ryan" "helen" ];
+  users = [ "ryan" "helen" "nixos" ];
   common = builtins.map (name: (import ./common name)) users;
   custom = builtins.map (name: (import ./${name} name)) users;
 in

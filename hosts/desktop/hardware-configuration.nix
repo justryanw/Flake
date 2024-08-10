@@ -26,10 +26,10 @@
       fsType = "ext4";
     };
 
-    "/home/Media" = {
-      device = "/dev/disk/by-uuid/d08f20ab-597c-4f63-87e5-6afb6a05b787";
-      fsType = "btrfs";
-    };
+#    "/home/Media" = {
+#      device = "/dev/disk/by-uuid/d08f20ab-597c-4f63-87e5-6afb6a05b787";
+#      fsType = "btrfs";
+#    };
 
     "/var/lib/libvirt/images" = {
       device = "/home/ryan/images";

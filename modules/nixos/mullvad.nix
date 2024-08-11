@@ -22,7 +22,7 @@
           content = ''
             define EXCLUDED_IPS = {
               202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9,
-              202:8699:42dd:e354:50c5:5a7e:610b:1a18
+              202:8699:42dd:e354:50c5:5a7e:610b:1a18,
               200:2cf:8be6:89d7:60a7:b022:7cf0:97a9
             }
 

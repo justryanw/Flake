@@ -31,7 +31,7 @@
     firewall = {
       extraCommands = "";
       extraStopCommands = "";
-      extraInputRules = "ip6 saddr 202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9 accept";
+      # extraInputRules = "ip6 saddr 202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9 accept";
     };
     nftables = {
       enable = true;

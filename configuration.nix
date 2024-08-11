@@ -7,6 +7,7 @@
       amd.enable = lib.mkDefault true;
       gaming.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
+      mullvad.enable = lib.mkDefault true;
     };
 
     nix.settings = {

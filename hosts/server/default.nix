@@ -11,6 +11,17 @@
     amd.enable = false;
   };
 
-  networking.hostName = "server";
+  networking = {
+    hostName = "server";
+
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        IPv6.Enabled = true;
+        Settings.AutoConnect = true;
+      };
+    };
+  };
+
   system.stateVersion = "24.11";
 }

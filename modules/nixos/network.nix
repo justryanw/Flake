@@ -38,8 +38,8 @@
         hosts = lib.mapAttrs' (name: { ip, ... }: lib.nameValuePair ip [ name ]) config.modules.network.hosts;
 
         firewall = {
-          extraCommands = lib.concatStringsSep "\n" iptablesRules;
-          extraStopCommands = lib.concatStringsSep "\n" iptalbesStopRules;
+          extraCommands = lib.mkDefault (lib.concatStringsSep "\n" iptablesRules);
+          extraStopCommands = lib.mkDefault (lib.concatStringsSep "\n" iptalbesStopRules);
         };
       };
     };

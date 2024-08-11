@@ -12,6 +12,10 @@
       # mullvad lan set allow
       services.mullvad-vpn.enable = true;
 
+      # exclude steam game
+      # mullvad-exculde %command%
+
+
       # TODO setup mappigs for all devices
       # Exclude yggdrasil from being blocked by mullvad
       networking.nftables = {

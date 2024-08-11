@@ -16,8 +16,8 @@
       fsType = "ext4";
     };
 
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/970E-8A73";
+    "/boot" = {
+      device = "/dev/disk/by-uuid/78E7-B3A9";
       fsType = "vfat";
     };
 

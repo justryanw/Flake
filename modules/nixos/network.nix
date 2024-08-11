@@ -5,6 +5,7 @@
         default = {
           desktop = { ip = "202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9"; isV4 = false; };
           laptop = { ip = "202:8699:42dd:e354:50c5:5a7e:610b:1a18"; isV4 = false; };
+          server = { ip = "200:2cf:8be6:89d7:60a7:b022:7cf0:97a9"; isV4 = false; };
           work = { ip = "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd"; isV4 = false; };
           vm = { ip = "200:5ec2:56e1:400a:a0e6:3266:d737:d89d"; isV4 = false; };
           kevin = { ip = "200:79ec:fa57:9588:9683:775e:d0ad:c6b9"; isV4 = false; };

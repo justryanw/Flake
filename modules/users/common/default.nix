@@ -33,6 +33,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGg4nR3v4p0/0/8hKsIqRy2YGFAvMlGuDXCDGuA++FR nix-on-droid@localhost"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPJk8jNtogRebXhF3m3iA2A7KsYNT7DPdCfpbP6Y09Zq ryan@server"
       ];
     };
   };

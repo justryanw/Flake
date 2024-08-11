@@ -7,5 +7,6 @@
     ./yggdrasil.nix
     ./network.nix
     ./amd.nix
+    ./mullvad.nix
   ];
 }

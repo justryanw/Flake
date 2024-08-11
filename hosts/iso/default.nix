@@ -31,6 +31,8 @@ in
     wireless.enable = lib.mkImageMediaOverride false;
   };
 
+  i18n.supportedLocales = [ "all" ];
+
   services = {
     displayManager.autoLogin = {
       enable = true;

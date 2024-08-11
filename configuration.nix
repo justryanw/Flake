@@ -35,6 +35,8 @@
         enable = true;
         package = pkgs.nix-ld-rs;
       };
+
+      dconf.enable = true;
     };
 
     services.openssh = {

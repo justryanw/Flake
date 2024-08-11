@@ -39,8 +39,8 @@
         };
       };
     })
-    (lib.mkIf (config.modules.mullvad.enable && !config.modules.graphics.enable) {
-      services.mullvad-vpn.package = pkgs.mullvad;
+    (lib.mkIf (config.modules.mullvad.enable && config.modules.graphics.enable) {
+      services.mullvad-vpn.package = pkgs.mullvad-vpn;
     })
   ];
 }

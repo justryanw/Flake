@@ -22,10 +22,15 @@
       };
     };
 
+    # extra(stop)Commands arent compatible with nftables
+    # this setup is working but now blocked by nixos firewall instead of mullvad becase extracommands disabled
+    # possible use "firewall.extraInputRules" instead of extraCommand to allow own ips
+
     # Exclude yggdrasil from being blocked by mullvad
     firewall = {
       extraCommands = "";
       extraStopCommands = "";
+      extraInputRules = "ip6 daddr 200::/7 accept";
     };
     nftables = {
       enable = true;

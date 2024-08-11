@@ -14,7 +14,7 @@
 
       # TODO setup mappigs for all devices
       # Exclude yggdrasil from being blocked by mullvad
-      nftables = {
+      networking.nftables = {
         enable = true;
         tables.excludeTraffic = {
           name = "excludeTraffic";

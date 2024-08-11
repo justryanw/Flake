@@ -37,11 +37,11 @@
       networking = {
         hosts = lib.mapAttrs' (name: { ip, ... }: lib.nameValuePair ip [ name ]) config.modules.network.hosts;
 
+        nftables.enable = true;
+
         firewall = {
           # extraCommands = lib.mkDefault (lib.concatStringsSep "\n" iptablesRules);
           # extraStopCommands = lib.mkDefault (lib.concatStringsSep "\n" iptalbesStopRules);
-
-          nftables.enable = true;
 
           # TODO setup mappigs for all devices
           extraInputRules = ''

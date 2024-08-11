@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -21,6 +21,11 @@
         Settings.AutoConnect = true;
       };
     };
+  };
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad;
   };
 
   system.stateVersion = "24.11";

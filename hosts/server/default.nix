@@ -6,6 +6,7 @@
 
   modules = {
     gaming.enable = false;
+    gnome.enable = false;
     users.helen.enable = false;
     amd.enable = false;
   };

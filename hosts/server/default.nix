@@ -58,6 +58,11 @@
     };
   };
 
+  # Mullvad manual setup (TODO automate)
+  # mullvad account login NUM
+  # mullvad auto-connect set on
+  # mullvad lockdown-mode set on
+  # mullvad lan set allow
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad;

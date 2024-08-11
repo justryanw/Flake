@@ -24,8 +24,8 @@
 
     # Exclude yggdrasil from being blocked by mullvad
     firewall = {
-      extraCommands = null;
-      extraStopCommands = null;
+      extraCommands = "";
+      extraStopCommands = "";
     };
     nftables = {
       enable = true;

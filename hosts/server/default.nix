@@ -39,9 +39,14 @@
         name = "excludeTraffic";
         family = "inet";
         content = ''
+          define EXCLUDED_IPS = {
+            202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9,
+            202:8699:42dd:e354:50c5:5a7e:610b:1a18
+          }
+
           chain allowIncomming {
             type filter hook input priority -100; policy accept;
-            ip6 saddr 202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+            ip6 saddr $EXCLUDED_IPS ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
           }
 
           chain excludeOutgoing {

@@ -7,9 +7,10 @@
     (lib.mkIf config.modules.mullvad.enable {
       # Mullvad manual setup (TODO automate)
       # mullvad account login NUM
+      # mullvad connect
       # mullvad auto-connect set on
-      # mullvad lockdown-mode set on
       # mullvad lan set allow
+      # mullvad lockdown-mode set on
       services.mullvad-vpn.enable = true;
 
       # exclude steam game

@@ -11,9 +11,9 @@ Replace `/dev/DISK` with name of disk
   sudo mkfs.ext4 -L nixos /dev/DISK1
   sudo mkfs.fat -F 32 -n boot /dev/DISK2
 
-  mount /dev/disk/by-label/nixos /mnt
-  mkdir -p /mnt/boot
-  mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
+  sudo mount /dev/disk/by-label/nixos /mnt
+  sudo mkdir -p /mnt/boot
+  sudo mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
 
 ### Useful Commands
@@ -22,7 +22,7 @@ Replace `/dev/DISK` with name of disk
   lsblk -dno UUID /dev/DISK1
 
   # Get hardware config
-  nixos-generate-config --show-hardware-config
+  nixos-generate-config --root /mnt --show-hardware-config
 ```
 
 ### Install

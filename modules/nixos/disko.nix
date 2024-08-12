@@ -1,14 +1,19 @@
 { self, ... }: {
-  imports = [ self.inputs.nixosModules.disko ];
+  imports = [ self.inputs.disko.nixosModules.disko ];
 
   disko.devices.disk.main = {
     type = "disk";
     content = {
       type = "gpt";
       partitions = {
+        MBR = {
+          type = "EF02";
+          size = "1M";
+          priority = 1;
+        };
         ESP = {
           type = "EF00";
-          size = "512M";
+          size = "500M";
           content = {
             type = "filesystem";
             format = "vfat";

@@ -6,9 +6,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       hosts = [ "desktop" "laptop" "iso" "server" ];
       system = "x86_64-linux";
@@ -16,7 +21,7 @@
 
       createSystem = host: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self; };
         modules = [
           home-manager.nixosModules.default
           host

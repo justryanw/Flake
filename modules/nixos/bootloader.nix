@@ -4,19 +4,19 @@
   };
 
   config = lib.mkIf config.modules.grub.enable {
-    boot.loader = {
-      efi.canTouchEfiVariables = true;
-
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        extraEntries = ''
-          menuentry 'System setup' $menuentry_id_option 'uefi-firmware' {
-            fwsetup
-          }
-        '';
-      };
+    boot.loader.grub = {
+      enable = true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
+      extraEntries = ''
+        menuentry 'Reboot into BIOS' $menuentry_id_option 'uefi-firmware' {
+          fwsetup
+        }
+        menuentry 'Shutdown' {
+          halt
+        }
+      '';
     };
   };
 }

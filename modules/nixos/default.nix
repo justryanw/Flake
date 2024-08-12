@@ -8,5 +8,6 @@
     ./network.nix
     ./amd.nix
     ./mullvad.nix
+    ./disko.nix
   ];
 }

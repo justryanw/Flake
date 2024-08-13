@@ -4,7 +4,11 @@
   };
 
   config = lib.mkIf config.modules.graphics.enable {
-    services.xserver.enable = true;
+    services.xserver = {
+      enable = true;
+      xkb.layout = "gb";
+    };
+
     hardware.pulseaudio.enable = true;
   };
 }

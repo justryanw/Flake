@@ -17,7 +17,7 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    console.keyMap = "gb";
+    console.keyMap = "uk";
 
     security = {
       sudo.wheelNeedsPassword = false;

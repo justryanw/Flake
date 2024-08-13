@@ -61,7 +61,10 @@
       };
       "org/gnome/desktop/calendar".show-weekdate = true;
       "org/gtk/settings/file-chooser".clock-format = "12h";
-      "org/gnome/desktop/input-sources".xkb-options = [ "caps:escape" ];
+      "org/gnome/desktop/input-sources" = {
+        xkb-options = [ "caps:escape" ];
+        sources = [ (lib.hm.gvariant.mkTuple [ "xkb" "gb" ]) ];
+      };
       "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
     };
   };

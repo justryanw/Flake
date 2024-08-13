@@ -6,7 +6,7 @@
           desktop = { ip = "200:902:9729:125:a8d3:eca2:d641:4a9b "; isV4 = false; };
           laptop = { ip = "202:8699:42dd:e354:50c5:5a7e:610b:1a18"; isV4 = false; };
           server = { ip = "202:bd8a:d171:53b9:deb0:7ac4:3257:80f0"; isV4 = false; };
-          usb = { ip = "201:54db:4649:3182:748:a105:82c0:990"; isV4 = false; };
+          usb = { ip = "206:f181:200:d9af:a582:9074:daba:f2ff"; isV4 = false; };
           work = { ip = "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd"; isV4 = false; };
           vm = { ip = "200:5ec2:56e1:400a:a0e6:3266:d737:d89d"; isV4 = false; };
           kevin = { ip = "200:79ec:fa57:9588:9683:775e:d0ad:c6b9"; isV4 = false; };
@@ -46,10 +46,10 @@
 
           # TODO setup mappigs for all devices
           extraInputRules = ''
-            ip6 saddr 200:902:9729:125:a8d3:eca2:d641:4a9b  accept
+            ip6 saddr 200:902:9729:125:a8d3:eca2:d641:4a9b accept
             ip6 saddr 202:8699:42dd:e354:50c5:5a7e:610b:1a18 accept
             ip6 saddr 202:bd8a:d171:53b9:deb0:7ac4:3257:80f0 accept
-            ip6 saddr 201:54db:4649:3182:748:a105:82c0:990 accept
+            ip6 saddr 206:f181:200:d9af:a582:9074:daba:f2ff accept
           '';
         };
       };

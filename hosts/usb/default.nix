@@ -9,6 +9,10 @@
     amd.enable = false;
   };
 
+  disko.devices.disk.main.device = "sda";
+
+  services.qemuGuest.enable = true;
+
   networking.hostName = "usb";
 
   system.stateVersion = "24.11";

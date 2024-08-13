@@ -9,7 +9,7 @@
     amd.enable = false;
   };
 
-  disko.devices.disk.main.device = "sda";
+  disko.devices.disk.main.device = "/dev/sda";
 
   services.qemuGuest.enable = true;
 

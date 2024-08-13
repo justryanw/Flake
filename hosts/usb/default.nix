@@ -24,6 +24,7 @@
   environment = {
     variables.GC_INITIAL_HEAP_SIZE = "1M";
 
+    # TODO fix
     systemPackages = with self.packages.${system}; [
       write-usb
       run-usb

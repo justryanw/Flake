@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
   ];
 
+  modules.disko.enable = true;
+
   disko.devices.disk.${config.networking.hostName}.device = "/dev/nvme1n1";
 
   boot.loader.grub.gfxmodeEfi = "3440x1440";

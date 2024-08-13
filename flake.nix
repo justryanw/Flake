@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, disko, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
     let
       hosts = [ "desktop" "laptop" "usb" "server" ];
       system = "x86_64-linux";
@@ -39,36 +39,31 @@
           hosts);
 
       packages.${system} = {
-        gen-iso = pkgs.writeShellScriptBin "gen-iso" ''
-          ${pkgs.nixos-generators}/bin/nixos-generate --format iso --flake .#iso -o result
+        write-usb = pkgs.writeShellScriptBin "write-usb" ''
+          sudo ${disko}/disko-install --flake ${self}#usb --disk usb $1
         '';
-        run-usb = pkgs.writeShellScriptBin "gen-iso" ''
-          OVMF=$(nix build nixpkgs#OVMF.fd --no-link --print-out-paths)
-          VARS_FILE="$HOME/OVMF_VARS.fd"
-
-          # Check if VARS_FILE exists, if not, create it
-          if [ ! -f "$VARS_FILE" ]; then
-            cp "$OVMF/FV/OVMF_VARS.fd" "$VARS_FILE"
-          fi
-
+        run-usb = pkgs.writeShellScriptBin "run-usb" ''
           sudo ${pkgs.qemu_kvm}/bin/qemu-kvm -enable-kvm \
-            -m 4G \
+            -m 8G \
             -smp cores=4 \
-            -bios "$OVMF/FV/OVMF.fd" \
-            -drive if=pflash,format=raw,readonly=on,file="$OVMF/FV/OVMF_CODE.fd" \
-            -drive if=pflash,format=raw,file="$VARS_FILE" \
-            -drive file=/dev/sda,format=raw,if=none,id=nvm \
-            -usb \
-            -device usb-ehci,id=ehci \
-            -device usb-storage,bus=ehci.0,drive=usbstick \
-            -drive if=none,id=usbstick,file=/dev/sda,format=raw \
-            -net none \
-            -debugcon file:debug.log -global isa-debugcon.iobase=0x402 \
-            -monitor stdio
+            -bios "${pkgs.OVMF.fd}/FV/OVMF.fd" \
+            -hda $1
         '';
         check-uefi = pkgs.writeShellScriptBin "check-uefi" ''
-          [ -d /sys/firmware/efi ] && echo UEFI || echo BIOS
+          [ -d /sys/firmware/efi ] && echo "UEFI Boot Detected" || echo "Legacy BIOS Boot Detected"
         '';
+        install-nixos = pkgs.writeShellScriptBin "install-nixos" ''
+          sudo ${disko}/disko-install --write-efi-boot-entries --flake ${self}#$1 --disk $1 $2
+        '';
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with self.packages.${system}; [
+          write-usb
+          run-usb
+          check-uefi
+          install-nixos
+        ];
       };
     };
 }

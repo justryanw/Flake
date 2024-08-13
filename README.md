@@ -13,8 +13,8 @@ Replace `/dev/sda` with name of disk
 
 ### Useful Commands
 ```bash
-  # Get UUID of disk
-  lsblk -dno UUID /dev/DISK1
+  # Get IDS of disks
+  lsblk -o +ID-LINK
 
   # Get hardware config
   nixos-generate-config --no-filesystems --show-hardware-config

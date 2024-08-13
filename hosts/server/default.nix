@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
   ];
 
-  disko.devices.disk.${config.networking.hostName}.device = "/dev/nvme0n1";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
 
   modules = {
     gaming.enable = false;

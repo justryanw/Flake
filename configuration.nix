@@ -17,6 +17,8 @@
 
     nixpkgs.config.allowUnfree = true;
 
+    console.layout = "gb";
+
     security = {
       sudo.wheelNeedsPassword = false;
     };

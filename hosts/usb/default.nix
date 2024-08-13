@@ -11,7 +11,12 @@
 
   disko.devices.disk.main.device = "/dev/sda";
 
-  services.qemuGuest.enable = true;
+  services = {
+    qemuGuest.enable = true;
+    services.spice-vdagentd.enable = true;
+  };
+
+  services.xserver.videoDrivers = [ "qxl" ];
 
   networking.hostName = "usb";
 

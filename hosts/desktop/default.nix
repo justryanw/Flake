@@ -6,7 +6,7 @@
 
   modules.disko.enable = true;
 
-  disko.devices.disk.${config.networking.hostName}.device = "/dev/nvme1n1";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";
 
   boot.loader.grub.gfxmodeEfi = "3440x1440";
 

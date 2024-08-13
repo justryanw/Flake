@@ -3,7 +3,7 @@
     modules.network = {
       hosts = lib.mkOption {
         default = {
-          desktop = { ip = "202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9"; isV4 = false; };
+          desktop = { ip = "200:902:9729:125:a8d3:eca2:d641:4a9b "; isV4 = false; };
           laptop = { ip = "202:8699:42dd:e354:50c5:5a7e:610b:1a18"; isV4 = false; };
           server = { ip = "202:bd8a:d171:53b9:deb0:7ac4:3257:80f0"; isV4 = false; };
           usb = { ip = "201:54db:4649:3182:748:a105:82c0:990"; isV4 = false; };
@@ -46,7 +46,7 @@
 
           # TODO setup mappigs for all devices
           extraInputRules = ''
-            ip6 saddr 202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9 accept
+            ip6 saddr 200:902:9729:125:a8d3:eca2:d641:4a9b  accept
             ip6 saddr 202:8699:42dd:e354:50c5:5a7e:610b:1a18 accept
             ip6 saddr 202:bd8a:d171:53b9:deb0:7ac4:3257:80f0 accept
             ip6 saddr 201:54db:4649:3182:748:a105:82c0:990 accept

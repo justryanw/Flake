@@ -26,9 +26,10 @@
           family = "inet";
           content = ''
             define EXCLUDED_IPS = {
-              202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9,
+              200:902:9729:125:a8d3:eca2:d641:4a9b,
               202:8699:42dd:e354:50c5:5a7e:610b:1a18,
-              200:2cf:8be6:89d7:60a7:b022:7cf0:97a9
+              202:bd8a:d171:53b9:deb0:7ac4:3257:80f0,
+              201:54db:4649:3182:748:a105:82c0:990
             }
 
             chain allowIncomming {

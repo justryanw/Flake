@@ -1,19 +1,14 @@
 # Install Guide
-Replace `/dev/DISK` with name of disk
+Replace `/dev/sda` with name of disk
 
-### Partition & Format Disk
+### Install to USB
 ```bash
-  sudo parted /dev/DISK -- mklabel gpt
-  sudo parted /dev/DISK -- mkpart root ext4 512MB 100%
-  sudo parted /dev/DISK -- mkpart ESP fat32 0% 512MB
-  sudo parted /dev/DISK -- set 2 esp on
+  sudo nix run 'github:nix-community/disko#disko-install' -- --flake .#usb --disk main /dev/sda
+```
 
-  sudo mkfs.ext4 -L nixos /dev/DISK1
-  sudo mkfs.fat -F 32 -n boot /dev/DISK2
-
-  sudo mount /dev/disk/by-label/nixos /mnt
-  sudo mkdir -p /mnt/boot
-  sudo mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
+### Run USB with QEMU
+```bash
+  sudo nix run nixpkgs#qemu_kvm -- -enable-kvm -smp cores=4,threads=2 -m 8G -hda /dev/sda
 ```
 
 ### Useful Commands
@@ -28,7 +23,7 @@ Replace `/dev/DISK` with name of disk
 ### Install
 ```bash
   # Add host and hardware config to flake first
-  sudo nixos-install --no-root-passwd --flake PATH#hostname
+  sudo nix run 'github:nix-community/disko#disko-install' -- --write-efi-boot-entries --flake .#hostname --disk main /dev/sda
 ```
 
 

@@ -8,6 +8,7 @@
     gaming.enable = false;
     users.helen.enable = false;
     amd.enable = false;
+    disko.enable = true;
   };
 
   disko.devices.disk.main.device = "/dev/sda";

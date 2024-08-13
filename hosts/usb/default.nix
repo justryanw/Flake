@@ -9,10 +9,7 @@
     amd.enable = false;
   };
 
-  disko.devices.disk = {
-    main.device = "/dev/sda";
-    root.name = builtins.substring 0 10 (builtins.hashString "sha256" config.disko.devices.disk.root.device);
-  };
+  disko.devices.disk.main.device = "/dev/sda";
 
   services = {
     qemuGuest.enable = true;

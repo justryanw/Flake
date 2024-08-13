@@ -53,7 +53,7 @@
           [ -d /sys/firmware/efi ] && echo "UEFI Boot Detected" || echo "Legacy BIOS Boot Detected"
         '';
         install-nixos = pkgs.writeShellScriptBin "install-nixos" ''
-          sudo ${disko}/disko-install --write-efi-boot-entries --flake ${self}#$1 --disk $1 $2
+          sudo ${disko}/disko-install --flake ${self}#$1 --disk $1 $2
         '';
       };
 

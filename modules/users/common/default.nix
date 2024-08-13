@@ -34,6 +34,7 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKI+QPIXLlXQPsyu5gVGVocO/xMDm7NNd9uJdhOmE4FZ ryan@server"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA4kZYqe2d4BUllwNNBT1vydbrObxFs4lSkYDkkTRq/q ryan@usb"
       ];
     };
   };

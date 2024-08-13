@@ -6,6 +6,7 @@
           desktop = { ip = "202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9"; isV4 = false; };
           laptop = { ip = "202:8699:42dd:e354:50c5:5a7e:610b:1a18"; isV4 = false; };
           server = { ip = "200:e307:78aa:534c:4a3f:1343:6206:aa3c"; isV4 = false; };
+          usb = { ip = "201:12d8:7ba7:ebfb:ff5c:c5a:4089:5047"; isV4 = false; };
           work = { ip = "200:d13b:15e2:865:7c39:ad3f:fff6:cbbd"; isV4 = false; };
           vm = { ip = "200:5ec2:56e1:400a:a0e6:3266:d737:d89d"; isV4 = false; };
           kevin = { ip = "200:79ec:fa57:9588:9683:775e:d0ad:c6b9"; isV4 = false; };
@@ -48,6 +49,7 @@
             ip6 saddr 202:9cf8:d9b1:83e5:f832:c74e:8fb7:e6c9 accept
             ip6 saddr 202:8699:42dd:e354:50c5:5a7e:610b:1a18 accept
             ip6 saddr 200:e307:78aa:534c:4a3f:1343:6206:aa3c accept
+            ip6 saddr 201:12d8:7ba7:ebfb:ff5c:c5a:4089:5047 accept
           '';
         };
       };

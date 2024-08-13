@@ -17,7 +17,7 @@
     let
       hosts = [ "desktop" "laptop" "usb" "server" ];
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system self; };
 
       createSystem = host: nixpkgs.lib.nixosSystem {
         inherit system;

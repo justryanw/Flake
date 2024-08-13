@@ -12,6 +12,7 @@
     users.helen.enable = false;
     amd.enable = false;
     disko.enable = true;
+    homepage.enable = true;
   };
 
   networking = {

@@ -9,5 +9,6 @@
     ./amd.nix
     ./mullvad.nix
     ./disko.nix
+    ./homepage.nix
   ];
 }

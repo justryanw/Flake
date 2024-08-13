@@ -1,4 +1,4 @@
-{ self, config, system, ... } @ inputs: {
+{ config, ... } @ inputs: {
   imports = [
     ../../configuration.nix
     ./all-hardware.nix
@@ -21,17 +21,7 @@
 
   boot.initrd.availableKernelModules = [ "9p" "9pnet_virtio" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
 
-  environment = {
-    variables.GC_INITIAL_HEAP_SIZE = "1M";
-
-    # TODO fix
-    systemPackages = with self.packages.${system}; [
-      write-usb
-      run-usb
-      check-uefi
-      install-nixos
-    ];
-  };
+  environment.variables.GC_INITIAL_HEAP_SIZE = "1M";
 
   networking.hostName = "usb";
 

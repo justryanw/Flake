@@ -30,7 +30,6 @@
               202:8699:42dd:e354:50c5:5a7e:610b:1a18,
               202:bd8a:d171:53b9:deb0:7ac4:3257:80f0,
               206:f181:200:d9af:a582:9074:daba:f2ff
-
             }
 
             chain allowIncomming {

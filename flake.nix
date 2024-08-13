@@ -66,6 +66,9 @@
             -debugcon file:debug.log -global isa-debugcon.iobase=0x402 \
             -monitor stdio
         '';
+        check-uefi = pkgs.writeShellScriptBin "check-uefi" ''
+          [ -d /sys/firmware/efi ] && echo UEFI || echo BIOS
+        '';
       };
     };
 }

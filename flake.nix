@@ -42,6 +42,30 @@
         gen-iso = pkgs.writeShellScriptBin "gen-iso" ''
           ${pkgs.nixos-generators}/bin/nixos-generate --format iso --flake .#iso -o result
         '';
+        run-usb = pkgs.writeShellScriptBin "gen-iso" ''
+          OVMF=$(nix build nixpkgs#OVMF.fd --no-link --print-out-paths)
+          VARS_FILE="$HOME/OVMF_VARS.fd"
+
+          # Check if VARS_FILE exists, if not, create it
+          if [ ! -f "$VARS_FILE" ]; then
+            cp "$OVMF/FV/OVMF_VARS.fd" "$VARS_FILE"
+          fi
+
+          sudo ${pkgs.qemu_kvm}/bin/qemu-kvm -enable-kvm \
+            -m 4G \
+            -smp cores=4 \
+            -bios "$OVMF/FV/OVMF.fd" \
+            -drive if=pflash,format=raw,readonly=on,file="$OVMF/FV/OVMF_CODE.fd" \
+            -drive if=pflash,format=raw,file="$VARS_FILE" \
+            -drive file=/dev/sda,format=raw,if=none,id=nvm \
+            -usb \
+            -device usb-ehci,id=ehci \
+            -device usb-storage,bus=ehci.0,drive=usbstick \
+            -drive if=none,id=usbstick,file=/dev/sda,format=raw \
+            -net none \
+            -debugcon file:debug.log -global isa-debugcon.iobase=0x402 \
+            -monitor stdio
+        '';
       };
     };
 }

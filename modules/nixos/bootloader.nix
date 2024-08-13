@@ -8,7 +8,7 @@
       enable = true;
       efiSupport = true;
       efiInstallAsRemovable = true;
-      # device = "nodev";
+      device = "nodev";
       extraEntries = ''
         menuentry 'Reboot into BIOS' $menuentry_id_option 'uefi-firmware' {
           fwsetup

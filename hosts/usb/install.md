@@ -3,7 +3,7 @@ Replace `/dev/sda` with name of disk
 
 ### Install to USB
 ```bash
-  sudo nix run 'github:nix-community/disko#disko-install' -- --flake .#usb --disk main /dev/sda
+  sudo nix run 'github:nix-community/disko#disko-install' -- --flake .#usb --disk usb /dev/sda
 ```
 
 ### Run USB with QEMU
@@ -23,7 +23,7 @@ Replace `/dev/sda` with name of disk
 ### Install
 ```bash
   # Add host and hardware config to flake first
-  sudo nix run 'github:nix-community/disko#disko-install' -- --write-efi-boot-entries --flake .#hostname --disk main /dev/sda
+  sudo nix run 'github:nix-community/disko#disko-install' -- --write-efi-boot-entries --flake .#hostname --disk hostname /dev/sda
 ```
 
 

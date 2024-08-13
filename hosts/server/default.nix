@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ config, ... }: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
   ];
 
-  disko.devices.disk.main.device = "/dev/nvme0n1";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/nvme0n1";
 
   modules = {
     gaming.enable = false;

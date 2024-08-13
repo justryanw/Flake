@@ -4,7 +4,7 @@
   };
 
   config = lib.mkIf config.modules.disko.enable {
-    disko.devices.disk.main = {
+    disko.devices.disk.${config.networking.hostName} = {
       type = "disk";
       content = {
         type = "gpt";

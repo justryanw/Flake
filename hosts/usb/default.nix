@@ -1,4 +1,4 @@
-{ nixpkgs, ... } @ inputs: {
+{ config, ... } @ inputs: {
   imports = [
     ../../configuration.nix
     ./all-hardware.nix
@@ -11,7 +11,7 @@
     disko.enable = true;
   };
 
-  disko.devices.disk.main.device = "/dev/sda";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/sda";
 
   services = {
     qemuGuest.enable = true;

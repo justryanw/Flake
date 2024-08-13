@@ -55,6 +55,8 @@
         install-nixos = pkgs.writeShellScriptBin "install-nixos" ''
           sudo ${disko}/disko-install --flake ${self}#$1 --disk $1 $2
         '';
+        ygg-ip = pkgs.writeScriptBin "ygg-ip" "yggdrasilctl getself | grep 'IPv6 address' | awk '{print $NF}'";
+        qr = pkgs.writeScriptBin "qr" "${pkgs.qrencode}/bin/qrencode -t ANSI";
       };
 
       devShells.${system}.default = pkgs.mkShell {
@@ -63,6 +65,8 @@
           run-usb
           check-uefi
           install-nixos
+          ygg-ip
+          qr
         ];
       };
     };

@@ -1,7 +1,7 @@
-{ nixpkgs, lib, ... }: {
+{ nixpkgs, ... } @ inputs: {
   imports = [
     ../../configuration.nix
-    "${nixpkgs}/nixos/modules/profiles/all-hardware"
+    ./all-hardware.nix
   ];
 
   modules = {
@@ -19,22 +19,11 @@
     xserver.videoDrivers = [ "qxl" ];
   };
 
-  boot.initrd = {
-    availableKernelModules = [ "9p" "9pnet_virtio" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
-    kernel.sysctl."vm.overcommit_memory" = "1";
-  };
+  boot.initrd.availableKernelModules = [ "9p" "9pnet_virtio" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
 
   environment.variables.GC_INITIAL_HEAP_SIZE = "1M";
 
-  networking = {
-    hostName = "usb";
-    wireless = {
-      enable = lib.mkDefault true;
-      userControlled.enable = true;
-    };
-  };
-
-  systemd.services.wpa_supplicant.wantedBy = lib.mkOverride 50 [ ];
+  networking.hostName = "usb";
 
   system.stateVersion = "24.11";
 }

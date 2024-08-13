@@ -1,6 +1,7 @@
-{ config, ... }: {
+{ nixpkgs, lib, ... }: {
   imports = [
     ../../configuration.nix
+    "${nixpkgs}/nixos/modules/profiles/all-hardware"
   ];
 
   modules = {
@@ -18,11 +19,21 @@
   };
 
   boot.initrd = {
-    availableKernelModules = [ "virtio_net" "virtio_pci" "virtio_mmio" "virtio_blk" "virtio_scsi" "9p" "9pnet_virtio" "xhci_pci" "nvme" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-    kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" "virtio_gpu" ];
+    availableKernelModules = [ "9p" "9pnet_virtio" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+    kernel.sysctl."vm.overcommit_memory" = "1";
   };
 
-  networking.hostName = "usb";
+  environment.variables.GC_INITIAL_HEAP_SIZE = "1M";
+
+  networking = {
+    hostName = "usb";
+    wireless = {
+      enable = lib.mkDefault true;
+      userControlled.enable = true;
+    };
+  };
+
+  systemd.services.wpa_supplicant.wantedBy = lib.mkOverride 50 [ ];
 
   system.stateVersion = "24.11";
 }

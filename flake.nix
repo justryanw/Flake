@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, disko, ... } @ inputs:
     let
       hosts = [ "desktop" "laptop" "usb" "server" ];
       system = "x86_64-linux";
@@ -21,9 +21,10 @@
 
       createSystem = host: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs self; };
+        specialArgs = { inherit inputs; };
         modules = [
           home-manager.nixosModules.default
+          disko.nixosModules.default
           host
         ];
       };

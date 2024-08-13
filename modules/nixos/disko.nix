@@ -1,6 +1,4 @@
-{ self, lib, config, ... }: {
-  imports = [ self.inputs.disko.nixosModules.disko ];
-
+{ lib, config, ... }: {
   options.modules.disko = {
     enable = lib.mkEnableOption "Enable disko";
   };

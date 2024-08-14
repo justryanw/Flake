@@ -10,5 +10,6 @@
     ./mullvad.nix
     ./disko.nix
     ./homepage.nix
+    ./gaming-vm.nix
   ];
 }

@@ -25,6 +25,7 @@
     enable = true;
     # View usage
     # sudo nix shell nixpkgs#intel-gpu-tools -c intel_gpu_top
+    # sudo nix run nixpkgs#nvtopPackages.intel
     extraPackages = with pkgs; [
       # VAAPI
       intel-media-driver

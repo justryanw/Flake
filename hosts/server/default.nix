@@ -22,8 +22,18 @@
 
   hardware.graphics = {
     enable = true;
+    # View usage
+    # sudo nix shell nixpkgs#intel-gpu-tools -c intel_gpu_top
     extraPackages = with pkgs; [
+      # VAAPI
+      intel-media-driver
+      # intel-vaapi-driver
+      vaapiVdpau
+      libvdpau-va-gl
+
+      # Tonemapping
       intel-compute-runtime
+      # QSV
       intel-media-sdk
     ];
   };

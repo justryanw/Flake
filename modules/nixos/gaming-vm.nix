@@ -1,3 +1,6 @@
+# Import VM
+# sudo virsh define --file win-10.xml
+
 { pkgs, config, lib, gpuIDs, ... }:
 let
   looking-glass-client-overlay = (final: prev: {
@@ -82,5 +85,8 @@ in
     services = {
       spice-vdagentd.enable = true;
     };
+
+    # https://github.com/NixOS/nixpkgs/issues/263359
+    networking.firewall.interfaces."virbr*".allowedUDPPorts = [ 53 67 ];
   };
 }

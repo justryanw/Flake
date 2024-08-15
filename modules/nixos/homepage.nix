@@ -7,7 +7,6 @@
       widgets = [
         {
           resources = {
-            label = "System";
             cpu = true;
             memory = true;
             refresh = 500;

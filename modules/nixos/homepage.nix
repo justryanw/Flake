@@ -25,8 +25,8 @@
         {
           glances = {
             url = "http://[::1]:61208";
-            cpu = true;
-            mem = true;
+            cpu = false;
+            mem = false;
             label = "Data";
             disk = "/data";
             version = 4;

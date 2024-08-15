@@ -27,7 +27,6 @@
       enable = true;
       user = "ryan";
       group = "data";
-      dataDir = "/data/jellyfin";
     };
 
     transmission = {
@@ -41,6 +40,18 @@
       };
       webHome = pkgs.flood-for-transmission;
     };
+
+    radarr = {
+      enable = true;
+      user = "ryan";
+      group = "data";
+    };
+
+    sonarr = {
+      enable = true;
+      user = "ryan";
+      group = "data";
+    };
   };
 
   users = {
@@ -51,6 +62,10 @@
   systemd.tmpfiles.rules = [
     "d /data 775 root data"
     "d /data/media/torrents 775 ryan data"
+    "d /data/media/torrents/radarr 775 ryan data"
+    "d /data/media/torrents/sonarr 775 ryan data"
+    "d /data/media/movies 775 ryan data"
+    "d /data/media/shows 775 ryan data"
   ];
 
   networking = {

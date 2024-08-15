@@ -53,6 +53,7 @@
       group = "data";
       settings = {
         download-dir = "/data/media/torrents";
+        incomplete-dir = "/data/media/torrents/incomplete";
         rpc-bind-address = "::";
         rpc-whitelist-enabled = false;
       };
@@ -80,6 +81,7 @@
   systemd.tmpfiles.rules = [
     "d /data 775 root data"
     "d /data/media/torrents 775 ryan data"
+    "d /data/media/torrents/incomplete 775 ryan data"
     "d /data/media/torrents/radarr 775 ryan data"
     "d /data/media/torrents/sonarr 775 ryan data"
     "d /data/media/movies 775 ryan data"

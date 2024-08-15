@@ -20,6 +20,14 @@
     fsType = "bcachefs";
   };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-sdk
+    ];
+  };
+
   services = {
     # Enable IPv6 and remote access from cli
     # https://forum.jellyfin.org/printthread.php?tid=7357

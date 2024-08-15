@@ -36,11 +36,13 @@
             chain allowIncomming {
               type filter hook input priority -100; policy accept;
               ip6 saddr $EXCLUDED_IPS ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+              ip saddr 192.168.0.0/24 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
             }
 
             chain excludeOutgoing {
               type route hook output priority -100; policy accept;
               ip6 daddr 200::/7 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+              ip daddr 192.168.0.0/24 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
             }
           '';
         };

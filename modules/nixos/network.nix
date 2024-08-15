@@ -51,6 +51,7 @@
             ip6 saddr 202:bd8a:d171:53b9:deb0:7ac4:3257:80f0 accept
             ip6 saddr 206:f181:200:d9af:a582:9074:daba:f2ff accept
             ip6 saddr 201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0 accept
+            ip saddr 192.168.0.0/24 accept
           '';
         };
       };

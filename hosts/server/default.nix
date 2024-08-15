@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -19,6 +19,39 @@
     device = "/dev/disk/by-uuid/40d5fc81-5852-42d1-8bc2-befba6d438b4";
     fsType = "bcachefs";
   };
+
+  services = {
+    # Enable IPv6 and remote access from cli
+    # https://forum.jellyfin.org/printthread.php?tid=7357
+    jellyfin = {
+      enable = true;
+      user = "ryan";
+      group = "data";
+      dataDir = "/data/jellyfin";
+    };
+
+    transmission = {
+      enable = true;
+      user = "ryan";
+      group = "data";
+      settings = {
+        download-dir = "/data/media/torrents";
+        rpc-bind-address = "::";
+        rpc-whitelist-enabled = false;
+      };
+      webHome = pkgs.flood-for-transmission;
+    };
+  };
+
+  users = {
+    groups.data = { };
+    users.ryan.extraGroups = [ "data" ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /data 775 root data"
+    "d /data/media/torrents 775 ryan data"
+  ];
 
   networking = {
     hostName = "server";

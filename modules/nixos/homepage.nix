@@ -34,7 +34,23 @@
       ];
       services = [
         {
-          Group = [
+          Media = [
+            {
+              Jellyfin = {
+                icon = "jellyfin.png";
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:8096";
+              };
+            }
+            {
+              Transmission = {
+                icon = "transmission.png";
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:9091";
+              };
+            }
+          ];
+        }
+        {
+          Other = [
             {
               Router = {
                 description = "VM2601646";

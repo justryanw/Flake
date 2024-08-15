@@ -15,6 +15,11 @@
     homepage.enable = true;
   };
 
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/40d5fc81-5852-42d1-8bc2-befba6d438b4";
+    fsType = "bcachefs";
+  };
+
   networking = {
     hostName = "server";
 

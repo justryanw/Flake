@@ -23,6 +23,16 @@
           };
         }
         {
+          glances = {
+            url = "http://[::1]:61208";
+            cpu = true;
+            mem = true;
+            label = "Data";
+            disk = "/data";
+            version = 4;
+          };
+        }
+        {
           datetime = {
             format = {
               dateStyle = "long";
@@ -57,6 +67,15 @@
               Sonarr = {
                 icon = "sonarr.png";
                 href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:8989";
+              };
+            }
+          ];
+        }
+        {
+          Monitoring = [
+            {
+              Glances = {
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:61208";
               };
             }
           ];

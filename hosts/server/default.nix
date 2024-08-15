@@ -13,6 +13,7 @@
     amd.enable = false;
     disko.enable = true;
     homepage.enable = true;
+    glances.enable = true;
   };
 
   fileSystems."/data" = {

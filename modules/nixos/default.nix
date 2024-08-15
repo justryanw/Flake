@@ -11,5 +11,6 @@
     ./disko.nix
     ./homepage.nix
     ./gaming-vm.nix
+    ./glances.nix
   ];
 }

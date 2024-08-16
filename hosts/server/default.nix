@@ -73,6 +73,17 @@
       user = "ryan";
       group = "data";
     };
+
+    samba = {
+      enable = true;
+      shares.public = {
+        path = "/data";
+        "read only" = true;
+        browseable = "yes";
+        "guest ok" = "yes";
+        comment = "Public samba share.";
+      };
+    };
   };
 
   users = {

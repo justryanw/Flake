@@ -82,7 +82,7 @@
       # sudo smbpasswd -a ryan
       shares.public = {
         path = "/data";
-        "read only" = true;
+        "read only" = false;
         browseable = "yes";
         "guest ok" = "yes";
         comment = "Public samba share.";

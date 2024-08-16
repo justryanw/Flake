@@ -56,6 +56,8 @@
       settings = {
         download-dir = "/data/media/torrents";
         incomplete-dir = "/data/media/torrents/incomplete";
+        watch-dir = "/data/media/torrents/watch";
+        watch-dir-enabled = true;
         rpc-bind-address = "::";
         rpc-whitelist-enabled = false;
       };
@@ -97,6 +99,7 @@
     "d /data 775 root data"
     "d /data/media/torrents 775 ryan data"
     "d /data/media/torrents/incomplete 775 ryan data"
+    "d /data/media/torrents/watch 775 ryan data"
     "d /data/media/torrents/radarr 775 ryan data"
     "d /data/media/torrents/sonarr 775 ryan data"
     "d /data/media/movies 775 ryan data"

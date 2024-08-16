@@ -80,12 +80,21 @@
       enable = true;
       # wont let you connect to a pulbic share without a user existing
       # sudo smbpasswd -a ryan
-      shares.public = {
-        path = "/data";
-        "read only" = false;
-        browseable = "yes";
-        "guest ok" = "yes";
-        comment = "Public samba share.";
+      shares = {
+        media = {
+          path = "/data/media";
+          "read only" = true;
+          browseable = "yes";
+          "guest ok" = "yes";
+          comment = "Media share.";
+        };
+        watch = {
+          path = config.transmission.settings.watch-dir;
+          "read only" = false;
+          browseable = "yes";
+          "guest ok" = "yes";
+          comment = "Wriateable watch dir.";
+        };
       };
     };
   };

@@ -76,6 +76,8 @@
 
     samba = {
       enable = true;
+      # wont let you connect to a pulbic share without a user existing
+      # sudo smbpasswd -a ryan
       shares.public = {
         path = "/data";
         "read only" = true;

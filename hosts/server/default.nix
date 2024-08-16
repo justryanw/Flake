@@ -89,7 +89,7 @@
           comment = "Media share.";
         };
         watch = {
-          path = config.transmission.settings.watch-dir;
+          path = "/data/media/torrents/watch";
           "read only" = false;
           browseable = "yes";
           "guest ok" = "yes";

@@ -8,7 +8,7 @@
     disko.enable = true;
 
     gaming-vm = {
-      enable = true;
+      enable = false;
 
       # GTX 1070
       gpuIDs = [

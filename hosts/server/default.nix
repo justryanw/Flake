@@ -56,6 +56,8 @@
       settings = {
         download-dir = "/data/media/torrents";
         incomplete-dir = "/data/media/torrents/incomplete";
+        watch-dir = "/data/media/torrents/watch";
+        watch-dir-enabled = true;
         rpc-bind-address = "::";
         rpc-whitelist-enabled = false;
       };
@@ -73,6 +75,28 @@
       user = "ryan";
       group = "data";
     };
+
+    samba = {
+      enable = true;
+      # wont let you connect to a pulbic share without a user existing
+      # sudo smbpasswd -a ryan
+      shares = {
+        media = {
+          path = "/data/media";
+          "read only" = true;
+          browseable = "yes";
+          "guest ok" = "yes";
+          comment = "Media share.";
+        };
+        watch = {
+          path = "/data/media/torrents/watch";
+          "read only" = false;
+          browseable = "yes";
+          "guest ok" = "yes";
+          comment = "Wriateable watch dir.";
+        };
+      };
+    };
   };
 
   users = {
@@ -84,6 +108,7 @@
     "d /data 775 root data"
     "d /data/media/torrents 775 ryan data"
     "d /data/media/torrents/incomplete 775 ryan data"
+    "d /data/media/torrents/watch 775 ryan data"
     "d /data/media/torrents/radarr 775 ryan data"
     "d /data/media/torrents/sonarr 775 ryan data"
     "d /data/media/movies 775 ryan data"

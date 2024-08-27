@@ -15,7 +15,7 @@
 
   outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
     let
-      hosts = [ "desktop" "laptop" "usb" "server" ];
+      hosts = [ "desktop" "laptop" "usb" "server" "pavilion" ];
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system self; };
 

@@ -9,6 +9,7 @@ name: { pkgs, lib, config, ... } @ inputs: {
       packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         bitwarden-desktop
         vesktop
+        authenticator
       ]);
     };
   };

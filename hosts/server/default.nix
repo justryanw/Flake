@@ -76,6 +76,9 @@
       group = "data";
     };
 
+    prowlarr.enable = true;
+    jellyseerr.enable = true;
+
     samba = {
       enable = true;
       # wont let you connect to a pulbic share without a user existing

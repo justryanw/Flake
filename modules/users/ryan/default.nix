@@ -10,7 +10,10 @@ name: { pkgs, lib, config, ... } @ inputs: {
         bitwarden-desktop
         vesktop
         authenticator
+        gnome.gnome-software
       ]);
     };
+
+    services.flatpak.enable = true;
   };
 }

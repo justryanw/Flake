@@ -42,6 +42,8 @@
   virtualisation.docker.enable = true;
   environment.systemPackages = [ pkgs.docker-compose ];
 
+  hardware.flirc.enable = true;
+
   networking.hostName = "desktop";
   system.stateVersion = "24.11";
 }

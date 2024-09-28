@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -38,6 +38,11 @@
     gfxmodeEfi = "3440x1440";
     useOSProber = true;
   };
+
+  virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.docker-compose ];
+
+  hardware.flirc.enable = true;
 
   networking.hostName = "desktop";
   system.stateVersion = "24.11";

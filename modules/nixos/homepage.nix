@@ -51,6 +51,12 @@
               };
             }
             {
+              Jellyseerr = {
+                icon = "jellyseerr.png";
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:5055";
+              };
+            }
+            {
               Transmission = {
                 icon = "transmission.png";
                 href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:9091";
@@ -66,6 +72,12 @@
               Sonarr = {
                 icon = "sonarr.png";
                 href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:8989";
+              };
+            }
+            {
+              Prowlarr = {
+                icon = "prowlarr.png";
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:9696";
               };
             }
           ];

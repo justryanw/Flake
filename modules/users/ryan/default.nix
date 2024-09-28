@@ -9,7 +9,11 @@ name: { pkgs, lib, config, ... } @ inputs: {
       packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         bitwarden-desktop
         vesktop
+        authenticator
+        gnome.gnome-software
       ]);
     };
+
+    services.flatpak.enable = true;
   };
 }

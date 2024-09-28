@@ -21,6 +21,8 @@ in
       packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
         firefox
         libreoffice
+        hunspell
+        hunspellDicts.en_GB-large
       ]);
 
       openssh.authorizedKeys.keys = [

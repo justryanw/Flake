@@ -83,7 +83,7 @@
       enable = true;
       # wont let you connect to a pulbic share without a user existing
       # sudo smbpasswd -a ryan
-      shares = {
+      settings = {
         media = {
           path = "/data/media";
           "read only" = true;
@@ -99,6 +99,12 @@
           comment = "Wriateable watch dir.";
         };
       };
+    };
+
+    immich = {
+      enable = true;
+      mediaLocation = "/data/immich";
+      host = "::";
     };
   };
 
@@ -116,6 +122,7 @@
     "d /data/media/torrents/sonarr 775 ryan data"
     "d /data/media/movies 775 ryan data"
     "d /data/media/shows 775 ryan data"
+    "d /data/immich 775 immich immich"
   ];
 
   networking = {

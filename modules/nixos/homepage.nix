@@ -80,6 +80,12 @@
                 href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:9696";
               };
             }
+            {
+              Immich = {
+                icon = "immich.png";
+                href = "http://[202:bd8a:d171:53b9:deb0:7ac4:3257:80f0]:3001";
+              };
+            }
           ];
         }
         {

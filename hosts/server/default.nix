@@ -110,7 +110,10 @@
 
   users = {
     groups.data = { };
-    users.ryan.extraGroups = [ "data" ];
+    users = {
+      ryan.extraGroups = [ "data" ];
+      immich.extraGroups = [ "video" "render" ];
+    };
   };
 
   systemd.tmpfiles.rules = [

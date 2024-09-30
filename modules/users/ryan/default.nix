@@ -14,6 +14,6 @@ name: { pkgs, lib, config, ... } @ inputs: {
       ]);
     };
 
-    services.flatpak.enable = true;
+    services.flatpak.enable = lib.mkIf config.modules.gnome.enable true;
   };
 }

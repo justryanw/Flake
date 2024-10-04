@@ -1,5 +1,5 @@
 name: { pkgs, lib, config, ... } @ inputs: {
-  imports = [ (import ./home.nix name)];
+  imports = [ (import ./home.nix name) ];
 
   config = lib.mkIf config.modules.users.${name}.enable {
     users.users.${name} = {
@@ -10,7 +10,7 @@ name: { pkgs, lib, config, ... } @ inputs: {
         bitwarden-desktop
         vesktop
         authenticator
-        gnome.gnome-software
+        gnome-software
       ]);
     };
 

@@ -16,6 +16,8 @@
       hostName = "server";
       system = "x86_64-linux";
       protocol = "ssh-ng";
+      sshUser = "ryan";
+      sshKey = "/home/ryan/.ssh/id_ed25519";
       maxJobs = 3;
       speedFactor = 2;
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];

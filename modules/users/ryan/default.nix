@@ -7,7 +7,6 @@ name: { pkgs, lib, config, ... } @ inputs: {
       initialHashedPassword = lib.mkDefault "$y$j9T$/0D7TzdJ47wVaY77j8gnJ.$RKHvm/DQTTD8xCdx1ZRhhj9fMuiP5kocHXRmwBBPPR1";
 
       packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
-        bitwarden-desktop
         vesktop
         authenticator
         gnome-software

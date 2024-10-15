@@ -4,9 +4,15 @@
       mangohud = {
         enable = true;
         enableSessionWide = true;
+
         settings = {
           fps_limit = 120;
-          preset = 2;
+        };
+
+        settingsPerApplication = {
+          zed-editor = {
+            no_display = true;
+          };
         };
       };
     };

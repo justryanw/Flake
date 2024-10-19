@@ -44,6 +44,15 @@
 
   hardware.flirc.enable = true;
 
-  networking.hostName = "desktop";
+  networking = {
+    hostName = "desktop";
+
+    firewall = {
+      # Mindustry
+      allowedTCPPorts = [ 6567 ];
+      allowedUDPPorts = [ 6567 ];
+    };
+  };
+
   system.stateVersion = "24.11";
 }

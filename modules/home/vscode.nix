@@ -4,6 +4,10 @@
   };
 
   config = lib.mkIf (config.modules.vscode.enable && rootConfig.modules.graphics.enable) {
+    home.packages = with pkgs; [
+        zed-editor
+    ];
+
     programs.vscode = {
       enable = true;
 

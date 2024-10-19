@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
   ];
 
-  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
+  # disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
 
   modules = {
     gaming.enable = false;
@@ -16,9 +16,15 @@
     glances.enable = true;
   };
 
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/40d5fc81-5852-42d1-8bc2-befba6d438b4";
-    fsType = "bcachefs";
+  fileSystems = {
+    "/data/media" = {
+      device = "/dev/disk/by-uuid/42bd991a-dae7-4673-ab49-36b5979b7de6";
+      fsType = "btrfs";
+    };
+    "/data/immich"= {
+      device = "/dev/disk/by-uuid/afa858f5-8400-40d3-9405-e18746ff5f4c";
+      fsType = "btrfs";
+    };
   };
 
   hardware.graphics = {
@@ -60,6 +66,11 @@
         watch-dir-enabled = true;
         rpc-bind-address = "::";
         rpc-whitelist-enabled = false;
+        download-queue-enabled = false;
+        speed-limit-up-enabled = true;
+        speed-limit-up = 10000;
+        speed-limit-down-enabled = true;
+        speed-limit-down = 50000;
       };
       webHome = pkgs.flood-for-transmission;
     };

@@ -26,8 +26,18 @@
             url = "http://[::1]:61208";
             cpu = false;
             mem = false;
-            label = "Data";
-            disk = "/data";
+            label = "Immich";
+            disk = "/data/immich";
+            version = 4;
+          };
+        }
+        {
+          glances = {
+            url = "http://[::1]:61208";
+            cpu = false;
+            mem = false;
+            label = "Media";
+            disk = "/data/media";
             version = 4;
           };
         }

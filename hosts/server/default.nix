@@ -155,6 +155,13 @@
         Settings.AutoConnect = true;
       };
     };
+
+
+    firewall = {
+      # Minecraft
+      allowedTCPPorts = [ 25565 ];
+      allowedUDPPorts = [ 25565 ];
+    };
   };
 
   system.stateVersion = "24.11";

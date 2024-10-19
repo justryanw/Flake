@@ -117,41 +117,8 @@
       enable = true;
       mediaLocation = "/data/immich";
       host = "::";
-    };
-
-    minecraft-server = {
-      enable = true;
-      eula = true;
-
-      servers = {
-        create-astral = let
-          modpack = pkgs.fetchPackwizModpack {
-            url = "https://github.com/Laskyyy/Create-Astral/blob/Astral-Experimental/pack.toml";
-            packHash = "";
-          };
-          mcVersion = modpack.manifest.versions.minecraft;
-          fabricVersion = modpack.manifest.versions.fabric;
-          serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
-        in {
-          enable = true;
-          package = pkgs.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
-          symlinks = {
-            "config" = "${modpack}/config";
-            "configureddefaults" = "${modpack}/configureddefaults";
-            "defaultconfigs" = "${modpack}/defaultconfigs";
-            "fancymenustuff" = "${modpack}/fancymenustuff";
-            "global_packs" = "${modpack}/global_packs";
-            "journeymap" = "${modpack}/journeymap";
-            "kubejs" = "${modpack}/kubejs";
-            "quests_structures" = "${modpack}/quests_structures";
-            "resourcepacks" = "${modpack}/resourcepacks";
-            "resources" = "${modpack}/resources";
-            "schematics" = "${modpack}/schematics";
-            "serverpack" = "${modpack}/serverpack";
-            "shaderpacks" = "${modpack}/shaderpacks";
-          };
-        };
-      };
+      # disabled due to build failure, try enable later
+      machine-learning.enable = false;
     };
   };
 
@@ -162,6 +129,9 @@
       immich.extraGroups = [ "video" "render" ];
     };
   };
+
+  virtualisation.docker.enable = true;
+  environment.systemPackages = [ pkgs.docker-compose ];
 
   systemd.tmpfiles.rules = [
     "d /data 775 root data"

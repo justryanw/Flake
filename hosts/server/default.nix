@@ -118,7 +118,7 @@
       mediaLocation = "/data/immich";
       host = "::";
       # disabled due to build failure, try enable later
-      machine-learning.enable = false;
+      machine-learning.enable = true;
     };
   };
 

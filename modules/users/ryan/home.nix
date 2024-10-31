@@ -7,6 +7,10 @@ name: { pkgs, lib, config, ... } @ inputs: {
       };
 
       programs = {
+        zed-editor = {
+          enable = true;
+        };
+
         git = {
           userName = "Ryan Walker";
           userEmail = "ryanjwalker2001@gmail.com";

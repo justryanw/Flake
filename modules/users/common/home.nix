@@ -27,6 +27,8 @@ name: { pkgs, lib, config, ... }: {
               };
             };
 
+            carapace.enable = true;
+
             git = {
               enable = true;
               extraConfig.pull.rebase = false;

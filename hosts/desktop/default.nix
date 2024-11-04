@@ -40,6 +40,9 @@
   };
 
   virtualisation.docker.enable = true;
+
+  users.extraGroups.docker.members = [ "ryan" ];
+
   environment.systemPackages = [ pkgs.docker-compose ];
 
   hardware.flirc.enable = true;

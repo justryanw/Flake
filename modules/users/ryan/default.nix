@@ -13,6 +13,16 @@ name: { pkgs, lib, config, ... } @ inputs: {
       ]);
     };
 
-    services.flatpak.enable = lib.mkIf config.modules.gnome.enable true;
+    services = {
+        flatpak.enable = lib.mkIf config.modules.gnome.enable true;
+
+        keyd = {
+            enable = true;
+            keyboards.default = {
+                ids = [ "*" ];
+                settings.main.capslock = "esc";
+            };
+        };
+    };
   };
 }

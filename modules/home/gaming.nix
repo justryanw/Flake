@@ -3,7 +3,7 @@
     programs = {
       mangohud = {
         enable = true;
-        enableSessionWide = true;
+        enableSessionWide = false;
 
         settings = {
           fps_limit = 120;

@@ -1,4 +1,5 @@
-{ config, ... } @ inputs: {
+{ config, ... }@inputs:
+{
   imports = [
     ../../configuration.nix
     ./all-hardware.nix
@@ -19,7 +20,14 @@
     xserver.videoDrivers = [ "qxl" ];
   };
 
-  boot.initrd.availableKernelModules = [ "9p" "9pnet_virtio" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "9p"
+    "9pnet_virtio"
+    "xhci_pci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+  ];
 
   environment.variables.GC_INITIAL_HEAP_SIZE = "1M";
 

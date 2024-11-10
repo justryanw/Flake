@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options = {
     modules.graphics.enable = lib.mkEnableOption "Enable graphics and sound support";
   };
@@ -6,7 +7,7 @@
   config = lib.mkIf config.modules.graphics.enable {
     security.rtkit.enable = true;
 
-    hardware.pulseaudio.enable =  false;
+    hardware.pulseaudio.enable = false;
 
     services = {
       xserver = {

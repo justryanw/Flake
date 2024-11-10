@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     modules.gaming.enable = lib.mkEnableOption "Enable Steam and gamemode";
   };

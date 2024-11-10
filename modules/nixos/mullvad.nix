@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   options = {
     modules.mullvad.enable = lib.mkEnableOption "Enable Mullvad VPN";
   };
@@ -15,7 +21,6 @@
 
       # exclude steam game
       # mullvad-exculde %command%
-
 
       # TODO setup mappigs for all devices
       # Exclude yggdrasil from being blocked by mullvad

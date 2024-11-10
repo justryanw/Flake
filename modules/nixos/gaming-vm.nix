@@ -1,26 +1,34 @@
 # Import VM
 # sudo virsh define --file win-10.xml
 
-{ pkgs, config, lib, gpuIDs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  gpuIDs,
+  ...
+}:
 let
-  looking-glass-client-overlay = (final: prev: {
-    looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
-      version = "B7-rc1";
+  looking-glass-client-overlay = (
+    final: prev: {
+      looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
+        version = "B7-rc1";
 
-      src = prev.fetchFromGitHub {
-        owner = "gnif";
-        repo = "LookingGlass";
-        rev = "4d45b3807f1717d8eca0718253de545c0288a918";
-        sha256 = "sha256-ne1Q+67+P8RHcTsqdiSSwkFf0g3pSNT91WN/lsSzssU=";
-        fetchSubmodules = true;
-      };
+        src = prev.fetchFromGitHub {
+          owner = "gnif";
+          repo = "LookingGlass";
+          rev = "4d45b3807f1717d8eca0718253de545c0288a918";
+          sha256 = "sha256-ne1Q+67+P8RHcTsqdiSSwkFf0g3pSNT91WN/lsSzssU=";
+          fetchSubmodules = true;
+        };
 
-      # decorations seem to be broken in b7-rc1
-      # buildInputs = old.buildInputs ++ [ pkgs.libdecor ];
+        # decorations seem to be broken in b7-rc1
+        # buildInputs = old.buildInputs ++ [ pkgs.libdecor ];
 
-      # cmakeFlags = old.cmakeFlags ++ [ "-DENABLE_LIBDECOR=ON" ];
-    });
-  });
+        # cmakeFlags = old.cmakeFlags ++ [ "-DENABLE_LIBDECOR=ON" ];
+      });
+    }
+  );
 
   cfg = config.modules.gaming-vm;
 in
@@ -66,7 +74,6 @@ in
       ];
     };
 
-
     virtualisation = {
       libvirtd = {
         enable = true;
@@ -87,6 +94,9 @@ in
     };
 
     # https://github.com/NixOS/nixpkgs/issues/263359
-    networking.firewall.interfaces."virbr*".allowedUDPPorts = [ 53 67 ];
+    networking.firewall.interfaces."virbr*".allowedUDPPorts = [
+      53
+      67
+    ];
   };
 }

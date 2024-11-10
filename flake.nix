@@ -17,36 +17,52 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-minecraft = { 
-      url ="github:Infinidoge/nix-minecraft"; 
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      disko,
+      ...
+    }@inputs:
     let
-      hosts = [ "desktop" "laptop" "usb" "server" "pavilion" ];
+      hosts = [
+        "desktop"
+        "laptop"
+        "usb"
+        "server"
+        "pavilion"
+      ];
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system self; };
 
-      createSystem = host: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          home-manager.nixosModules.default
-          disko.nixosModules.default
-          host
-        ];
-      };
+      createSystem =
+        host:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            home-manager.nixosModules.default
+            disko.nixosModules.default
+            host
+          ];
+        };
     in
     {
-      nixosConfigurations = builtins.listToAttrs
-        (map
-          (name: {
-            inherit name;
-            value = createSystem ./hosts/${name};
-          })
-          hosts);
+      nixosConfigurations = builtins.listToAttrs (
+        map (name: {
+          inherit name;
+          value = createSystem ./hosts/${name};
+        }) hosts
+      );
 
       packages.${system} = {
         write-usb = pkgs.writeShellScriptBin "write-usb" ''

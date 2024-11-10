@@ -1,9 +1,22 @@
-{ config, lib, modulesPath, ... }: {
+{
+  config,
+  lib,
+  modulesPath,
+  ...
+}:
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "nvme" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "ahci"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+      ];
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-amd" ];
@@ -16,10 +29,10 @@
       fsType = "ext4";
     };
 
-#    "/home/Media" = {
-#      device = "/dev/disk/by-uuid/d08f20ab-597c-4f63-87e5-6afb6a05b787";
-#      fsType = "btrfs";
-#    };
+    #    "/home/Media" = {
+    #      device = "/dev/disk/by-uuid/d08f20ab-597c-4f63-87e5-6afb6a05b787";
+    #      fsType = "btrfs";
+    #    };
 
     "/var/lib/libvirt/images" = {
       device = "/home/ryan/images";

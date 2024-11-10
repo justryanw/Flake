@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options = {
     modules.amd.enable = lib.mkEnableOption "Enable AMD graphics drivers";
   };

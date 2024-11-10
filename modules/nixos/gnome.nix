@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options = {
     modules.gnome.enable = lib.mkEnableOption "Enable Gnome desktop and graphics support";
   };

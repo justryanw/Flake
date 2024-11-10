@@ -1,4 +1,10 @@
-{ pkgs, lib, rootConfig, ... }: {
+{
+  pkgs,
+  lib,
+  rootConfig,
+  ...
+}:
+{
   config = lib.mkIf rootConfig.modules.gnome.enable {
     gtk = {
       enable = true;
@@ -63,7 +69,12 @@
       "org/gtk/settings/file-chooser".clock-format = "12h";
       "org/gnome/desktop/input-sources" = {
         xkb-options = [ "caps:escape" ];
-        sources = [ (lib.hm.gvariant.mkTuple [ "xkb" "gb" ]) ];
+        sources = [
+          (lib.hm.gvariant.mkTuple [
+            "xkb"
+            "gb"
+          ])
+        ];
       };
       "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-type = "nothing";
     };

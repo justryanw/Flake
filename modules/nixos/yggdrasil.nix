@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   config = {
     services.yggdrasil = {
       enable = true;

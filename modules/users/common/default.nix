@@ -1,4 +1,10 @@
-name: { pkgs, lib, config, ... } @ inputs:
+name:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}@inputs:
 let
   cfg = config.modules.users.${name};
 in
@@ -14,16 +20,23 @@ in
 
   config = lib.mkIf (cfg.enable && cfg.defaultConfig.enable) {
     users.users.${name} = {
-      description = (lib.strings.toUpper (builtins.substring 0 1 name)) + (builtins.substring 1 (-1) name);
+      description =
+        (lib.strings.toUpper (builtins.substring 0 1 name)) + (builtins.substring 1 (-1) name);
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "dialout" ];
+      extraGroups = [
+        "networkmanager"
+        "dialout"
+      ];
       shell = pkgs.zsh;
-      packages = lib.mkIf config.modules.graphics.enable (with pkgs; [
-        firefox
-        libreoffice
-        hunspell
-        hunspellDicts.en_GB-large
-      ]);
+      packages = lib.mkIf config.modules.graphics.enable (
+        with pkgs;
+        [
+          firefox
+          libreoffice
+          hunspell
+          hunspellDicts.en_GB-large
+        ]
+      );
 
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG2+1HkbVk10Wt5I5l6iPkXcAUCLQ8EQ4qs9MYIXXlqK ryan@Desktop"

@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -21,7 +28,7 @@
       device = "/dev/disk/by-uuid/42bd991a-dae7-4673-ab49-36b5979b7de6";
       fsType = "btrfs";
     };
-    "/data/immich"= {
+    "/data/immich" = {
       device = "/dev/disk/by-uuid/afa858f5-8400-40d3-9405-e18746ff5f4c";
       fsType = "btrfs";
     };
@@ -125,7 +132,10 @@
     groups.data = { };
     users = {
       ryan.extraGroups = [ "data" ];
-      immich.extraGroups = [ "video" "render" ];
+      immich.extraGroups = [
+        "video"
+        "render"
+      ];
     };
   };
 
@@ -154,7 +164,6 @@
         Settings.AutoConnect = true;
       };
     };
-
 
     firewall = {
       # Minecraft

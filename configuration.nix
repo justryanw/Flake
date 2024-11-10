@@ -1,4 +1,4 @@
-{ pkgs, lib, ... } @ inputs: {
+{ pkgs, inputs, lib, ... }: {
   imports = [ ./modules ];
 
   config = {
@@ -10,9 +10,15 @@
       mullvad.enable = lib.mkDefault true;
     };
 
-    nix.settings = {
-      trusted-users = [ "root" "@wheel" ];
-      experimental-features = [ "nix-command" "flakes" ];
+    nix = {
+      registry.pkgs = {
+        from = { id = "pkgs"; type = "indirect"; };
+        flake = inputs.pkgs;
+      };
+      settings = {
+        trusted-users = [ "root" "@wheel" ];
+        experimental-features = [ "nix-command" "flakes" ];
+      };
     };
 
     nixpkgs.config.allowUnfree = true;
@@ -55,6 +61,7 @@
         nixd
         nixpkgs-fmt
         git
+        nix-output-monitor
       ];
     };
 

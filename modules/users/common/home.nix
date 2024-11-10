@@ -1,4 +1,4 @@
-name: { pkgs, lib, config, ... }: {
+name: { lib, config, ... }: {
   config = lib.mkIf config.modules.users.${name}.enable {
     home-manager = {
       useUserPackages = true;

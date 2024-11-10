@@ -46,7 +46,6 @@
         nix = {
           enableLanguageServer = true;
           serverPath = "nixd";
-          serverSettings.nixd.formatting.command = "nixpkgs-fmt";
         };
 
         html.format.wrapLineLength = 0;

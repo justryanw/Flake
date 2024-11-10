@@ -1,4 +1,10 @@
-{ pkgs, inputs, lib, ... }: {
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+{
   imports = [ ./modules ];
 
   config = {
@@ -12,12 +18,21 @@
 
     nix = {
       registry.pkgs = {
-        from = { id = "pkgs"; type = "indirect"; };
-        flake = inputs.pkgs;
+        from = {
+          id = "pkgs";
+          type = "indirect";
+        };
+        flake = inputs.nixpkgs-unfree;
       };
       settings = {
-        trusted-users = [ "root" "@wheel" ];
-        experimental-features = [ "nix-command" "flakes" ];
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
       };
     };
 
@@ -58,9 +73,9 @@
       pathsToLink = [ "/share/zsh" ];
 
       systemPackages = with pkgs; [
-        nixd
-        nixpkgs-fmt
         git
+        nixd
+        nixfmt-rfc-style
         nix-output-monitor
       ];
     };

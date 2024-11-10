@@ -1,4 +1,11 @@
-{ pkgs, lib, config, rootConfig, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  rootConfig,
+  ...
+}:
+{
   options = {
     modules.vscode.enable = lib.mkEnableOption "Enable vscode";
   };
@@ -45,7 +52,8 @@
 
         nix = {
           enableLanguageServer = true;
-          serverPath = "nixd";
+          serverPath = "${pkgs.nixd}/bin/nixd";
+          serverSettings.nixd.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
 
         html.format.wrapLineLength = 0;

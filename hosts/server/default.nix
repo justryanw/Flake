@@ -137,6 +137,7 @@
         "render"
       ];
     };
+    extraGroups.docker.members = [ "ryan" ];
   };
 
   virtualisation.docker.enable = true;

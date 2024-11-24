@@ -19,11 +19,11 @@
       steam = {
         enable = true;
         gamescopeSession.enable = true;
-        package = pkgs.steam.override {
-          extraEnv = {
-            MANGOHUD = true;
-          };
-        };
+        # package = pkgs.steam.override {
+        #   extraEnv = {
+        #     MANGOHUD = true;
+        #   };
+        # };
       };
 
       gamemode.enable = true;

@@ -24,6 +24,7 @@
         };
         flake = inputs.nixpkgs-unfree;
       };
+
       settings = {
         trusted-users = [
           "root"
@@ -33,7 +34,32 @@
           "nix-command"
           "flakes"
         ];
+        builders-use-substitutes = true;
+        substituters = [
+          "https://justryanw.cachix.org"
+          "ssh://eu.nixbuild.net"
+        ];
+        trusted-public-keys = [
+          "justryanw.cachix.org-1:oan1YuatPBqGNFEflzCmB+iwLPtzq1S1LivN3hUzu60="
+          "nixbuild.net/ACT8PT-1:xsXpIjcF8wW2pTTAaNYZzfDNcYZkG7ICcY+/o5tNCGE="
+        ];
       };
+
+      distributedBuilds = true;
+      buildMachines = [
+        {
+          hostName = "eu.nixbuild.net";
+          system = "x86_64-linux";
+          maxJobs = 100;
+          protocol = "ssh-ng";
+          sshUser = "ryan";
+          sshKey = "/home/ryan/.ssh/id_ed25519";
+          supportedFeatures = [
+            "benchmark"
+            "big-parallel"
+          ];
+        }
+      ];
     };
 
     nixpkgs.config.allowUnfree = true;
@@ -61,12 +87,27 @@
       };
 
       dconf.enable = true;
+
+      ssh.extraConfig = ''
+        Host eu.nixbuild.net
+          PubkeyAcceptedKeyTypes ssh-ed25519
+          ServerAliveInterval 60
+          IPQoS throughput
+          IdentityFile /home/ryan/.ssh/id_ed25519
+      '';
     };
 
     services.openssh = {
       enable = true;
       settings.PasswordAuthentication = false;
       openFirewall = false;
+
+      knownHosts = {
+        nixbuild = {
+          hostNames = [ "eu.nixbuild.net" ];
+          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
+        };
+      };
     };
 
     environment = {

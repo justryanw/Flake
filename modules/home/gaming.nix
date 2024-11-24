@@ -3,7 +3,7 @@
   config = lib.mkIf rootConfig.modules.gaming.enable {
     programs = {
       mangohud = {
-        enable = true;
+        enable = false;
         enableSessionWide = false;
 
         settings = {

@@ -48,6 +48,8 @@ name:
                     user = "git";
                     hostname = "github.com";
                   };
+
+                  nixbuild.hostname = "eu.nixbuild.net";
                 };
               };
             };

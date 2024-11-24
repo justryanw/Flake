@@ -18,6 +18,14 @@ Replace `/dev/sda` with name of disk
 
   # Get hardware config
   nixos-generate-config --no-filesystems --show-hardware-config
+
+  # List previous generations
+  sudo nix-env --list-generations -p /nix/var/nix/profiles/system
+
+  # Live switch to any generation
+  sudo nix-env --switch-generation 12345 -p /nix/var/nix/profiles/system
+  sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+
 ```
 
 ### Install

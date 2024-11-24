@@ -3,11 +3,12 @@
   config = lib.mkIf rootConfig.modules.gaming.enable {
     programs = {
       mangohud = {
-        enable = false;
+        enable = true;
         enableSessionWide = false;
 
         settings = {
           fps_limit = 120;
+          preset = 0;
         };
 
         settingsPerApplication = {

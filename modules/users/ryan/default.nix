@@ -4,7 +4,10 @@ name:
   lib,
   config,
   ...
-}@inputs:
+}:
+let
+  grayjay-app = pkgs.callPackage ../../../pkgs/grayjay.nix { };
+in
 {
   imports = [ (import ./home.nix name) ];
 
@@ -19,6 +22,7 @@ name:
           vesktop
           authenticator
           gnome-software
+          grayjay-app
         ]
       );
     };

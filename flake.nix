@@ -21,6 +21,8 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 
   outputs =
@@ -29,6 +31,7 @@
       nixpkgs,
       home-manager,
       disko,
+      jovian-nixos,
       ...
     }@inputs:
     let
@@ -52,6 +55,7 @@
           modules = [
             home-manager.nixosModules.default
             disko.nixosModules.default
+            jovian-nixos.nixosModules.default
             host
           ];
         };

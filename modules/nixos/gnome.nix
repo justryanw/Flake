@@ -10,7 +10,7 @@
     services.xserver = {
       desktopManager.gnome.enable = true;
       displayManager.gdm = {
-        enable = true;
+        enable = lib.mkDefault true;
         autoSuspend = false;
       };
     };

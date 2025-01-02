@@ -11,4 +11,14 @@
 
   networking.hostName = "laptop";
   system.stateVersion = "22.11";
+
+  services.xserver.displayManager.gdm.enable = false;
+
+  jovian.steam = {
+    enable = true; 
+    autoStart = true;
+    desktopSession = "gnome";
+    user = "ryan";
+  };
+
 }

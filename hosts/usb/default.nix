@@ -1,4 +1,4 @@
-{ config, ... }@inputs:
+{ config, ... }:
 {
   imports = [
     ../../configuration.nix
@@ -17,7 +17,13 @@
   services = {
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
-    xserver.videoDrivers = [ "qxl" ];
+    xserver = {
+      videoDrivers = [ "qxl" ];
+      displayManager = {
+        gdm.enable = true;
+        defaultSession = "gnome";
+      };
+    };
   };
 
   boot.initrd.availableKernelModules = [

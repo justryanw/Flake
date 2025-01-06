@@ -37,7 +37,7 @@
             isV4 = false;
           };
           pavilion = {
-            ip = "200:6e2:97ec:3a8a:eb8a:174e:e4dc:7ca1";
+            ip = "202:232d:ecb9:8fdb:4d38:db48:b556:e8d5";
             isV4 = false;
           };
           kev-tv = {
@@ -109,6 +109,7 @@
             ip6 saddr 206:f181:200:d9af:a582:9074:daba:f2ff accept
             ip6 saddr 201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0 accept
             ip6 saddr 201:f5ff:565:4fef:6597:9c51:654e:f08a accept
+            ip6 saddr 202:232d:ecb9:8fdb:4d38:db48:b556:e8d5 accept
             ip saddr 192.168.0.0/24 accept
           '';
         };

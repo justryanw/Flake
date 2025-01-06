@@ -36,7 +36,8 @@
               202:bd8a:d171:53b9:deb0:7ac4:3257:80f0,
               206:f181:200:d9af:a582:9074:daba:f2ff,
               201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0,
-              201:f5ff:565:4fef:6597:9c51:654e:f08a
+              201:f5ff:565:4fef:6597:9c51:654e:f08a,
+              202:232d:ecb9:8fdb:4d38:db48:b556:e8d5
             }
 
             chain allowIncomming {

@@ -23,6 +23,8 @@
     glances.enable = true;
   };
 
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
+
   fileSystems = {
     "/data/media" = {
       device = "/dev/disk/by-uuid/42bd991a-dae7-4673-ab49-36b5979b7de6";
@@ -89,7 +91,8 @@
     };
 
     sonarr = {
-      enable = true;
+      # out of date dotnet
+      enable = false;
       user = "ryan";
       group = "data";
     };

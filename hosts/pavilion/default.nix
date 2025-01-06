@@ -8,7 +8,6 @@
   modules = {
     disko.enable = true;
     amd.enable = false;
-    steamos.enable = true;
   };
 
   fileSystems."/home" = {

@@ -13,5 +13,6 @@
     ./homepage.nix
     ./gaming-vm.nix
     ./glances.nix
+    ./steamos.nix
   ];
 }

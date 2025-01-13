@@ -8,6 +8,7 @@
   modules = {
     disko.enable = true;
     steamos.enable = true;
+    users.helen.enable = false;
   };
 
   disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-eui.6479a759203003dd";

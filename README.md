@@ -30,7 +30,7 @@ Replace `/dev/sda` with name of disk
 
 ### Install
 ```bash
-  # Note: this installs the flake curently loaded in the shell, refresh with direnv allow after changes
+  # Note: this installs the flake curently loaded in the shell, refresh with direnv reload after changes
   # Add host and hardware config to flake first
   install-nixos hostname /dev/sda
 ```

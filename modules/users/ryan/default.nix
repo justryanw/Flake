@@ -23,6 +23,7 @@ in
           authenticator
           gnome-software
           grayjay-app
+          popcorntime
         ]
       );
     };

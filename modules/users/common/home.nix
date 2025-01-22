@@ -30,6 +30,11 @@ name:
                   la = "ls -A";
                   sys = "sudo systemctl";
                   usr = "systemctl --user";
+                  disks = "df -h -x tmpfs -x efivarfs -x devtmpfs";
+                  bios = "systemctl reboot --firmware-setup";
+                  self = "yggdrasilctl getself";
+                  peers = "yggdrasilctl getpeers";
+                  follow = "journalctl -fu";
                 };
               };
 

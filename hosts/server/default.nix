@@ -23,7 +23,8 @@
     glances.enable = true;
   };
 
-  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
+  disko.devices.disk.${config.networking.hostName}.device =
+    "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
 
   fileSystems = {
     "/data/media" = {
@@ -128,6 +129,35 @@
       host = "::";
       # disabled due to build failure, try enable later
       machine-learning.enable = true;
+    };
+
+    monero = {
+      enable = true;
+      dataDir = "/data/media/monero";
+    };
+
+    xmrig = {
+      enable = true;
+      settings = {
+        autosave = true;
+        cpu = {
+          enabled = true;
+          rx = {
+            threads = 6;
+          };
+        };
+        opencl = false;
+        cuda = false;
+        pools = [
+          {
+            url = "pool.hashvault.pro:443";
+            user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
+            pass = "server";
+            keepalive = true;
+            tls = true;
+          }
+        ];
+      };
     };
   };
 

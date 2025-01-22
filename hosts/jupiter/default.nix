@@ -23,9 +23,6 @@
       autosave = true;
       cpu = {
         enabled = true;
-        rx = {
-          threads = 6;
-        };
       };
       opencl = false;
       cuda = false;

@@ -67,7 +67,7 @@
         cpu = {
           enabled = true;
           rx = {
-            threads = 6;
+            threads = 8;
           };
         };
         opencl = false;

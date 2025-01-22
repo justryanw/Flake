@@ -8,8 +8,7 @@
   modules = {
     disko.enable = true;
     steamos.enable = false;
-    graphics.enable = false;
-    gnome.enable = false;
+    gnome.enable = true;
     users.helen.enable = false;
   };
 
@@ -19,24 +18,28 @@
   networking.hostName = "jupiter";
   system.stateVersion = "25.05";
 
-  services.xmrig = {
-    enable = true;
-    settings = {
-      autosave = true;
-      cpu = {
-        enabled = true;
+  services = {
+    xmrig = {
+      enable = true;
+      settings = {
+        autosave = true;
+        cpu = {
+          enabled = true;
+        };
+        opencl = false;
+        cuda = false;
+        pools = [
+          {
+            url = "pool.hashvault.pro:443";
+            user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
+            pass = "jupiter";
+            keepalive = true;
+            tls = true;
+          }
+        ];
       };
-      opencl = false;
-      cuda = false;
-      pools = [
-        {
-          url = "pool.hashvault.pro:443";
-          user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
-          pass = "jupiter";
-          keepalive = true;
-          tls = true;
-        }
-      ];
     };
+
+    logind.lidSwitchExternalPower = "ignore";
   };
 }

@@ -33,7 +33,8 @@
     };
   };
 
-  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";
+  disko.devices.disk.${config.networking.hostName}.device =
+    "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";
 
   boot.loader.grub = {
     gfxmodeEfi = "3440x1440";
@@ -57,4 +58,30 @@
   };
 
   system.stateVersion = "24.11";
+
+  services = {
+    xmrig = {
+      enable = true;
+      settings = {
+        autosave = true;
+        cpu = {
+          enabled = true;
+          rx = {
+            threads = 6;
+          };
+        };
+        opencl = false;
+        cuda = false;
+        pools = [
+          {
+            url = "pool.hashvault.pro:443";
+            user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
+            pass = "desktop";
+            keepalive = true;
+            tls = true;
+          }
+        ];
+      };
+    };
+  };
 }

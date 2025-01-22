@@ -7,7 +7,9 @@
 
   modules = {
     disko.enable = true;
-    steamos.enable = true;
+    steamos.enable = false;
+    grahpics.enable = false;
+    gnome.enable = false;
     users.helen.enable = false;
   };
 

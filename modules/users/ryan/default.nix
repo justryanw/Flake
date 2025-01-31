@@ -20,24 +20,13 @@ in
         with pkgs;
         [
           vesktop
-          authenticator
-          gnome-software
           grayjay-app
-          popcorntime
+          discord-canary
         ]
       );
     };
 
     services = {
-      flatpak.enable = lib.mkIf config.modules.gnome.enable true;
-
-      keyd = {
-        enable = true;
-        keyboards.default = {
-          ids = [ "*" ];
-          settings.main.capslock = "esc";
-        };
-      };
     };
   };
 }

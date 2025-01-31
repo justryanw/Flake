@@ -35,6 +35,14 @@ in
           libreoffice
           hunspell
           hunspellDicts.en_GB-large
+          signal-desktop
+          stremio
+          celluloid
+          gnome-decoder
+          parabolic
+          gnome-software
+          gnome-frog
+          authenticator
         ]
       );
 
@@ -49,7 +57,6 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdiQCqmkZU2IXcahakRFfWcOiD2nTU6T854Y81nP05u ryan@pavilion"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID8Q2R9QZR9ToO+p3vMlgDEQbuAHdLcec2JAY7E2CWVQ helen@pavilion"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGg4nR3v4p0/0/8hKsIqRy2YGFAvMlGuDXCDGuA++FR nix-on-droid@localhost"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
       ];
     };

@@ -13,15 +13,10 @@ name:
       packages = lib.mkIf config.modules.graphics.enable (
         with pkgs;
         [
-          authenticator
-          gnome-software
           krita
           inkscape
-          celluloid
-          gnome-frog
-          gnome-decoder
-          parabolic
           g4music
+          discord
         ]
       );
     };

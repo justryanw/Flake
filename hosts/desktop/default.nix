@@ -31,6 +31,12 @@
       #   "1002:7444"
       # ];
     };
+
+    xmrig = {
+      enable = false;
+      name = "desktop";
+      threads = 6;
+    };
   };
 
   disko.devices.disk.${config.networking.hostName}.device =

@@ -58,4 +58,9 @@
   };
 
   system.stateVersion = "24.11";
+
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [ "d3ecf5726d350938" ];
+  };
 }

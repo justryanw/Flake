@@ -4,7 +4,7 @@ name:
   lib,
   config,
   ...
-}@inputs:
+}:
 let
   cfg = config.modules.users.${name};
 in

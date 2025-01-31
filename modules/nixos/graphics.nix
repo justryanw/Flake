@@ -7,7 +7,7 @@
   config = lib.mkIf config.modules.graphics.enable {
     security.rtkit.enable = true;
 
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
 
     services = {
       xserver = {

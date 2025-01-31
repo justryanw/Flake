@@ -61,6 +61,13 @@
           ];
         }
       ];
+
+      optimise.automatic = true;
+
+      extraOptions = ''
+        min-free = ${toString (10 * 1024 * 1024 * 1024)} # Start garbage collection when less than 10Gb is free.
+        max-free = ${toString (50 * 1024 * 1024 * 1024)} # Stop when more than 50Gb is free.
+      '';
     };
 
     nixpkgs.config.allowUnfree = true;
@@ -131,6 +138,9 @@
         nixd
         nixfmt-rfc-style
         nix-output-monitor
+        parallel
+        jq
+        btop
       ];
     };
 

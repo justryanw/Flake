@@ -16,7 +16,6 @@ name:
           krita
           inkscape
           g4music
-          discord
         ]
       );
     };

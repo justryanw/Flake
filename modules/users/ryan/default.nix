@@ -21,7 +21,6 @@ in
         [
           vesktop
           grayjay-app
-          discord-canary
         ]
       );
     };

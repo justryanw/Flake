@@ -10,10 +10,6 @@
   };
 
   config = lib.mkIf config.modules.gaming.enable {
-    environment.systemPackages = with pkgs; [
-      modrinth-app
-    ];
-
     programs = {
       steam = {
         enable = true;

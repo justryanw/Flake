@@ -43,6 +43,9 @@ in
           gnome-software
           gnome-frog
           authenticator
+          discord
+          drawing
+          modrinth-app
         ]
       );
 

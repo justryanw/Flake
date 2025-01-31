@@ -38,7 +38,7 @@
 
   boot.loader.grub = {
     gfxmodeEfi = "3440x1440";
-    useOSProber = true;
+    useOSProber = false;
   };
 
   virtualisation.docker.enable = true;

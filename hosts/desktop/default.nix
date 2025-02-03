@@ -65,8 +65,21 @@
 
   system.stateVersion = "24.11";
 
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "d3ecf5726d350938" ];
+  services = {
+    zerotierone = {
+      enable = true;
+      joinNetworks = [ "d3ecf5726d350938" ];
+    };
+
+    ollama = {
+      enable = true;
+      loadModels = [
+        "deepseek-r1:1.5b"
+        "deepseek-r1:7b"
+        "deepseek-r1:14b"
+      ];
+    };
+
+    open-webui.enable = true;
   };
 }

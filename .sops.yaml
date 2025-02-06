@@ -1,0 +1,11 @@
+keys:
+  - users:
+    - &ryan age100z9te8v0weku685vqs2zk3f9scs39wznxla7xhfaza8463g8ffs3uv3pt
+  - hosts:
+    - &desktop age1mu07fdxlqft5xjvgvzu0qeh4vsgresjte46xr7uyggc5p2nwypnsfqtfs0
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+      - age:
+          - *ryan
+          - *desktop

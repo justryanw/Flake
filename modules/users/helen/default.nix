@@ -8,7 +8,7 @@ name:
 {
   config = lib.mkIf config.modules.users.${name}.enable {
     users.users.${name} = {
-      initialHashedPassword = "$y$j9T$VcFtf.LY2BA.ICsKVYa.X.$lEGovq2oX/EwnV5Q/8Rj2vehlUi3fWaP3UIayolWSU8";
+      hashedPasswordFile = config.sops.secrets.helen-password.path;
 
       packages = lib.mkIf config.modules.graphics.enable (
         with pkgs;

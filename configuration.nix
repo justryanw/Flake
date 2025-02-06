@@ -15,7 +15,6 @@
       gaming.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
       mullvad.enable = lib.mkDefault true;
-      sops.enable = lib.mkDefault true;
     };
 
     nix = {

@@ -56,6 +56,12 @@
     ];
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    # sonarr
+    "dotnet-sdk-6.0.428"
+    "aspnetcore-runtime-6.0.36"
+  ];
+
   services = {
     # Enable IPv6 and remote access from cli
     # https://forum.jellyfin.org/printthread.php?tid=7357
@@ -92,8 +98,7 @@
     };
 
     sonarr = {
-      # out of date dotnet
-      enable = false;
+      enable = true;
       user = "ryan";
       group = "data";
     };

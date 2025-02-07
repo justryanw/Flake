@@ -23,6 +23,11 @@
     };
 
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +37,7 @@
       home-manager,
       disko,
       jovian-nixos,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -54,10 +60,11 @@
             inherit inputs;
           };
           modules = [
+            host
             home-manager.nixosModules.default
             disko.nixosModules.default
             jovian-nixos.nixosModules.default
-            host
+            sops-nix.nixosModules.sops
           ];
         };
     in

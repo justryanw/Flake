@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   lib,
+  config,
   ...
 }:
 {
@@ -60,6 +61,13 @@
           ];
         }
       ];
+
+      optimise.automatic = true;
+
+      extraOptions = ''
+        min-free = ${toString (10 * 1024 * 1024 * 1024)} # Start garbage collection when less than 10Gb is free.
+        max-free = ${toString (50 * 1024 * 1024 * 1024)} # Stop when more than 50Gb is free.
+      '';
     };
 
     nixpkgs.config.allowUnfree = true;
@@ -97,15 +105,27 @@
       '';
     };
 
-    services.openssh = {
-      enable = true;
-      settings.PasswordAuthentication = false;
-      openFirewall = false;
+    services = {
+      openssh = {
+        enable = true;
+        settings.PasswordAuthentication = false;
+        openFirewall = false;
 
-      knownHosts = {
-        nixbuild = {
-          hostNames = [ "eu.nixbuild.net" ];
-          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
+        knownHosts = {
+          nixbuild = {
+            hostNames = [ "eu.nixbuild.net" ];
+            publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
+          };
+        };
+      };
+
+      flatpak.enable = lib.mkIf config.modules.gnome.enable true;
+
+      keyd = {
+        enable = true;
+        keyboards.default = {
+          ids = [ "*" ];
+          settings.main.capslock = "esc";
         };
       };
     };
@@ -118,6 +138,9 @@
         nixd
         nixfmt-rfc-style
         nix-output-monitor
+        parallel
+        jq
+        btop
       ];
     };
 
@@ -132,8 +155,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdiQCqmkZU2IXcahakRFfWcOiD2nTU6T854Y81nP05u ryan@pavilion"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID8Q2R9QZR9ToO+p3vMlgDEQbuAHdLcec2JAY7E2CWVQ helen@pavilion"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGg4nR3v4p0/0/8hKsIqRy2YGFAvMlGuDXCDGuA++FR nix-on-droid@localhost"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbOCsQ0JHfnFgOanl56w/y1o3dhHtOnkgqW8aTBxWuc ryan.walker@LAP00396"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
     ];
+
   };
 }

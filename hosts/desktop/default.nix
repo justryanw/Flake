@@ -31,6 +31,12 @@
       #   "1002:7444"
       # ];
     };
+
+    xmrig = {
+      enable = false;
+      name = "desktop";
+      threads = 6;
+    };
   };
 
   disko.devices.disk.${config.networking.hostName}.device =
@@ -38,7 +44,7 @@
 
   boot.loader.grub = {
     gfxmodeEfi = "3440x1440";
-    useOSProber = true;
+    useOSProber = false;
   };
 
   virtualisation.docker.enable = true;
@@ -60,28 +66,20 @@
   system.stateVersion = "24.11";
 
   services = {
-    xmrig = {
+    zerotierone = {
       enable = true;
-      settings = {
-        autosave = true;
-        cpu = {
-          enabled = true;
-          rx = {
-            threads = 8;
-          };
-        };
-        opencl = false;
-        cuda = false;
-        pools = [
-          {
-            url = "pool.hashvault.pro:443";
-            user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
-            pass = "desktop";
-            keepalive = true;
-            tls = true;
-          }
-        ];
-      };
+      joinNetworks = [ "d3ecf5726d350938" ];
     };
+
+    ollama = {
+      enable = true;
+      loadModels = [
+        "deepseek-r1:1.5b"
+        "deepseek-r1:7b"
+        "deepseek-r1:14b"
+      ];
+    };
+
+    open-webui.enable = true;
   };
 }

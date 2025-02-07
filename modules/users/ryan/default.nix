@@ -7,37 +7,24 @@ name:
 }:
 let
   grayjay-app = pkgs.callPackage ../../../pkgs/grayjay.nix { };
+  spine = pkgs.callPackage ../../../pkgs/spine.nix {
+    # licenseKey = "";
+  };
 in
 {
   imports = [ (import ./home.nix name) ];
 
   config = lib.mkIf config.modules.users.${name}.enable {
+    sops.secrets.ryan-password.neededForUsers = true;
+
     users.users.${name} = {
       extraGroups = [ "wheel" ];
-      initialHashedPassword = lib.mkDefault "$y$j9T$/0D7TzdJ47wVaY77j8gnJ.$RKHvm/DQTTD8xCdx1ZRhhj9fMuiP5kocHXRmwBBPPR1";
+      hashedPasswordFile = config.sops.secrets.ryan-password.path;
 
-      packages = lib.mkIf config.modules.graphics.enable (
-        with pkgs;
-        [
-          vesktop
-          authenticator
-          gnome-software
-          grayjay-app
-          popcorntime
-        ]
-      );
-    };
-
-    services = {
-      flatpak.enable = lib.mkIf config.modules.gnome.enable true;
-
-      keyd = {
-        enable = true;
-        keyboards.default = {
-          ids = [ "*" ];
-          settings.main.capslock = "esc";
-        };
-      };
+      packages = lib.mkIf config.modules.graphics.enable [
+        grayjay-app
+        spine
+      ];
     };
   };
 }

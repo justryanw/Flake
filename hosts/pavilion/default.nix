@@ -8,6 +8,11 @@
   modules = {
     disko.enable = true;
     amd.enable = false;
+
+    xmrig = {
+      enable = true;
+      name = "pavilion";
+    };
   };
 
   fileSystems."/home" = {
@@ -22,25 +27,4 @@
 
   networking.hostName = "pavilion";
   system.stateVersion = "24.11";
-
-  services.xmrig = {
-    enable = true;
-    settings = {
-      autosave = true;
-      cpu = {
-        enabled = true;
-      };
-      opencl = false;
-      cuda = false;
-      pools = [
-        {
-          url = "pool.hashvault.pro:443";
-          user = "84jLA5hxrGkNrj7kLpZt519MCWwPyMj8oBt9ikTAqoZvG8Qcd3PFGmkZNDPDT9jk7FZ39VzNMgqzFXLHEKvs9pcF6L8DaTm";
-          pass = "pavilion";
-          keepalive = true;
-          tls = true;
-        }
-      ];
-    };
-  };
 }

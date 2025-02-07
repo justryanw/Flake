@@ -52,10 +52,6 @@
             ip = "201:1116:41e5:2a9d:23fe:c842:5a84:5f7c";
             isV4 = false;
           };
-          inspired = {
-            ip = "192.168.0.198";
-            isV4 = true;
-          };
         };
       };
 
@@ -71,6 +67,10 @@
           ++ [
             {
               host = "192.168.0.0/24";
+              isV4 = true;
+            }
+            {
+              host = "10.147.18.0/24";
               isV4 = true;
             }
           ];
@@ -111,6 +111,7 @@
             ip6 saddr 201:f5ff:565:4fef:6597:9c51:654e:f08a accept
             ip6 saddr 202:232d:ecb9:8fdb:4d38:db48:b556:e8d5 accept
             ip saddr 192.168.0.0/24 accept
+            ip saddr 10.147.18.0/24 accept
           '';
         };
       };

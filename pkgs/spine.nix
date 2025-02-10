@@ -5,7 +5,7 @@
   writeShellScript,
   buildFHSEnv,
   makeDesktopItem,
-  fetchurl
+  fetchurl,
 }:
 
 let

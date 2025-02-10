@@ -6,8 +6,10 @@
 }:
 
 let
+  name = "spine-pro";
+
   spineTarball = requireFile rec {
-    name = "Spine.tar.gz";
+    inherit name;
     url = "https://eu.esotericsoftware.com/";
     message = ''
       Unfortunately, we cannot download file ${name} automatically.
@@ -24,8 +26,8 @@ let
 
 in
 buildFHSEnv {
-  pname = "spine-pro";
-  version = "4.2.39";
+  pname = name;
+  verson = "4.2.39";
 
   runScript = writeShellScript "spine-launcher" ''
     ${unpackedSpine}/launcher/2/bin/java \

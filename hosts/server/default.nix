@@ -137,7 +137,7 @@
       enable = true;
       mediaLocation = "/data/immich";
       host = "::";
-      port = "2283";
+      port = 2283;
       machine-learning.enable = true;
     };
 

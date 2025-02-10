@@ -137,7 +137,7 @@
       enable = true;
       mediaLocation = "/data/immich";
       host = "::";
-      # disabled due to build failure, try enable later
+      port = "2283";
       machine-learning.enable = true;
     };
 

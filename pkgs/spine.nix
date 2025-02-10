@@ -1,28 +1,23 @@
 {
+  requireFile,
   lib,
   writeShellScript,
   buildFHSEnv,
-  licenseKey ? null,
 }:
-let
-  baseUrl = "https://eu.esotericsoftware.com/launcher/linux";
-in
 buildFHSEnv rec {
-  pname = "spine";
-  version = "4.2.39${(if licenseKey == null then "-trial" else "")}";
+  pname = "spine-pro";
+  version = "4.2.39";
 
-  src = builtins.fetchTarball (
-    if licenseKey == null then
-      {
-        url = baseUrl;
-        sha256 = "sha256:0f4gif6qc3jhli84qqdka3h81y35z0nlfrfi27ln1jwh5h7xz4r0";
-      }
-    else
-      {
-        url = "${baseUrl}/${licenseKey}";
-        sha256 = "sha256:1jqmh26yg1ml3in5bmy553cny5gi0j8hk8zcv37mmdbp3w1dkq12";
-      }
-  );
+  src = requireFile rec {
+    name = "Spine.tar.gz";
+    url = "https://eu.esotericsoftware.com/";
+    message = ''
+      Unfortunately, we cannot download file ${name} automatically.
+      Please run the following command replacing LICENSE_KEY with you Spine license key to dowload it manually.
+        nix-prefetch-url --type sha256 https://eu.esotericsoftware.com/launcher/linux/LICENSE_KEY
+    '';
+    sha256 = "0ayja2p6p4wkgiqw2f5xvbifh55gicvhxbwm5yh9b9hwwhxx28z5";
+  };
 
   runScript = writeShellScript "spine-launcher" ''
     ${src}/launcher/2/bin/java \

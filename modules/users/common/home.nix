@@ -1,5 +1,5 @@
 name:
-{ lib, config, inputs, ... }:
+{ lib, config, ... }:
 {
   config = lib.mkIf config.modules.users.${name}.enable {
     home-manager = {
@@ -13,7 +13,7 @@ name:
       users.${name} =
         { ... }:
         {
-          imports = [ ../../home inputs.sops-nix.homeManagerModules.sops ];
+          imports = [ ../../home ];
 
           config = {
             home.stateVersion = config.system.stateVersion;

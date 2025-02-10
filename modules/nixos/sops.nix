@@ -1,21 +1,31 @@
-{ ... }:
 {
-  users.mutableUsers = false;
+  lib,
+  config,
+  ...
+}:
+{
+  options = {
+    modules.sops.enable = lib.mkEnableOption "Enable Sops";
+  };
 
-  sops = {
-    defaultSopsFile = ../../secrets.yaml;
-    validateSopsFiles = false;
+  config = lib.mkIf config.modules.sops.enable {
+    users.mutableUsers = false;
 
-    age = {
-      sshKeyPaths = [ "/home/ryan/.ssh/id_ed25519" ];
-      keyFile = "/var/lib/sops-nix/key.txt";
-      generateKey = true;
-    };
+    sops = {
+      defaultSopsFile = ../../secrets.yaml;
+      validateSopsFiles = false;
 
-    secrets = {
-      spine-key = { };
-      ryan-password.neededForUsers = true;
-      helen-password.neededForUsers = true;
+      age = {
+        sshKeyPaths = [ "/home/ryan/.ssh/id_ed25519" ];
+        keyFile = "/var/lib/sops-nix/key.txt";
+        generateKey = true;
+      };
+
+      secrets = {
+        spine-key = {};
+        ryan-password.neededForUsers = true;
+        helen-password.neededForUsers = true;
+      };
     };
   };
 }

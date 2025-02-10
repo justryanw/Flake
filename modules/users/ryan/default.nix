@@ -8,7 +8,7 @@ name:
 let
   grayjay-app = pkgs.callPackage ../../../pkgs/grayjay.nix { };
   spine = pkgs.callPackage ../../../pkgs/spine.nix {
-    # licenseKey = "";
+    licenseKey = "cat ${config.sops.secrets.spine-key.path}";
   };
 in
 {

@@ -15,6 +15,5 @@
     ./glances.nix
     ./steamos.nix
     ./xmrig.nix
-    ./sops.nix
   ];
 }

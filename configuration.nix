@@ -15,7 +15,6 @@
       gaming.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
       mullvad.enable = lib.mkDefault true;
-      sops.enable = lib.mkDefault true;
     };
 
     nix = {
@@ -158,6 +157,5 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPGg4nR3v4p0/0/8hKsIqRy2YGFAvMlGuDXCDGuA++FR nix-on-droid@localhost"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHT6zqmuClgoKRyhqJWvImrJU0nnS8rOIGgGB9RE0ta deck@steamdeck"
     ];
-
   };
 }

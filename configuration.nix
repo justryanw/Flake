@@ -141,7 +141,10 @@
         parallel
         jq
         btop
+        vim
       ];
+
+      variables.EDITOR = "vim";
     };
 
     users.users.root.openssh.authorizedKeys.keys = [

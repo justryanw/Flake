@@ -36,6 +36,9 @@ name:
                   peers = "yggdrasilctl getpeers";
                   follow = "journalctl -fu";
                 };
+                initExtra = ''
+                  bindkey '^E' autosuggest-accept
+                '';
               };
 
               carapace.enable = true;

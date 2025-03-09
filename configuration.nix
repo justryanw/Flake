@@ -4,9 +4,8 @@
   lib,
   config,
   ...
-}:
-{
-  imports = [ ./modules ];
+}: {
+  imports = [./modules];
 
   config = {
     modules = {
@@ -18,6 +17,7 @@
     };
 
     nix = {
+      nixPath = ["nixpkgs=${inputs.nixpkgs}"];
       registry.pkgs = {
         from = {
           id = "pkgs";
@@ -65,8 +65,10 @@
       optimise.automatic = true;
 
       extraOptions = ''
-        min-free = ${toString (10 * 1024 * 1024 * 1024)} # Start garbage collection when less than 10Gb is free.
-        max-free = ${toString (50 * 1024 * 1024 * 1024)} # Stop when more than 50Gb is free.
+        # Start garbage collection when less than 10Gb is free.
+        min-free = ${toString (10 * 1024 * 1024 * 1024)}
+        # Stop when more than 50Gb is free.
+        max-free = ${toString (50 * 1024 * 1024 * 1024)}
       '';
     };
 
@@ -113,7 +115,7 @@
 
         knownHosts = {
           nixbuild = {
-            hostNames = [ "eu.nixbuild.net" ];
+            hostNames = ["eu.nixbuild.net"];
             publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIQCZc54poJ8vqawd8TraNryQeJnvH1eLpIDgbiqymM";
           };
         };
@@ -124,19 +126,20 @@
       keyd = {
         enable = true;
         keyboards.default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings.main.capslock = "esc";
         };
       };
     };
 
     environment = {
-      pathsToLink = [ "/share/zsh" ];
+      pathsToLink = ["/share/zsh"];
 
       systemPackages = with pkgs; [
         git
         nixd
-        nixfmt-rfc-style
+        nil
+        alejandra
         nix-output-monitor
         parallel
         jq

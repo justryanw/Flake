@@ -20,7 +20,7 @@ name: {
             buffer_font_size = 16;
             autosave = "on_focus_change";
             auto_update = false;
-            # load_direnv = "shell_hook";
+            installRemoteServer = true;
             tabs = {
               file_icons = true;
               git_status = true;

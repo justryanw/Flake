@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -20,8 +19,7 @@
     fsType = "ext4";
   };
 
-  disko.devices.disk.${config.networking.hostName}.device =
-    "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a44d43292";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b444a44d43292";
 
   boot.loader.grub.gfxmodeEfi = "1920x1080";
 

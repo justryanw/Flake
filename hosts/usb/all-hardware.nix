@@ -2,13 +2,13 @@
 # firmware is included, and all devices from which one may boot are
 # enabled in the initrd.  Its primary use is in the NixOS installation
 # CDs.
-
-{ pkgs, lib, ... }:
-let
-  platform = pkgs.stdenv.hostPlatform;
-in
 {
-
+  pkgs,
+  lib,
+  ...
+}: let
+  platform = pkgs.stdenv.hostPlatform;
+in {
   # The initrd has to contain any module that might be necessary for
   # supporting the most important parts of HW like drives.
   boot.initrd.availableKernelModules =
@@ -159,5 +159,4 @@ in
 
   # Include lots of firmware.
   hardware.enableRedistributableFirmware = true;
-
 }

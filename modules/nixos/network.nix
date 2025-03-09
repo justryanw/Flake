@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   options = {
     modules.network = {
       hosts = lib.mkOption {
@@ -58,12 +61,11 @@
       allowedConnections = lib.mkOption {
         default =
           (lib.mapAttrsToList (
-            host:
-            { isV4, ... }:
-            {
-              inherit host isV4;
-            }
-          ) config.modules.network.hosts)
+              host: {isV4, ...}: {
+                inherit host isV4;
+              }
+            )
+            config.modules.network.hosts)
           ++ [
             {
               host = "192.168.0.0/24";
@@ -78,42 +80,53 @@
     };
   };
 
-  config =
-    let
-      makeIptablesRule =
-        { host, isV4 }: "ip${if !isV4 then "6" else ""}tables -A nixos-fw -s ${host} -j nixos-fw-accept";
-      makeIptablesStopRule =
-        { host, isV4 }:
-        "ip${if !isV4 then "6" else ""}tables -D nixos-fw -s ${host} -j nixos-fw-accept || true";
+  config = let
+    makeIptablesRule = {
+      host,
+      isV4,
+    }: "ip${
+      if !isV4
+      then "6"
+      else ""
+    }tables -A nixos-fw -s ${host} -j nixos-fw-accept";
+    makeIptablesStopRule = {
+      host,
+      isV4,
+    }: "ip${
+      if !isV4
+      then "6"
+      else ""
+    }tables -D nixos-fw -s ${host} -j nixos-fw-accept || true";
 
-      iptablesRules = map makeIptablesRule config.modules.network.allowedConnections;
-      iptalbesStopRules = map makeIptablesStopRule config.modules.network.allowedConnections;
-    in
-    {
-      networking = {
-        hosts = lib.mapAttrs' (
-          name: { ip, ... }: lib.nameValuePair ip [ name ]
-        ) config.modules.network.hosts;
+    iptablesRules = map makeIptablesRule config.modules.network.allowedConnections;
+    iptalbesStopRules = map makeIptablesStopRule config.modules.network.allowedConnections;
+  in {
+    networking = {
+      hosts =
+        lib.mapAttrs' (
+          name: {ip, ...}: lib.nameValuePair ip [name]
+        )
+        config.modules.network.hosts;
 
-        nftables.enable = true;
+      nftables.enable = true;
 
-        firewall = {
-          # extraCommands = lib.mkDefault (lib.concatStringsSep "\n" iptablesRules);
-          # extraStopCommands = lib.mkDefault (lib.concatStringsSep "\n" iptalbesStopRules);
+      firewall = {
+        # extraCommands = lib.mkDefault (lib.concatStringsSep "\n" iptablesRules);
+        # extraStopCommands = lib.mkDefault (lib.concatStringsSep "\n" iptalbesStopRules);
 
-          # TODO setup mappigs for all devices
-          extraInputRules = ''
-            ip6 saddr 200:902:9729:125:a8d3:eca2:d641:4a9b accept
-            ip6 saddr 202:8699:42dd:e354:50c5:5a7e:610b:1a18 accept
-            ip6 saddr 202:bd8a:d171:53b9:deb0:7ac4:3257:80f0 accept
-            ip6 saddr 206:f181:200:d9af:a582:9074:daba:f2ff accept
-            ip6 saddr 201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0 accept
-            ip6 saddr 201:f5ff:565:4fef:6597:9c51:654e:f08a accept
-            ip6 saddr 202:232d:ecb9:8fdb:4d38:db48:b556:e8d5 accept
-            ip saddr 192.168.0.0/24 accept
-            ip saddr 10.147.18.0/24 accept
-          '';
-        };
+        # TODO setup mappigs for all devices
+        extraInputRules = ''
+          ip6 saddr 200:902:9729:125:a8d3:eca2:d641:4a9b accept
+          ip6 saddr 202:8699:42dd:e354:50c5:5a7e:610b:1a18 accept
+          ip6 saddr 202:bd8a:d171:53b9:deb0:7ac4:3257:80f0 accept
+          ip6 saddr 206:f181:200:d9af:a582:9074:daba:f2ff accept
+          ip6 saddr 201:e7ad:b13b:b71a:9ef2:123e:1e86:ffe0 accept
+          ip6 saddr 201:f5ff:565:4fef:6597:9c51:654e:f08a accept
+          ip6 saddr 202:232d:ecb9:8fdb:4d38:db48:b556:e8d5 accept
+          ip saddr 192.168.0.0/24 accept
+          ip saddr 10.147.18.0/24 accept
+        '';
       };
     };
+  };
 }

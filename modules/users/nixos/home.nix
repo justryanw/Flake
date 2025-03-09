@@ -1,11 +1,11 @@
-name:
-{ lib, config, ... }@inputs:
-{
+name: {
+  lib,
+  config,
+  ...
+} @ inputs: {
   config = lib.mkIf config.modules.users.${name}.enable {
-    home-manager.users.${name} =
-      { ... }:
-      {
-        modules.work.enable = false;
-      };
+    home-manager.users.${name} = {...}: {
+      modules.work.enable = false;
+    };
   };
 }

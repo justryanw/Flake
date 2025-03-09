@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
@@ -39,8 +42,7 @@
     };
   };
 
-  disko.devices.disk.${config.networking.hostName}.device =
-    "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";
 
   boot.loader.grub = {
     gfxmodeEfi = "3440x1440";
@@ -48,8 +50,8 @@
   };
 
   virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "ryan" ];
-  environment.systemPackages = [ pkgs.docker-compose ];
+  users.extraGroups.docker.members = ["ryan"];
+  environment.systemPackages = [pkgs.docker-compose];
 
   hardware.flirc.enable = true;
 
@@ -58,8 +60,8 @@
 
     firewall = {
       # Mindustry
-      allowedTCPPorts = [ 6567 ];
-      allowedUDPPorts = [ 6567 ];
+      allowedTCPPorts = [6567];
+      allowedUDPPorts = [6567];
     };
   };
 
@@ -68,7 +70,7 @@
   services = {
     zerotierone = {
       enable = true;
-      joinNetworks = [ "d3ecf5726d350938" ];
+      joinNetworks = ["d3ecf5726d350938"];
     };
 
     ollama = {

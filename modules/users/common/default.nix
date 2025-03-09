@@ -1,15 +1,12 @@
-name:
-{
+name: {
   pkgs,
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.modules.users.${name};
-in
-{
-  imports = [ (import ./home.nix name) ];
+in {
+  imports = [(import ./home.nix name)];
 
   options = {
     modules.users.${name} = {
@@ -29,8 +26,7 @@ in
       ];
       shell = pkgs.zsh;
       packages = lib.mkIf config.modules.graphics.enable (
-        with pkgs;
-        [
+        with pkgs; [
           firefox
           libreoffice
           hunspell

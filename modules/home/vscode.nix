@@ -4,8 +4,7 @@
   config,
   rootConfig,
   ...
-}:
-{
+}: {
   options = {
     modules.vscode.enable = lib.mkEnableOption "Enable vscode";
   };
@@ -55,7 +54,7 @@
           nix = {
             enableLanguageServer = true;
             serverPath = "${pkgs.nixd}/bin/nixd";
-            serverSettings.nixd.formatting.command = [ "${pkgs.alejandra}/bin/alejandra" ];
+            serverSettings.nixd.formatting.command = ["${pkgs.alejandra}/bin/alejandra"];
           };
 
           html.format.wrapLineLength = 0;

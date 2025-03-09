@@ -3,15 +3,14 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
     inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
 
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
   modules = {
     gaming.enable = false;
@@ -28,8 +27,7 @@
     };
   };
 
-  disko.devices.disk.${config.networking.hostName}.device =
-    "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
+  disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDC_WDS250G2B0C-00PXH0_21140K457811";
 
   fileSystems = {
     "/data/media" = {
@@ -148,19 +146,19 @@
   };
 
   users = {
-    groups.data = { };
+    groups.data = {};
     users = {
-      ryan.extraGroups = [ "data" ];
+      ryan.extraGroups = ["data"];
       immich.extraGroups = [
         "video"
         "render"
       ];
     };
-    extraGroups.docker.members = [ "ryan" ];
+    extraGroups.docker.members = ["ryan"];
   };
 
   virtualisation.docker.enable = true;
-  environment.systemPackages = [ pkgs.docker-compose ];
+  environment.systemPackages = [pkgs.docker-compose];
 
   systemd.tmpfiles.rules = [
     "d /data 775 root data"
@@ -187,8 +185,8 @@
 
     firewall = {
       # Minecraft
-      allowedTCPPorts = [ 25565 ];
-      allowedUDPPorts = [ 25565 ];
+      allowedTCPPorts = [25565];
+      allowedUDPPorts = [25565];
     };
   };
 

@@ -1,14 +1,12 @@
 # Import VM
 # sudo virsh define --file win-10.xml
-
 {
   pkgs,
   config,
   lib,
   gpuIDs,
   ...
-}:
-let
+}: let
   looking-glass-client-overlay = (
     final: prev: {
       looking-glass-client = prev.looking-glass-client.overrideAttrs (old: {
@@ -31,8 +29,7 @@ let
   );
 
   cfg = config.modules.gaming-vm;
-in
-{
+in {
   options.modules.gaming-vm = {
     enable = lib.mkEnableOption "Enable gaming vm";
 
@@ -43,9 +40,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [ looking-glass-client-overlay ];
+    nixpkgs.overlays = [looking-glass-client-overlay];
 
-    users.users.ryan.extraGroups = [ "libvirtd" ];
+    users.users.ryan.extraGroups = ["libvirtd"];
 
     environment.systemPackages = with pkgs; [
       spice

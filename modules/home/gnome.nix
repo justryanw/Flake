@@ -3,8 +3,7 @@
   lib,
   rootConfig,
   ...
-}:
-{
+}: {
   config = lib.mkIf rootConfig.modules.gnome.enable {
     gtk = {
       enable = true;
@@ -21,9 +20,9 @@
         clock-show-weekday = true;
       };
       "org/gnome/shell" = {
-        favourite-apps = [ ];
+        favourite-apps = [];
         disable-user-extensions = false;
-        disabled-extensions = [ ];
+        disabled-extensions = [];
       };
       "org/gnome/mutter" = {
         workspaces-only-on-primary = true;
@@ -41,21 +40,21 @@
         natural-scroll = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
-        toggle-fullscreen = [ "<Super>f" ];
-        minimize = [ "<Super>s" ];
-        maximize = [ "<Super>w" ];
-        begin-move = [ "<Super>e" ];
-        begin-resize = [ "<Super>r" ];
+        toggle-fullscreen = ["<Super>f"];
+        minimize = ["<Super>s"];
+        maximize = ["<Super>w"];
+        begin-move = ["<Super>e"];
+        begin-resize = ["<Super>r"];
       };
       "org/gnome/mutter/keybindings" = {
-        toggle-tiled-left = [ "<Super>a" ];
-        toggle-tiled-right = [ "<Super>d" ];
+        toggle-tiled-left = ["<Super>a"];
+        toggle-tiled-right = ["<Super>d"];
       };
       "org/gnome/shell/keybindings" = {
-        toggle-application-view = [ ];
+        toggle-application-view = [];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
-        mic-mute = [ "<Super>AudioMute" ];
+        mic-mute = ["<Super>AudioMute"];
       };
       "org/gnome/desktop/background" = {
         picture-uri = ''file://${pkgs.nixos-artwork.wallpapers.nineish.gnomeFilePath}'';
@@ -68,7 +67,7 @@
       "org/gnome/desktop/calendar".show-weekdate = true;
       "org/gtk/settings/file-chooser".clock-format = "12h";
       "org/gnome/desktop/input-sources" = {
-        xkb-options = [ "caps:escape" ];
+        xkb-options = ["caps:escape"];
         sources = [
           (lib.hm.gvariant.mkTuple [
             "xkb"

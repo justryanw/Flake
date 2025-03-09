@@ -3,8 +3,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options = {
     modules.mullvad.enable = lib.mkEnableOption "Enable Mullvad VPN";
   };

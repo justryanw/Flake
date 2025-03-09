@@ -1,7 +1,4 @@
-{
-  pkgs ? import <nixpkgs> { },
-}:
-(pkgs.buildFHSEnv rec {
+{pkgs ? import <nixpkgs> {}}: (pkgs.buildFHSEnv rec {
   pname = "grayjay";
   version = "2";
   # Absolute path to where the contents of Grayjay.Desktop-linux-x64-v{x} is located
@@ -21,7 +18,7 @@
     exec = pname;
     path = installDir;
     terminal = false;
-    categories = [ "Network" ];
+    categories = ["Network"];
     keywords = [
       "YouTube"
       "Player"
@@ -31,8 +28,8 @@
     prefersNonDefaultGPU = false;
   };
 
-  targetPkgs =
-    _: with pkgs; [
+  targetPkgs = _:
+    with pkgs; [
       start-grayjay
       grayjay-desktop-file
       libz
@@ -64,7 +61,6 @@
       mesa
       libGL
       libsecret
-
     ];
   runScript = "start-grayjay";
   extraInstallCommands = ''

@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   imports = [
     ../../configuration.nix
     ./all-hardware.nix
@@ -18,7 +17,7 @@
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     xserver = {
-      videoDrivers = [ "qxl" ];
+      videoDrivers = ["qxl"];
       displayManager = {
         gdm.enable = true;
         defaultSession = "gnome";

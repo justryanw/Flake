@@ -4,8 +4,7 @@
   config,
   rootConfig,
   ...
-}:
-{
+}: {
   options = {
     modules.work.enable = lib.mkEnableOption "Enable work software";
   };

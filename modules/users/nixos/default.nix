@@ -1,6 +1,8 @@
-name:
-{ lib, config, ... }@inputs:
-{
+name: {
+  lib,
+  config,
+  ...
+} @ inputs: {
   imports = [
     (import ../ryan name)
     (import ./home.nix name)
@@ -8,7 +10,6 @@ name:
 
   config = lib.mkIf config.modules.users.${name}.enable {
     users.users.${name} = {
-
     };
   };
 }

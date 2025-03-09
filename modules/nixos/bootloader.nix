@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   options = {
     modules.grub.enable = lib.mkEnableOption "Enable grub";
   };

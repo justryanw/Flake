@@ -18,6 +18,22 @@ name:
         programs = {
           zed-editor = {
             enable = true;
+            userSettings = {
+              vim_mode = true;
+              ui_font_size = 18;
+              buffer_font_size = 16;
+              autosave = "on_focus_change";
+              auto_update = false;
+              # load_direnv = "shell_hook";
+              tabs = {
+                file_icons = true;
+                git_status = true;
+              };
+              theme = {
+                dark = "One Dark";
+                light = "One Light";
+              };
+            };
           };
 
           git = {

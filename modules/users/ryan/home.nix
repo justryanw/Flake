@@ -30,12 +30,15 @@ name: {
               light = "One Light";
             };
             extensions = ["nix"];
-            languages.Nix = {
-              language_servers = [
-                "nixd"
-                "nil"
-              ];
-              formatter.external.command = "${pkgs.alejandra}/bin/alejandra";
+            languages = {
+              Nix = {
+                language_servers = [
+                  "nixd"
+                  "nil"
+                ];
+                formatter.external.command = "${pkgs.alejandra}/bin/alejandra";
+              };
+              TypeScript.prettier.allowed = false;
             };
             language_models.ollama = {
               api_url = "http://127.0.0.1:11434";

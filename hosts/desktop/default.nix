@@ -79,6 +79,7 @@
         "deepseek-r1:1.5b"
         "deepseek-r1:7b"
         "deepseek-r1:14b"
+        "deepseek-coder-v2:16b"
       ];
     };
 

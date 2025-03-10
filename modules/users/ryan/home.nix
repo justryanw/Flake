@@ -37,6 +37,16 @@ name: {
               ];
               formatter.external.command = "${pkgs.alejandra}/bin/alejandra";
             };
+            language_models.ollama = {
+              api_url = "https://localhost:11434";
+              available_models = [
+                {
+                  name = "deepseek-r1:7b";
+                  display_name = "Deekseek R1 7B";
+                  max_tokens = 32768;
+                }
+              ];
+            };
           };
         };
 

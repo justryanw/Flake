@@ -17,6 +17,7 @@ name: {
           userSettings = {
             vim_mode = true;
             hard_tabs = true;
+            relative_line_numbers = true;
             ui_font_size = 18;
             buffer_font_size = 16;
             autosave = "on_focus_change";

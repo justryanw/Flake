@@ -108,6 +108,12 @@
       group = "data";
     };
 
+    readarr = {
+      enable = true;
+      user = "ryan";
+      group = "data";
+    };
+
     prowlarr.enable = true;
     jellyseerr.enable = true;
 
@@ -169,8 +175,10 @@
     "d /data/media/torrents/watch 775 ryan data"
     "d /data/media/torrents/radarr 775 ryan data"
     "d /data/media/torrents/sonarr 775 ryan data"
+    "d /data/media/torrents/readarr 775 ryan data"
     "d /data/media/movies 775 ryan data"
     "d /data/media/shows 775 ryan data"
+    "d /data/media/books 775 ryan data"
     "d /data/immich 775 immich immich"
   ];
 

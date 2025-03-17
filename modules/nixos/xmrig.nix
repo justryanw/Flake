@@ -2,11 +2,9 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.modules.xmrig;
-in
-{
+in {
   options.modules.xmrig = {
     enable = lib.mkEnableOption "Enable xmrig";
     threads = lib.mkOption {

@@ -1,5 +1,4 @@
-{ lib, ... }:
-let
+{lib, ...}: let
   users = [
     "ryan"
     "helen"
@@ -11,8 +10,7 @@ let
   ];
   common = builtins.map (name: (import ./common name)) users;
   custom = builtins.map (name: (import ./${name} name)) users;
-in
-{
+in {
   imports = common ++ custom;
 
   config = {
@@ -23,7 +21,8 @@ in
           enable = lib.mkDefault (builtins.elem name defaultUsers);
           defaultConfig.enable = lib.mkDefault true;
         };
-      }) users
+      })
+      users
     );
   };
 }

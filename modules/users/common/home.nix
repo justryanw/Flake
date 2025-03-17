@@ -1,6 +1,8 @@
-name:
-{ lib, config, ... }:
-{
+name: {
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkIf config.modules.users.${name}.enable {
     home-manager = {
       useUserPackages = true;
@@ -10,59 +12,57 @@ name:
         rootConfig = config;
       };
 
-      users.${name} =
-        { ... }:
-        {
-          imports = [ ../../home ];
+      users.${name} = {...}: {
+        imports = [../../home];
 
-          config = {
-            home.stateVersion = config.system.stateVersion;
+        config = {
+          home.stateVersion = config.system.stateVersion;
 
-            programs = {
-              starship.enable = true;
+          programs = {
+            starship.enable = true;
 
-              zsh = {
-                enable = true;
-                history.size = 1000;
-                autosuggestion.enable = true;
-                syntaxHighlighting.enable = true;
-                shellAliases = {
-                  la = "ls -A";
-                  sys = "sudo systemctl";
-                  usr = "systemctl --user";
-                  disks = "df -h -x tmpfs -x efivarfs -x devtmpfs";
-                  bios = "systemctl reboot --firmware-setup";
-                  self = "yggdrasilctl getself";
-                  peers = "yggdrasilctl getpeers";
-                  follow = "journalctl -fu";
-                };
-                initExtra = ''
-                  bindkey '^E' autosuggest-accept
-                '';
+            zsh = {
+              enable = true;
+              history.size = 1000;
+              autosuggestion.enable = true;
+              syntaxHighlighting.enable = true;
+              shellAliases = {
+                la = "ls -A";
+                sys = "sudo systemctl";
+                usr = "systemctl --user";
+                disks = "df -h -x tmpfs -x efivarfs -x devtmpfs";
+                bios = "systemctl reboot --firmware-setup";
+                self = "yggdrasilctl getself";
+                peers = "yggdrasilctl getpeers";
+                follow = "journalctl -fu";
               };
+              initExtra = ''
+                bindkey '^E' autosuggest-accept
+              '';
+            };
 
-              carapace.enable = true;
+            carapace.enable = true;
 
-              git = {
-                enable = true;
-                extraConfig.pull.rebase = false;
-                aliases.acm = "!git add -A && git commit -m";
-              };
+            git = {
+              enable = true;
+              extraConfig.pull.rebase = false;
+              aliases.acm = "!git add -A && git commit -m";
+            };
 
-              ssh = {
-                enable = true;
-                matchBlocks = {
-                  github = {
-                    user = "git";
-                    hostname = "github.com";
-                  };
-
-                  nixbuild.hostname = "eu.nixbuild.net";
+            ssh = {
+              enable = true;
+              matchBlocks = {
+                github = {
+                  user = "git";
+                  hostname = "github.com";
                 };
+
+                nixbuild.hostname = "eu.nixbuild.net";
               };
             };
           };
         };
+      };
     };
   };
 }

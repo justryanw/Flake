@@ -3,9 +3,8 @@
   lib,
   modulesPath,
   ...
-}:
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot = {
     initrd = {
@@ -17,10 +16,10 @@
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [];
     };
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
   };
 
   fileSystems = {
@@ -36,11 +35,11 @@
 
     "/var/lib/libvirt/images" = {
       device = "/home/ryan/images";
-      options = [ "bind" ];
+      options = ["bind"];
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

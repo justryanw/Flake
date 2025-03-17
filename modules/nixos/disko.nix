@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   options.modules.disko = {
     enable = lib.mkEnableOption "Enable disko";
   };

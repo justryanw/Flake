@@ -2,8 +2,7 @@
   lib,
   config,
   ...
-}:
-{
+}: {
   options = {
     modules.steamos.enable = lib.mkEnableOption "Enable Steam OS session";
   };

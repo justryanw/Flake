@@ -6,9 +6,7 @@
   buildFHSEnv,
   makeDesktopItem,
   fetchurl,
-}:
-
-let
+}: let
   pname = "spine-pro";
 
   spineTarball = requireFile rec {
@@ -22,7 +20,7 @@ let
     sha256 = "0ayja2p6p4wkgiqw2f5xvbifh55gicvhxbwm5yh9b9hwwhxx28z5";
   };
 
-  unpackedSpine = runCommand "spine-pro-unpacked" { } ''
+  unpackedSpine = runCommand "spine-pro-unpacked" {} ''
     mkdir -p $out
     tar -xzf ${spineTarball} -C $out --strip-components=1
   '';
@@ -37,47 +35,46 @@ let
       sha256 = "sha256-1vZg+ViV+Q9nmijGlYNu5E8MF5nRGXrvT4iAdFdlQ2A=";
     };
   };
-
 in
-buildFHSEnv {
-  inherit pname;
-  version = "4.2.39";
+  buildFHSEnv {
+    inherit pname;
+    version = "4.2.39";
 
-  runScript = writeShellScript "spine-launcher" ''
-    ${unpackedSpine}/launcher/2/bin/java \
-      -Xms512m -Xmx4096m \
-      com.esotericsoftware.spine.launcher.Launcher
-  '';
+    runScript = writeShellScript "spine-launcher" ''
+      ${unpackedSpine}/launcher/2/bin/java \
+        -Xms512m -Xmx4096m \
+        com.esotericsoftware.spine.launcher.Launcher
+    '';
 
-  targetPkgs =
-    pkgs: with pkgs; [
-      zlib
-      freetype
-      fontconfig
+    targetPkgs = pkgs:
+      with pkgs; [
+        zlib
+        freetype
+        fontconfig
 
-      libGL
-      libglvnd
-      mesa.drivers
-      xorg.libX11
-      xorg.libXext
-      xorg.libXrender
-      xorg.libXtst
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXcursor
-      xorg.libXxf86vm
+        libGL
+        libglvnd
+        mesa.drivers
+        xorg.libX11
+        xorg.libXext
+        xorg.libXrender
+        xorg.libXtst
+        xorg.libXi
+        xorg.libXrandr
+        xorg.libXcursor
+        xorg.libXxf86vm
 
-      alsa-lib
-      libpulseaudio
-      udev
-    ];
+        alsa-lib
+        libpulseaudio
+        udev
+      ];
 
-  extraInstallCommands = ''
-    mkdir -p $out/share/applications/
-    cp ${desktopItem}/share/applications/*.desktop $out/share/applications/
-  '';
+    extraInstallCommands = ''
+      mkdir -p $out/share/applications/
+      cp ${desktopItem}/share/applications/*.desktop $out/share/applications/
+    '';
 
-  meta = {
-    license = lib.licenses.unfree;
-  };
-}
+    meta = {
+      license = lib.licenses.unfree;
+    };
+  }

@@ -1,5 +1,8 @@
-{ lib, rootConfig, ... }:
 {
+  lib,
+  rootConfig,
+  ...
+}: {
   config = lib.mkIf rootConfig.modules.gaming.enable {
     programs = {
       mangohud = {

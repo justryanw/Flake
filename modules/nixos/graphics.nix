@@ -1,5 +1,8 @@
-{ lib, config, ... }:
 {
+  lib,
+  config,
+  ...
+}: {
   options = {
     modules.graphics.enable = lib.mkEnableOption "Enable graphics and sound support";
   };

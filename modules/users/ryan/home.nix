@@ -14,6 +14,7 @@ name: {
       programs = {
         zed-editor = {
           enable = true;
+          installRemoteServer = true;
           userSettings = {
             vim_mode = true;
             hard_tabs = true;

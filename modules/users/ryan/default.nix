@@ -5,7 +5,6 @@ name: {
   ...
 }: let
   grayjay-app = pkgs.callPackage ../../../pkgs/grayjay.nix {};
-  spine = pkgs.callPackage ../../../pkgs/spine.nix {};
 in {
   imports = [(import ./home.nix name)];
 
@@ -16,7 +15,6 @@ in {
 
       packages = lib.mkIf config.modules.graphics.enable [
         grayjay-app
-        spine
       ];
     };
 

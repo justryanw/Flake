@@ -12,7 +12,7 @@
   config = lib.mkIf config.modules.gaming.enable {
     nixpkgs.overlays = [inputs.polymc.overlay];
 
-    # environment.systemPackages = [pkgs.polymc];
+    environment.systemPackages = [pkgs.polymc];
 
     programs = {
       steam = {

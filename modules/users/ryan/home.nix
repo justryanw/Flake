@@ -14,6 +14,7 @@ name: {
       programs = {
         zed-editor = {
           enable = true;
+          installRemoteServer = true;
           userSettings = {
             vim_mode = true;
             hard_tabs = true;
@@ -48,7 +49,7 @@ name: {
                 {
                   name = "deepseek-coder-v2:16b";
                   display_name = "Deepseek Coder v2 16B";
-                  max_tokens = 8192;
+                  max_tokens = 6144;
                 }
               ];
             };

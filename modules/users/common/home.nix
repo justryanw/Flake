@@ -36,7 +36,7 @@ name: {
                 peers = "yggdrasilctl getpeers";
                 follow = "journalctl -fu";
               };
-              initExtra = ''
+              initContent = ''
                 bindkey '^E' autosuggest-accept
               '';
             };

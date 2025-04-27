@@ -1,16 +1,12 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
     ../../configuration.nix
     ./hardware-configuration.nix
-    inputs.nix-minecraft.nixosModules.minecraft-servers
   ];
-
-  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
   modules = {
     gaming.enable = false;

@@ -27,13 +27,13 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
 
       - name: Setup nixbuild
-        uses: nixbuild/nixbuild-action@v20
+        uses: nixbuild/nixbuild-action@main
         with:
           nixbuild_token: ${{ secrets.NIXBUILD_TOKEN }}
           generate_summary_for: "workflow"
 
       - name: Update Lockfile
-        uses: nix flake update
+        run: nix flake update
 
       - name: Build
         run: |

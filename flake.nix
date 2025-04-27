@@ -108,7 +108,6 @@
         install-nixos
         ygg-ip
         qr
-        buildAll
       ];
     };
   };

@@ -46,7 +46,7 @@ jobs:
             --accept-flake-config \
             .#allSystems
 
-      - uses: stefanzweifel/git-auto-commit-action@main
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bump flake.lock
           branch: main

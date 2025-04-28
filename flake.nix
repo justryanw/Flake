@@ -28,7 +28,6 @@
   outputs = {
     self,
     nixpkgs,
-    determinate,
     home-manager,
     disko,
     jovian-nixos,

@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     nixpkgs-unfree = {
       url = "github:numtide/nixpkgs-unfree/nixos-unstable";
@@ -56,7 +55,6 @@
           home-manager.nixosModules.default
           disko.nixosModules.default
           jovian-nixos.nixosModules.default
-          determinate.nixosModules.default
           host
         ];
       };

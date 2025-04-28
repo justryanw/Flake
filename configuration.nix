@@ -47,20 +47,6 @@
       };
 
       distributedBuilds = true;
-      buildMachines = [
-        {
-          hostName = "eu.nixbuild.net";
-          system = "x86_64-linux";
-          maxJobs = 100;
-          protocol = "ssh-ng";
-          sshUser = "ryan";
-          sshKey = "/home/ryan/.ssh/id_ed25519";
-          supportedFeatures = [
-            "benchmark"
-            "big-parallel"
-          ];
-        }
-      ];
 
       optimise.automatic = true;
 

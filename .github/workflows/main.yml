@@ -1,13 +1,13 @@
-name: Bump flake.lock
+name: Build to Nixbuild
 
 on:
-  schedule:
-    - cron: "0 6 * * *"
+  push:
+    branches: ["**"]
 
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   id-token: write
 
 concurrency:
@@ -32,9 +32,6 @@ jobs:
           nixbuild_token: ${{ secrets.NIXBUILD_TOKEN }}
           generate_summary_for: "workflow"
 
-      - name: Update Lockfile
-        run: nix flake update
-
       - name: Build
         run: |
           nix build \
@@ -45,15 +42,3 @@ jobs:
             --store ssh-ng://eu.nixbuild.net \
             --accept-flake-config \
             .#allSystems
-
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Bump flake.lock
-          branch: main
-          commit_options: "--no-verify --signoff"
-          file_pattern: flake.lock
-          commit_user_name: Flake Bot # defaults to "GitHub Actions"
-          #commit_user_email: my-github-actions-bot@example.org # defaults to "actions@github.com"
-          commit_author: Flake Bot <actions@github.com> # defaults to author of the commit that triggered the run
-          skip_dirty_check: false
-          skip_fetch: true

@@ -13,6 +13,7 @@ name: {
           krita
           inkscape
           g4music
+          zoom-us
         ]
       );
     };

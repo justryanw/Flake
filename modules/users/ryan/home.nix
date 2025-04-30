@@ -15,15 +15,20 @@ name: {
         zed-editor = {
           enable = true;
           installRemoteServer = true;
-          userSettings = {
+          userSettings = let
+            font = "FiraCode Nerd Font Mono";
+          in {
             vim_mode = true;
             hard_tabs = true;
             relative_line_numbers = true;
-            ui_font_size = 18;
-            buffer_font_size = 16;
             autosave = "on_focus_change";
             auto_update = false;
             installRemoteServer = true;
+            buffer_font_family = font;
+            buffer_font_size = 16;
+            ui_font_family = font;
+            ui_font_size = 18;
+            terminal.font_family = font;
             tabs = {
               file_icons = true;
               git_status = true;
@@ -75,6 +80,10 @@ name: {
             [global]
             hide_env_diff = true
           '';
+        };
+
+        yazi = {
+          enable = true;
         };
       };
 

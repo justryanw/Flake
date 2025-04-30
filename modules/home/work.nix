@@ -11,8 +11,6 @@
 
   config = lib.mkIf (config.modules.work.enable && rootConfig.modules.gnome.enable) {
     home.packages = with pkgs; [
-      slack
-      texturepacker
     ];
   };
 }

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options = {
@@ -11,11 +12,27 @@
     modules.graphics.enable = true;
 
     services.xserver = {
-      desktopManager.gnome.enable = true;
+      desktopManager = {
+        gnome.enable = true;
+        xterm.enable = false;
+      };
       displayManager.gdm = {
         enable = lib.mkDefault true;
         autoSuspend = false;
       };
+      excludePackages = [pkgs.xterm];
+    };
+
+    environment.gnome.excludePackages = builtins.attrValues {
+      inherit
+        (pkgs)
+        epiphany
+        geary
+        gnome-tour
+        totem
+        gnome-music
+        yelp
+        ;
     };
   };
 }

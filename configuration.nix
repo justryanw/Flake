@@ -93,6 +93,15 @@
       '';
     };
 
+    fonts.packages = builtins.attrValues {
+      inherit
+        (pkgs.nerd-fonts)
+        droid-sans-mono
+        fira-mono
+        fira-code
+        ;
+    };
+
     services = {
       openssh = {
         enable = true;

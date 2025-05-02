@@ -14,5 +14,6 @@
     ./glances.nix
     ./steamos.nix
     ./xmrig.nix
+    ./hyprland.nix
   ];
 }

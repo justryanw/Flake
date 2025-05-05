@@ -8,7 +8,7 @@
     modules.hyprland.enable = lib.mkEnableOption "Enable Hyprland desktop and graphics support";
   };
 
-  config = lib.mkIf config.modules.gnome.enable {
+  config = lib.mkIf config.modules.hyprland.enable {
     modules.graphics.enable = true;
 
     programs.hyprland = {

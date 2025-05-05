@@ -39,6 +39,7 @@
           "$modifier,F,fullscreen,"
           "$modifier SHIFT,F,togglefloating,"
           "$modifier ALT,F,workspaceopt, allfloat"
+          "$modifier SHIFT,L,exit"
           "$modifier SHIFT,h,movewindow,l"
           "$modifier SHIFT,l,movewindow,r"
           "$modifier SHIFT,k,movewindow,u"

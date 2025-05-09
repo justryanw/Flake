@@ -45,8 +45,17 @@ name: {
 
             git = {
               enable = true;
-              extraConfig.pull.rebase = false;
-              aliases.acm = "!git add -A && git commit -m";
+              extraConfig = {
+                pull.rebase = true;
+                rebase.autoStash = true;
+                submodule.recurse = true;
+                push.recurseSubmodules = "on-demand";
+              };
+              aliases = {
+                a = "!git add -A";
+                ac = "!git add -A && git commit";
+                acm = "!git add -A && git commit -m";
+              };
             };
 
             ssh = {

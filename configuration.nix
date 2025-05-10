@@ -93,14 +93,11 @@
       '';
     };
 
-    fonts.packages = builtins.attrValues {
-      inherit
-        (pkgs.nerd-fonts)
-        droid-sans-mono
-        fira-mono
-        fira-code
-        ;
-    };
+    fonts.packages = with pkgs.nerd-fonts; [
+      droid-sans-mono
+      fira-mono
+      fira-code
+    ];
 
     services = {
       openssh = {
@@ -140,6 +137,7 @@
         jq
         btop
         vim
+        dysk
       ];
 
       variables.EDITOR = "vim";

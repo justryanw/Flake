@@ -22,11 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim = {
-      url = "github:justryanw/neovim";
-      inputs.nixpkgs.follow = "nixpkgs";
-    };
-
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 

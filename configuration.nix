@@ -139,8 +139,6 @@
         vim
         dysk
       ];
-
-      variables.EDITOR = "vim";
     };
 
     users.users.root.openssh.authorizedKeys.keys = [

@@ -1,4 +1,5 @@
 name: {
+  pkgs,
   lib,
   config,
   ...
@@ -67,6 +68,23 @@ name: {
                 };
 
                 nixbuild.hostname = "eu.nixbuild.net";
+              };
+            };
+
+            helix = {
+              enable = true;
+              package = pkgs.evil-helix;
+              defaultEditor = true;
+              settings = {
+                theme = "onedark";
+                editor = {
+                  line-number = "relative";
+                  cursor-shape = {
+                    insert = "bar";
+                    normal = "block";
+                    select = "underline";
+                  };
+                };
               };
             };
           };

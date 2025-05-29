@@ -42,7 +42,6 @@ in {
           discord
           drawing
           modrinth-app
-          thunderbird
           typst
         ]
       );

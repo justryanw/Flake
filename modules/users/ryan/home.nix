@@ -34,6 +34,7 @@ name: {
               git_status = true;
             };
             theme = {
+              mode = "dark";
               dark = "One Dark";
               light = "One Light";
             };

@@ -36,14 +36,8 @@
           "flakes"
         ];
         builders-use-substitutes = true;
-        substituters = [
-          "https://justryanw.cachix.org"
-          "ssh://eu.nixbuild.net"
-        ];
-        trusted-public-keys = [
-          "justryanw.cachix.org-1:oan1YuatPBqGNFEflzCmB+iwLPtzq1S1LivN3hUzu60="
-          "nixbuild.net/ACT8PT-1:xsXpIjcF8wW2pTTAaNYZzfDNcYZkG7ICcY+/o5tNCGE="
-        ];
+        substituters = ["https://justryanw.cachix.org"];
+        trusted-public-keys = ["justryanw.cachix.org-1:oan1YuatPBqGNFEflzCmB+iwLPtzq1S1LivN3hUzu60="];
       };
 
       distributedBuilds = true;
@@ -91,6 +85,8 @@
           IPQoS throughput
           IdentityFile /home/ryan/.ssh/id_ed25519
       '';
+
+      thunderbird.enable = true;
     };
 
     fonts.packages = with pkgs.nerd-fonts; [

@@ -6,6 +6,7 @@
     ./graphics.nix
     ./yggdrasil.nix
     ./network.nix
+    ./nixbuild.nix
     ./amd.nix
     ./mullvad.nix
     ./disko.nix
@@ -15,5 +16,6 @@
     ./steamos.nix
     ./xmrig.nix
     ./hyprland.nix
+    ./sql.nix
   ];
 }

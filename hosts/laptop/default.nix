@@ -6,7 +6,9 @@
 
   modules = {
     steamos.enable = false;
-    hyprland.enable = true;
+    hyprland.enable = false;
+    nixbuild.enable = true;
+    sql.enable = true;
   };
 
   boot.loader.grub.gfxmodeEfi = "1920x1080";

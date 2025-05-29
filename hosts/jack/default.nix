@@ -7,6 +7,8 @@
   modules = {
     disko.enable = true;
     nixbuild.enable = true;
+    gaming.enable = false;
+    amd.enable = false;
   };
 
   boot.loader.grub.gfxmodeEfi = "1920x1080";

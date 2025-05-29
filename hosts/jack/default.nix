@@ -5,6 +5,7 @@
   ];
 
   modules = {
+    disko.enable = true;
     nixbuild.enable = true;
   };
 

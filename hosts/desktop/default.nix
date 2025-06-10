@@ -40,9 +40,6 @@
       name = "desktop";
       threads = 6;
     };
-
-    hyprland.enable = false;
-    sql.enable = true;
   };
 
   disko.devices.disk.${config.networking.hostName}.device = "/dev/disk/by-id/nvme-WDS500G3X0C-00SJG0_2018GE480508";

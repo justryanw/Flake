@@ -134,6 +134,7 @@
         btop
         vim
         dysk
+        tldr
       ];
     };
 

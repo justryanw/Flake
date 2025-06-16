@@ -41,7 +41,6 @@ in {
           authenticator
           discord
           drawing
-          modrinth-app
           typst
         ]
       );
